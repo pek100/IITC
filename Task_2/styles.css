@@ -1,6 +1,6 @@
 
 hr{
-    width: 500px;
+    width: 250px;
     height: 4px;
     background-color: rgb(107, 107, 107);
 }
@@ -8,14 +8,15 @@ hr{
 #gallery {
     display: flex;
     flex-wrap: wrap;
-    margin: auto;
     width: 100%;
-    padding: 200px;
-   
+    margin: auto;
+    margin-top: 200px;
+    justify-content: center;
+  
 }
 
 .gallery-item {
-    width: 600px;
+    width: 300px;
     padding: 10px;
     text-align: center;
     border-style: solid;
@@ -31,7 +32,7 @@ hr{
 }
 
 .gallery-item-label{
-    font-size: 60px;
+    font-size: 40px;
     font-weight: bold;
 }
 
