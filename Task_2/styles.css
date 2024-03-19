@@ -1,4 +1,9 @@
 
+hr{
+    width: 500px;
+    height: 4px;
+    background-color: rgb(107, 107, 107);
+}
 
 #gallery {
     display: flex;
@@ -23,4 +28,13 @@
     width: 650px;
     background-color: antiquewhite;
 
+}
+
+.gallery-item-label{
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.label-conttainer{
+padding: 20px;
 }
