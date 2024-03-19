@@ -10,6 +10,6 @@ ___________________________________________________________________________
 
 Thank you for your interest in my work!
 
-IITC fullstack student Portfolio 🌠💻
+IITC Fullstack Student Portfolio 🌠💻
 
 
