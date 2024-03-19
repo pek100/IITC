@@ -1,5 +1,5 @@
 
-welcome to my IITC Projects page 🤗
+Welcome to my IITC Projects page 🤗
 ___________________________________________________________________________
 
 * Added a projects library website for easier project navigation 📃🧭
