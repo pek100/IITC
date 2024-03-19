@@ -1,13 +1,15 @@
 
-Welcome to my IITC Projects page 🤗
+Welcome to the IITC Project Portfolio 🤗
 ___________________________________________________________________________
 
-* Added a projects library website for easier project navigation 📃🧭
+* Introduced a centralized projects library website for seamless navigation across all projects 📃🧭
     
-just run the "Projects_Library.html" to easily have access to all of my projects!
+Access the library by running "Projects_Library.html" locally
 
 ___________________________________________________________________________
 
-IITC fullstack course projects 🌠💻
+Thank you for your interest in my work!
+
+IITC fullstack student Portfolio 🌠💻
 
 
