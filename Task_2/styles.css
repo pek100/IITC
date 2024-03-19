@@ -1,0 +1,26 @@
+
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 100%;
+    padding: 200px;
+   
+}
+
+.gallery-item {
+    width: 600px;
+    padding: 10px;
+    text-align: center;
+    border-style: solid;
+    border-radius: 16px;
+    margin: 10px;
+    font-size: 40px;
+}
+
+.gallery-item:hover {
+    width: 650px;
+    background-color: antiquewhite;
+
+}
