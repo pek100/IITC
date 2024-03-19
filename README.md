@@ -1,5 +1,5 @@
 
-Welcome to the IITC Project Portfolio 🤗
+Welcome to my IITC Project Portfolio 🤗
 ___________________________________________________________________________
 
 * Introduced a centralized projects library website for seamless navigation across all projects 📃🧭
