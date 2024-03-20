@@ -10,11 +10,10 @@ line-height: 26px;}
 
 
 .card_container{
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+display:flex;
+align-items: center;
+height: 100vh;
+
    
       
 }
@@ -29,18 +28,18 @@ line-height: 26px;}
     margin: auto;
 
     border-radius: 20px;
-    
+
    
 }
 
 .card_image{
+    
     grid-column-end: 1; 
-   
-
    
 }
 
 #Perfume_img{
+
     height:550px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -119,3 +118,53 @@ line-height: 26px;}
 #Add_to_cart:hover{
     background-color: hsl(157, 36%, 27%);
 }
+
+@media only screen and (max-width: 600px) {
+
+
+
+    .card{
+
+        width: 400px;
+        height: 700px;
+    
+        border-radius: 20px;     
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-gap: 10px;
+        
+    }
+    .card_text{
+       width: 100%;
+    }
+    
+    .button{
+        width:100%
+    }
+
+    .card_image{
+        grid-column-end: 2; 
+        background-image: url("/product-preview-card-component-main/images/image-product-mobile.jpg");
+        background-size: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    #Perfume_img{
+
+        display:none;
+       
+    }
+
+    .button{
+        display: relative;
+        height: 80px;
+        width: 100%;
+        margin-top: 10px; 
+        margin-left: -10px;   
+      
+    }
+    
+
+    
+  }

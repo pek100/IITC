@@ -1,0 +1,25 @@
+.page{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card{ 
+    display: flex;
+    background-color: white;
+    width: 700px;
+    height: 600px;
+    border-style: solid;
+}
+
+.right_side{
+    width: 50%;
+}
+
+.left_side{
+    width: 50%;
+    border-style: solid;
+
+}
