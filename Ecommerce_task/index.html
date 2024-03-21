@@ -9,13 +9,19 @@
 
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="img overlay.css">
+  <link rel="stylesheet" href="modal.css">
 
 </head>
 <body>
 
   <div class="banner">
     <h1>Home Appliances</h1>
+    <iframe width="98%" height="225" src="https://www.youtube.com/embed/lr96lDEtgJ8?autoplay=1&mute=1&loop=1&playlist=lr96lDEtgJ8&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&rel=0&color=white" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
+
+
+
+<nav>
 
 <ul>
   <li><a class="active" href="#Home">Home</a></li>
@@ -23,14 +29,18 @@
   <li><a href="#New Arrivals">New Arrivals</a></li>
   <li><a href="#Best Sellers">Best sellers</a></li>
 </ul>
-
-
+</nav>
 
 
 <div class="container">
+</div>
+
+
+
 
 <div id="Home" class="top">
-
+</div>
+  
 
   </div>
   <br>
@@ -55,9 +65,9 @@
 
 
 
-
-                    <div class="content">
-                        <a href="" target="">  <div  class="content-overlay"></div>
+                <a href="#productModal1"><h4 class="h4">37$</h4></a>
+                    <div class="content"> 
+                        <a href="#productModal1" target="">  <div  class="content-overlay"></div>
                         <img  class="content-image" src="https://m.media-amazon.com/images/I/81redvglIUL._AC_SL1500_.jpg">
                         <div  class="content-details fadeIn-top">
                           <h3>Order Now!</h3>
@@ -68,8 +78,49 @@
 
 
             </div>
-                    <p class="img-text-wrapper">Towels</p>
+                    <p class="img-text-wrapper"> Towels </p>
           </div>
+
+
+        <!-- Modal -->
+        <div id="productModal1" class="modal">
+          <div class="modal-content">
+            <a href="#" class="modal-close">&times;</a>
+            <div class="modal-left">
+              <img id="modal-img" src="https://m.media-amazon.com/images/I/81redvglIUL._AC_SL1500_.jpg" alt="Product Image">
+            </div>
+            <div class="modal-right">
+              <h2 id="modal-title"></h2>
+              <p id="modal-price"></p>
+              <div class="shipment-options">
+                <h3 id="In_stock_title">In Stock</h3>
+
+                <h3 id="Price_title">Price: 37$</h3>
+                <br><hr>
+                <h3 id="Shipment_Title">Shipment Options:</h3>
+                <ul>
+                  <li>
+                    <input type="radio" id="standard" name="shipment" value="standard">
+                    <label for="standard">Standard Shipping (5-7 business days)</label>
+                  </li>
+                  <li>
+                    <input type="radio" id="express" name="shipment" value="express">
+                    <label for="express">Express Shipping (2-3 business days)</label>
+                  </li>
+                  <li>
+                    <input type="radio" id="nextday" name="shipment" value="nextday">
+                    <label for="nextday">Next Day Delivery</label>
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
 <!------------------------------------->
 <!------------------------------------->
 
@@ -78,9 +129,9 @@
 
 
 
-
+              <a href="#productModal2"><h4 class="h4">93$</h4>
                   <div class="content">
-                      <a href="" target="">  <div  class="content-overlay"></div>
+                      <a href="#productModal2" target="">  <div  class="content-overlay"></div>
                       <img  class="content-image" src="https://m.media-amazon.com/images/I/61FByBBExRL._AC_SL1500_.jpg">
                       <div  class="content-details fadeIn-top">
                         <h3>Order Now!</h3>
@@ -93,6 +144,51 @@
           </div>
                       <p class="img-text-wrapper">Air Purifier</p>
         </div>
+
+
+
+
+         
+        <!-- Modal -->
+        <div id="productModal2" class="modal">
+          <div class="modal-content">
+            <a href="#" class="modal-close">&times;</a>
+            <div class="modal-left">
+              <img id="modal-img" src="https://m.media-amazon.com/images/I/61FByBBExRL._AC_SL1500_.jpg" alt="Product Image">
+            </div>
+            <div class="modal-right">
+              <h2 id="modal-title"></h2>
+              <p id="modal-price"></p>
+              <div class="shipment-options">
+                <h3 id="In_stock_title">In Stock</h3>
+
+                <h3 id="Price_title">Price: 93$</h3>
+                <br><hr>
+                <h3 id="Shipment_Title">Shipment Options:</h3>
+                <ul>
+                  <li>
+                    <input type="radio" id="standard" name="shipment" value="standard">
+                    <label for="standard">Standard Shipping (5-7 business days)</label>
+                  </li>
+                  <li>
+                    <input type="radio" id="express" name="shipment" value="express">
+                    <label for="express">Express Shipping (2-3 business days)</label>
+                  </li>
+                  <li>
+                    <input type="radio" id="nextday" name="shipment" value="nextday">
+                    <label for="nextday">Next Day Delivery</label>
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
 <!------------------------------------->
 
 <!------------------------------------->
@@ -102,9 +198,9 @@
 
 
 
-
+              <a href="#productModal3"><h4 class="h4">24$</h4>
                   <div class="content">
-                      <a href="" target="">  <div  class="content-overlay"></div>
+                      <a href="#productModal3" target="">  <div  class="content-overlay"></div>
                       <img  class="content-image" src="https://m.media-amazon.com/images/I/61Kuew3I5GL._AC_SL1500_.jpg">
                       <div  class="content-details fadeIn-top">
                         <h3>Order Now!</h3>
@@ -117,6 +213,47 @@
           </div>
                       <p class="img-text-wrapper">Donut Vase</p>
         </div>
+
+                <!-- Modal -->
+                <div id="productModal3" class="modal">
+                  <div class="modal-content">
+                    <a href="#" class="modal-close">&times;</a>
+                    <div class="modal-left">
+                      <img id="modal-img" src="https://m.media-amazon.com/images/I/61Kuew3I5GL._AC_SL1500_.jpg" alt="Product Image">
+                    </div>
+                    <div class="modal-right">
+                      <h2 id="modal-title"></h2>
+                      <p id="modal-price"></p>
+                      <div class="shipment-options">
+                        <h3 id="In_stock_title">In Stock</h3>
+        
+                        <h3 id="Price_title">Price: 93$</h3>
+                        <br><hr>
+                        <h3 id="Shipment_Title">Shipment Options:</h3>
+                        <ul>
+                          <li>
+                            <input type="radio" id="standard" name="shipment" value="standard">
+                            <label for="standard">Standard Shipping (5-7 business days)</label>
+                          </li>
+                          <li>
+                            <input type="radio" id="express" name="shipment" value="express">
+                            <label for="express">Express Shipping (2-3 business days)</label>
+                          </li>
+                          <li>
+                            <input type="radio" id="nextday" name="shipment" value="nextday">
+                            <label for="nextday">Next Day Delivery</label>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="modal-buttons">
+                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="buy-now">Buy Now</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        
+        
 <!------------------------------------->
 <!------------------------------------->
 
@@ -125,9 +262,9 @@
 
 
 
-
+              <a href="#productModal4"><h4 class="h4">19$</h4>
                   <div class="content">
-                      <a href="" target="">  <div  class="content-overlay"></div>
+                      <a href="#productModal4" target="">  <div  class="content-overlay"></div>
                       <img  class="content-image" src="https://m.media-amazon.com/images/I/91lYe0NV-WL._AC_SL1500_.jpg">
                       <div  class="content-details fadeIn-top">
                         <h3>Order Now!</h3>
@@ -140,6 +277,46 @@
           </div>
       <p class="img-text-wrapper">Wooden Shelf</p>
         </div>
+
+      <!-- Modal -->
+      <div id="productModal4" class="modal">
+        <div class="modal-content">
+          <a href="#" class="modal-close">&times;</a>
+          <div class="modal-left">
+            <img id="modal-img" src="https://m.media-amazon.com/images/I/91lYe0NV-WL._AC_SL1500_.jpg" alt="Product Image">
+          </div>
+          <div class="modal-right">
+            <h2 id="modal-title"></h2>
+            <p id="modal-price"></p>
+            <div class="shipment-options">
+              <h3 id="In_stock_title">In Stock</h3>
+
+              <h3 id="Price_title">Price: 19$</h3>
+              <br><hr>
+              <h3 id="Shipment_Title">Shipment Options:</h3>
+              <ul>
+                <li>
+                  <input type="radio" id="standard" name="shipment" value="standard">
+                  <label for="standard">Standard Shipping (5-7 business days)</label>
+                </li>
+                <li>
+                  <input type="radio" id="express" name="shipment" value="express">
+                  <label for="express">Express Shipping (2-3 business days)</label>
+                </li>
+                <li>
+                  <input type="radio" id="nextday" name="shipment" value="nextday">
+                  <label for="nextday">Next Day Delivery</label>
+                </li>
+              </ul>
+            </div>
+            <div class="modal-buttons">
+              <button class="add-to-cart">Add to Cart</button>
+              <button class="buy-now">Buy Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+        
 <!------------------------------------->
 
 </div>
@@ -178,6 +355,8 @@
             </div>
                     <p class="img-text-wrapper">Glass Container</p>
           </div>
+
+
 <!------------------------------------->
 <!------------------------------------->
 

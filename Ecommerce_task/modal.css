@@ -1,0 +1,142 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    position: relative;
+  }
+  
+  .modal-left {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .modal-right {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .modal-close:hover,
+  .modal-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  #modal-img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  
+  #In_stock_title{
+    color: #347737;
+    font-size: 30px;
+  }
+
+
+  #Shipment_Title{
+    margin-top: 15px;
+  }
+
+  
+  .shipment-options ul {
+    list-style-type: none;
+    padding: 30px;
+  }
+  
+  .shipment-options li {
+    margin-bottom: 10px;
+  }
+  
+  .modal-buttons { 
+    display: flex;
+    justify-content: space-between;
+    margin-top: 110px;
+  }
+  
+  .add-to-cart,
+  .buy-now {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-to-cart {
+    background-color: #4CAF50;
+    color: rgb(245, 245, 245);
+  }
+  
+  .buy-now {
+    background-color: #008CBA;
+    color: rgb(245, 245, 245);
+  }
+
+  .add-to-cart:hover {
+    background-color: #347737;
+    color: white;
+  }
+  
+  .buy-now:hover {
+    background-color: #00526d;
+    color: white;
+  }
+  
+  
+  /* Modal Display */
+  .modal:target {
+    display: block;
+  }
+  
+  .modal:target .modal-content {
+    animation: modalFadeIn 0.5s;
+  }
+  
+  /* Modal Animation */
+  @keyframes modalFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+
+  /* Modal Content Populate */
+  .modal:target #modal-img {
+    content: attr(data-image) url();
+  }
+  
+  .modal:target #modal-title {
+    content: attr(data-title);
+  }
+  
+  .modal:target #modal-price {
+    content: attr(data-price);
+  }

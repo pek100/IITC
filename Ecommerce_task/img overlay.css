@@ -26,7 +26,11 @@ img{
   }
 }
 
+.content{
 
+   border-radius: 20px;
+
+}
 
 .content .content-overlay {
   background: rgba(0,0,0,0.7);
@@ -42,7 +46,8 @@ img{
   border-style: solid;
   border-color: transparent;
   border-width: 22px;
-  border-radius: 16px;
+  border-radius: 19px;
+  
 }
 
 .content:hover .content-overlay{
@@ -70,6 +75,7 @@ img{
   top: 50%;
   left: 50%;
   opacity: 1;
+  h4{ width:100%};
 }
 
 a{
@@ -89,6 +95,7 @@ text-decoration: none;
 .content-details p{
   color: #fff;
   font-size: 0.8em;
+  
 }
 
 
