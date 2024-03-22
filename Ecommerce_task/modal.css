@@ -34,7 +34,7 @@
   .modal-close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 42px;
     font-weight: bold;
     text-decoration: none;
   }
@@ -48,8 +48,22 @@
   
   #modal-img {
     max-width: 100%;
-    height: auto;
+    height: auto;  
   }
+
+  #modal-img:hover {
+    transform: scale(102%);
+    filter: brightness(100%) !important;
+  }
+
+  #modal-img:active {
+    transform: scale(180%);
+    border-style:solid;
+    border-color: rgb(255, 174, 53);
+    border-radius: 2px;
+    border-width: 2px;
+  }
+
   
   
   #In_stock_title{
@@ -70,6 +84,11 @@
   
   .shipment-options li {
     margin-bottom: 10px;
+    color: rgb(88, 88, 88);
+  }
+
+  .shipment-options li:hover{
+    color: rgb(0, 0, 0);
   }
   
   .modal-buttons { 
