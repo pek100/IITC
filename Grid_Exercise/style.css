@@ -1,0 +1,116 @@
+.page{
+    display: grid;
+    grid-template-columns: 2% 96% 2%;
+    height: 100vh;
+    width: 98vw;
+   
+   
+}
+
+.gallery{
+    grid-column: 2;
+    display: grid;
+    height: 90vh;
+    grid-template-columns: .5fr 1fr 1fr 1fr 1fr 1fr 1fr .5fr;
+    grid-template-rows: .4fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    direction: rtl;
+    gap: 1%;
+    grid-auto-flow: column
+    
+}
+
+
+.gallery_item, .gallery_item_side_title, .gallery_item_top_title, .gallery_item_Shabbat{
+    width: 90%;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 4px;
+    background-color: rgb(226, 226, 226);
+    text-align: center;
+    color: white;
+    border-color: rgb(189, 189, 189);
+}
+
+.gallery_item:hover{
+    border-color: rgb(145, 207, 0);
+    background-color: rgb(212, 226, 201);
+}
+
+.gallery_item_top_title:hover, .gallery_item_side_title:hover{
+    background-color: rgb(51, 51, 51);
+}
+
+.gallery_item_Shabbat:hover{
+    border-color: rgb(223, 0, 0);
+    border-style: dashed;
+    border-radius: 0px;
+}
+
+
+.gallery_item_side_title>h3, .gallery_item_top_title>h3{
+   transform: scale(140%);
+   height:auto;
+   margin: auto;
+   line-height: 60px;
+
+
+}
+
+.gallery_item_side_title, .gallery_item_top_title{
+    border-color: rgb(51, 51, 51);
+    background-color: rgb(92, 92, 92);
+}
+
+.gallery_item>p{
+    line-height: 15px;
+    font-size: 25px;
+    color: black;
+   font-weight: 500;
+}
+
+.gallery_item_Shabbat{
+    border-color: #ff8484;
+    background-color: rgb(255, 206, 206);
+}
+
+
+@media only screen and (max-width: 1500px) {
+    .gallery_item_side_title>h3, .gallery_item_top_title>h3{
+        height:auto;
+        margin: auto;
+        line-height: 35px;
+        transform: scale(100%);
+        padding: 5px;
+}
+} 
+
+@media only screen and (max-width: 1000px) {
+    .gallery{
+        gap: 0%;  
+    }
+
+    .gallery_item, .gallery_item_side_title, .gallery_item_top_title, .gallery_item_Shabbat{
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 0%;
+        width: 97%;
+    }
+
+    .gallery_item_side_title>h3, .gallery_item_top_title>h3{
+        height:auto;
+        margin: auto;
+        line-height: 60px;
+        transform: scale(80%);
+        padding: 5px;
+}
+
+    .gallery_item>p{
+        line-height: 25px;
+        font-size: 20px;
+        padding: 5px;
+        color: black;
+        font-weight: 500;
+    }
+}
+
+

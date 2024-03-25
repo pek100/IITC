@@ -1,0 +1,61 @@
+#top_title_1{
+    grid-column: 1;
+    grid-row: 1;
+}
+#top_title_2{
+    grid-column: 2;
+    grid-row: 1;
+}
+#top_title_3{
+    grid-column: 3;
+    grid-row: 1;
+}
+#top_title_4{
+    grid-column: 4;
+    grid-row: 1;
+}
+
+#top_title_5{
+    grid-column: 5;
+    grid-row: 1;
+}
+#top_title_6{
+    grid-column: 6;
+    grid-row: 1;
+}
+#top_title_7{
+    grid-column: 7;
+    grid-row: 1;
+}
+#top_title_8{
+    grid-column: 8;
+    grid-row: 1;
+}
+/*  */
+/*  */
+#side_title_1{
+    grid-column: 1;
+    grid-row: 2;
+}
+#side_title_2{
+    grid-column: 1;
+    grid-row: 3;
+}
+#side_title_3{
+    grid-column: 1;
+    grid-row: 4;
+}
+#side_title_4{
+    grid-column: 1;
+    grid-row: 5;
+}
+
+#side_title_5{
+    grid-column: 1;
+    grid-row: 6;
+}
+#side_title_6{
+    grid-column: 1;
+    grid-row: 7;
+}
+
