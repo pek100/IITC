@@ -82,7 +82,7 @@
         transform: scale(100%);
         padding: 5px;
 }
-} 
+}  
 
 @media only screen and (max-width: 1000px) {
     .gallery{
