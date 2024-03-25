@@ -85,6 +85,15 @@
 }  
 
 @media only screen and (max-width: 1000px) {
+    .page{
+        display: grid;
+        grid-template-columns: 0% 100% 0%;
+        height: 100vh;
+        width: 98vw;
+       
+       
+    }
+
     .gallery{
         gap: 0%;  
     }
