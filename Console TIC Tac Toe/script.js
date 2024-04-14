@@ -5,6 +5,7 @@ const Button = document.getElementById('turnLabel');
 
 let gameBoardArr = ["■", "■", "■", "■", "■", "■", "■", "■", "■"];
 let currentShape = "O";
+let gameRunning = true;
 
 Refresh();
 
@@ -24,17 +25,15 @@ function ShapeChange() {
 
 
 function BoardSet(buttonValue){
-    if (gameBoardArr[buttonValue] == "■"){
+    if (gameBoardArr[buttonValue] == "■" && gameRunning == true){
     gameBoardArr[buttonValue] = currentShape;
     BoardOutput();
     }
-    checkGameStatus(currentShape);
+    
 }
 
 
 function BoardOutput() {
-    
-
     pageConsole.value += '\n\n';
     console.log("\n\n");
     pageConsole.value += gameBoardArr.slice(0, 3).join(" ") + "\n";
@@ -44,7 +43,8 @@ function BoardOutput() {
     console.table([gameBoardArr.slice(0, 3),gameBoardArr.slice(3, 6),gameBoardArr.slice(6, 9)])
     console.log("\n\n");
     ShapeChange();
-    pageConsole.scrollTop = pageConsole.scrollHeight; 
+    pageConsole.scrollTop = pageConsole.scrollHeight;
+    checkGameStatus(currentShape);
 }
 
 
@@ -81,8 +81,9 @@ function checkWin(player) {
         pageConsole.value = pageConsole.value.replace(/\n+$/, "");
         pageConsole.value += "\n\n" + player +" wins!" + "\n\n";
         console.log("\n\n" + player +" wins!" + "\n\n");
-        console.scrollTop = pageConsole.scrollHeight; 
-      return;
+        console.scrollTop = pageConsole.scrollHeight;
+        gameRunning = false;
+        return;
     }
   
     
@@ -90,8 +91,8 @@ function checkWin(player) {
         pageConsole.value = pageConsole.value.replace(/\n+$/, "");
         pageConsole.value += "\n\n" + "It's a tie!" + "\n\n";
         console.log("\n\n" + "It's a tie!" + "\n\n");
-        pageConsole.scrollTop = pageConsole.scrollHeight; 
+        pageConsole.scrollTop = pageConsole.scrollHeight;
+        gameRunning = false;
       return;
     }
-
   }
