@@ -21,6 +21,7 @@ function Refresh() {
 function ShapeChange() {
     currentShape == "O"? currentShape = "X" : currentShape = "O";  
     turnLabel.innerHTML = "Turn For " + currentShape + "!";
+    checkGameStatus(currentShape);
 }
 
 
@@ -43,9 +44,8 @@ function BoardOutput() {
     pageConsole.value += '\n\n';
     console.table([gameBoardArr.slice(0, 3),gameBoardArr.slice(3, 6),gameBoardArr.slice(6, 9)])
     console.log("\n\n");
-    ShapeChange();
     pageConsole.scrollTop = pageConsole.scrollHeight;
-    checkGameStatus(currentShape);
+    ShapeChange();
 }
 
 
