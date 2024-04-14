@@ -1,44 +1,50 @@
 
-const console = document.getElementById('console');
+const pageConsole = document.getElementById('pageConsole');
 const Label = document.getElementById('turnLabel');
 const Button = document.getElementById('turnLabel');
 
 let gameBoardArr = ["■", "■", "■", "■", "■", "■", "■", "■", "■"];
 let currentShape = "O";
 
+Refresh();
 
 function Refresh() {
-    console.value = '';
+    pageConsole.value = '';
+    console.clear();
     gameBoardArr = ["■", "■", "■", "■", "■", "■", "■", "■", "■"];
+    BoardOutput();
 }
 
 
-ShapeChange();
 function ShapeChange() {
     currentShape == "O"? currentShape = "X" : currentShape = "O";  
     turnLabel.innerHTML = "Turn For " + currentShape + "!";
 }
 
+
+
 function BoardSet(buttonValue){
     if (gameBoardArr[buttonValue] == "■"){
     gameBoardArr[buttonValue] = currentShape;
-    BoardOutput(buttonValue);
+    BoardOutput();
     }
     checkGameStatus(currentShape);
 }
 
 
-function BoardOutput(buttonValue) {
+function BoardOutput() {
     
-    gameBoardArr.unshift("");
-    console.value += '\n\n';
-    for (i=1 ; i<gameBoardArr.length ; i++) {
-        i % 3 == 0 ? console.value += gameBoardArr[i] + " " + '\n' : console.value += gameBoardArr[i] + " ";
-    }
-    console.value += '\n\n';
-    gameBoardArr.shift("");
+
+    pageConsole.value += '\n\n';
+    console.log("\n\n");
+    pageConsole.value += gameBoardArr.slice(0, 3).join(" ") + "\n";
+    pageConsole.value += gameBoardArr.slice(3, 6).join(" ") + "\n";
+    pageConsole.value += gameBoardArr.slice(6, 9).join(" ") + "\n";
+    pageConsole.value += '\n\n';
+    console.table([gameBoardArr.slice(0, 3),gameBoardArr.slice(3, 6),gameBoardArr.slice(6, 9)])
+    console.log("\n\n");
     ShapeChange();
-    console.scrollTop = console.scrollHeight; 
+    pageConsole.scrollTop = pageConsole.scrollHeight; 
 }
 
 
@@ -61,34 +67,30 @@ buttons.forEach(button => {
 });
 
 function checkWin(player) {
-    // Define all possible winning combinations
     const winningCombos = [
-      [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-      [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-      [0, 4, 8], [2, 4, 6]             // Diagonals
-    ];
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6]];
   
-    // Check if any of the winning combinations are fulfilled
-    return winningCombos.some(combo => {
-      return combo.every(index => gameBoardArr[index] === player);
-    });
+    return winningCombos.some(combo => {return combo.every(index => gameBoardArr[index] === player);});
   }
-  
-  // Function to check the game status after each move
+
   function checkGameStatus(player) {
-    // Check if the player has won
+
     if (checkWin(player)) {
-        console.value = console.value.replace(/\n+$/, "");
-        console.value += "\n\n" + player +" wins!" + "\n\n";
-        console.scrollTop = console.scrollHeight; 
+        pageConsole.value = pageConsole.value.replace(/\n+$/, "");
+        pageConsole.value += "\n\n" + player +" wins!" + "\n\n";
+        console.log("\n\n" + player +" wins!" + "\n\n");
+        console.scrollTop = pageConsole.scrollHeight; 
       return;
     }
   
-    // Check if the game is a tie
+    
     if (!gameBoardArr.includes("■")) {
-        console.value = console.value.replace(/\n+$/, "");
-        console.value += "\n\n" + "It's a tie!" + "\n\n";
-        console.scrollTop = console.scrollHeight; 
+        pageConsole.value = pageConsole.value.replace(/\n+$/, "");
+        pageConsole.value += "\n\n" + "It's a tie!" + "\n\n";
+        console.log("\n\n" + "It's a tie!" + "\n\n");
+        pageConsole.scrollTop = pageConsole.scrollHeight; 
       return;
     }
 
