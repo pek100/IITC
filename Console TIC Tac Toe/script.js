@@ -5,11 +5,12 @@ const Button = document.getElementById('turnLabel');
 
 let gameBoardArr = ["■", "■", "■", "■", "■", "■", "■", "■", "■"];
 let currentShape = "O";
-let gameRunning = true;
+let gameRunning;
 
 Refresh();
 
 function Refresh() {
+    gameRunning = true;
     pageConsole.value = '';
     console.clear();
     gameBoardArr = ["■", "■", "■", "■", "■", "■", "■", "■", "■"];
