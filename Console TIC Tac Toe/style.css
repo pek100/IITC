@@ -1,0 +1,111 @@
+button{
+    border-style: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+button:hover{
+    background-color: rgb(107, 107, 107);
+    font-size: 16px;
+}
+
+.TIC{
+    width:40px;
+    height:40px;
+    content: "";
+    color: #000000;
+}
+
+.TAC{
+    width:40px;
+    height:40px;
+    content: "";
+    background-color: rgb(151, 151, 151);
+    color: #ffffff;
+}
+
+#Go{
+    position: absolute;
+    background-color: #9FEF00;
+    bottom: 10px;
+    right: 10px;
+    min-width: 100px;
+}
+
+
+
+#Go:hover{
+    background-color: rgb(128, 192, 1);
+    cursor: pointer;
+
+}
+
+#Container{
+    display: flex;
+    height: 98vh;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#consoleContainer{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#console {
+    width: 80%;
+    height: 80%;
+    background-color: #141D2B;
+    color: #9FEF00;
+    font-family: monospace;
+    padding: 10px;
+    overflow: auto;
+    border-radius: 6px;
+    font-size: 80px;
+    text-align: center;
+}
+
+
+#controlPane{
+    position: relative;
+    width:300px;
+    height:400px;
+    margin-top: -300px;
+    margin-left:-340px;
+    background-color: #11131891;
+    border-style: solid;
+    border-color: #0000007a;
+    border-radius: 20px;
+    border-width: 2px;
+    box-shadow: 5px 5px 15px #00000081;
+}
+
+#boardContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#board{
+    display: grid;
+    height: 200px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+
+#turnLabel{
+    position: absolute;
+    top:20px;
+    width: 100%;
+    text-align: center;
+    color: aliceblue;
+}
+
