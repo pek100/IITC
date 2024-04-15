@@ -1,11 +1,15 @@
 
 const pageConsole = document.getElementById('pageConsole');
 const Label = document.getElementById('turnLabel');
+let board = document.getElementById("board");
+let confettiL = document.getElementById("confettiL");
+let confettiR = document.getElementById("confettiR");
+
 let refreshButton;
 
 let gameBoardArr = [];
 let Console2DArray = [];
-let currentShape = "O";
+let currentShape = "○";
 let X_Name = null;
 let O_Name = null;
 let gameRunning;
@@ -17,6 +21,7 @@ function sliderChange(val) {
     setBoardSize = val*val;
     setBoardSizeSqrt = val;
     gameBoardArr = new Array(setBoardSize).fill('■'); // Update gameBoardArr
+    confettiOFF();
     delBoard();
     buildPage(setBoardSize, val);
     }
@@ -26,7 +31,6 @@ buildPage(setBoardSize, setBoardSizeSqrt);
 
 
 function delBoard(){
-    let board = document.getElementById("board");
     while (board.firstChild) {
         board.removeChild(board.firstChild);
     }
@@ -35,7 +39,6 @@ function delBoard(){
 function buildPage(BoardSize, BoardSizeSqrt){
    
     //  create Board
-    let board = document.getElementById("board");
     board.style.display = "grid";
     board.style.gridTemplateColumns = "1fr ".repeat(BoardSizeSqrt);
     board.style.gridTemplateRows = "1fr ".repeat(BoardSizeSqrt);
@@ -70,6 +73,7 @@ function buildPage(BoardSize, BoardSizeSqrt){
     //  RefreshButton
     refreshButton = document.getElementById("Refresh"); 
     refreshButton.onclick = function() {
+        confettiOFF();
         Refresh(setBoardSize);
         delBoard();
         buildPage(setBoardSize, setBoardSizeSqrt);
@@ -107,27 +111,26 @@ function Refresh(BoardSize) {
 function changeName(){
     let namePattern = /^A-Z*[A-Z]$/i;
     if (!namePattern.test(X_Name) && !namePattern.test(O_Name)) {
-        turnLabel.innerHTML = `${currentShape}'s Turn!`;  
+        turnLabel.innerHTML = `<font size="6", color="#93dd00">${currentShape}</font>'s Turn!`;  
     } else {
-        if (currentShape == "X") {
+        if (currentShape == "×") {
             X_Name = turnLabel.innerHTML;
         } else {
             O_Name = turnLabel.innerHTML;
         }
-        currentShape == "X" ? turnLabel.innerHTML = `${X_Name}'s Turn!` : turnLabel.innerHTML = `${O_Name}'s Turn!`;
+        currentShape == "×" ? turnLabel.innerHTML = `${X_Name}'s Turn!` : turnLabel.innerHTML = `${O_Name}'s Turn!`;
     }
 
     turnLabel.addEventListener('mouseover', () => {
-        if (turnLabel.innerHTML == `${currentShape}'s Turn!`) {
             turnLabel.innerHTML = "Enter Your Name";
             turnLabel.style.color = "grey";
             turnLabel.contentEditable = true;
-        }
+        
     });
 
     turnLabel.addEventListener('mouseout', () => {
         if (turnLabel.innerHTML == "Enter Your Name") {
-            turnLabel.innerHTML = `${currentShape}'s Turn!`;
+            turnLabel.innerHTML = `<font size="6", color="#93dd00">${currentShape}</font>'s Turn!`;
             turnLabel.style.color = "white";
             turnLabel.contentEditable = false;
         }
@@ -142,7 +145,7 @@ function changeName(){
 
     turnLabel.addEventListener('focusout', () => {
         if (turnLabel.innerHTML != "") {            
-            if (currentShape == "X") {
+            if (currentShape == "×") {
 
                 X_Name = turnLabel.innerHTML;
                 turnLabel.innerHTML = `${X_Name}'s Turn!`;
@@ -151,14 +154,14 @@ function changeName(){
                 turnLabel.innerHTML = `${O_Name}'s Turn!`;
             }
         } else {
-            currentShape == "X" ? turnLabel.innerHTML = `${currentShape}'s Turn!` : turnLabel.innerHTML = `${currentShape}'s Turn!`;
+            currentShape == "×" ? turnLabel.innerHTML = `${currentShape}'s Turn!` : turnLabel.innerHTML = `${currentShape}'s Turn!`;
         }
     });
 }
 
 
 function ShapeChange() {
-    currentShape == "O"? currentShape = "X" : currentShape = "O";  
+    currentShape == "○"? currentShape = "×" : currentShape = "○";  
     changeName();
 }
 
@@ -247,6 +250,17 @@ function checkWin(player) {
 }
 
 
+function confettiON(){
+    confettiL.src = "Assets/confetti.gif";
+    confettiR.src = "Assets/confetti.gif";
+}
+
+function confettiOFF(){
+    confettiL.src = "";
+    confettiR.src = "";
+}
+
+
   function checkGameStatus(player) {
 
     if (checkWin(player)) {
@@ -254,6 +268,7 @@ function checkWin(player) {
         pageConsole.value += "\n\n" + player +" Wins!" + "\n\n";
         console.log("\n\n" + player +" Wins!" + "\n\n");
         console.scrollTop = pageConsole.scrollHeight;
+        confettiON();
         return true;
         
     }else if(!gameBoardArr.includes("■")) {

@@ -16,7 +16,9 @@ button:hover{
     height:40px;
     content: "";
     color: #ffffff; 
-    animation: fadeIn3 1s;  
+    animation: fadeIn3 1s;
+    font-size: 26px;
+    line-height: 0px;
 }
 
 .TAC{
@@ -26,6 +28,8 @@ button:hover{
     background-color: rgb(122, 122, 122);
     color: #000000;
     animation: fadeIn2 2s;
+    font-size: 26px;
+    line-height: 0px;
 }
 
 .TAC:hover{
@@ -164,6 +168,8 @@ button:hover{
     border-radius: 20px;
     border-width: 2px;
     box-shadow: 5px 5px 15px #00000081;
+    z-index:2;
+    backdrop-filter: blur(1.5px);
     animation: fadeIn 2s;
 }
 
@@ -182,20 +188,46 @@ button:hover{
     grid-template-rows: 1fr 1fr 1fr;
 } */
 
+/* #turnLabelContainer{
 
+  display: flex;
+  align-items: center;
+
+  
+} */
 #turnLabel{
     position: absolute;
     top:20px;
     width: 100%;
+    vertical-align: middle;
     text-align: center;
     color: aliceblue;
     font-size: larger;
+    font-weight: 600;
+    line-height: 40px;
     animation: fadeIn 1s;
 }
 
 #turnLabel:hover{
     content: "edit";
     transform: scale(106%);
+}
+
+#confettiContainer{
+  position:absolute;
+  z-index:1;
+}
+
+#confettiR{
+  position:relative;
+  right: 75%;
+  width: 280px;
+}
+
+#confettiL{
+  position:relative;
+  left: 75%;
+  width: 280px;
 }
 
 @keyframes fadeIn {
