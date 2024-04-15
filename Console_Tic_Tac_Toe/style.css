@@ -3,6 +3,7 @@ button{
     border-radius: 10px;
     padding: 10px;
     font-size: 16px;
+    
 }
 
 button:hover{
@@ -14,18 +15,35 @@ button:hover{
     width:40px;
     height:40px;
     content: "";
-    color: #000000;
+    color: #ffffff; 
+    animation: fadeIn3 1s;  
 }
 
 .TAC{
     width:40px;
     height:40px;
     content: "";
-    background-color: rgb(151, 151, 151);
-    color: #ffffff;
+    background-color: rgb(122, 122, 122);
+    color: #000000;
+    animation: fadeIn2 2s;
 }
 
-#Go{
+.TAC:hover{
+    background-color: rgb(243, 243, 243);
+    color: #385300;
+    border-radius: 10px;
+
+}
+
+.TIC:hover{
+    background-color: rgb(122, 122, 122);
+    color: #fcfff7;
+    border-radius: 10px;
+
+
+}
+
+#Refresh{
     position: absolute;
     background-color: #9FEF00;
     bottom: 10px;
@@ -34,12 +52,60 @@ button:hover{
     font-size: 14px;
 }
 
+#sizeRange{
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+    height: 30px;
+}
+
+  #sizeRange{
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    background: #696969;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+    border-radius: 20px;
+  }
+
+  #sizeRange:hover {
+    opacity: 1;
+    transform: scale(104%);
+  }
+  
+  #sizeRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border-color: transparent;
+    width: 30px;
+    height: 30px;
+    background: #9FEF00;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+
+  #sizeRange::-moz-range-thumb {
+    border-color: transparent;
+    width: 30px;
+    height: 30px;
+    background: #9FEF00;
+    cursor: pointer;
+    border-radius: 10px;
+  }
 
 
-#Go:hover{
+
+
+#Refresh:hover{
     background-color: rgb(128, 192, 1);
     cursor: pointer;
 
+}
+
+#Refresh:active{
+    background-color: #d6ff83;
 }
 
 #Container{
@@ -47,6 +113,7 @@ button:hover{
     height: 98vh;
     justify-content: center;
     align-items: center;
+    
 }
 
 
@@ -56,6 +123,8 @@ button:hover{
     height: 100%;
     justify-content: center;
     align-items: center;
+    animation: growOut 0.2s;
+    
 }
 
 
@@ -63,7 +132,7 @@ button:hover{
     width: 80%;
     height: 80%;
     background-color: #141D2B;
-    color: #9FEF00;
+    color: #93dd00;
     font-family: monospace;
     padding: 10px;
     overflow: auto;
@@ -72,7 +141,15 @@ button:hover{
     text-align: center;
     min-width: 60%;
     min-height: 60%;
+    transition: 0.2s;
+    animation: flyIn 0.6s;
 }
+
+
+
+
+#pageConsole:hover{color:rgb(187, 255, 0);
+transition: 0.2s;}
 
 
 #controlPane{
@@ -87,6 +164,7 @@ button:hover{
     border-radius: 20px;
     border-width: 2px;
     box-shadow: 5px 5px 15px #00000081;
+    animation: fadeIn 2s;
 }
 
 #boardContainer{
@@ -96,13 +174,13 @@ button:hover{
     height: 100%;
 }
 
-#board{
+/* #board{
     display: grid;
     height: 200px;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
     grid-template-rows: 1fr 1fr 1fr;
-}
+} */
 
 
 #turnLabel{
@@ -112,5 +190,44 @@ button:hover{
     text-align: center;
     color: aliceblue;
     font-size: larger;
+    animation: fadeIn 1s;
 }
+
+#turnLabel:hover{
+    content: "edit";
+    transform: scale(106%);
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    10% { opacity: 0; }
+    30% { opacity: .7; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes fadeIn2 {
+    0% { opacity: 0; }
+    0% { background-color: rgb(122, 122, 122); }
+    10% { background-color: #fcfff7; }
+    15% { background-color: rgb(122, 122, 122); }
+    30% { opacity: .7; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    30% { opacity: .7; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes flyIn {
+    0% { font-size: 0px;}
+    100% { font-size: 80px;}
+  }
+
+  @keyframes growOut {
+    0% { height: 0%; }
+    100% {  height: 100%;}
+  }
+
 

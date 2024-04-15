@@ -15,9 +15,10 @@
                     <label id="turnLabel" for="board"></label>
                 </div>
                 <div id="boardContainer">
-                    <button id="Go" onclick="Refresh()">Refresh</button>
+                    <button id="Refresh">Refresh</button>
+                    <input id="sizeRange" type="range" min="3" max="6" value="3" class="slider" oninput="sliderChange(this.value)">
                     <div id="board">      
-                        <button class="TIC" value="0" onclick="BoardSet(this.value)"></button>
+                        <!-- <button class="TIC" value="0" onclick="BoardSet(this.value)"></button>
                         <button class="TAC" value="1" onclick="BoardSet(this.value)"></button>
                         <button class="TIC" value="2" onclick="BoardSet(this.value)"></button>
                         <button class="TAC" value="3" onclick="BoardSet(this.value)"></button>
@@ -25,7 +26,7 @@
                         <button class="TAC" value="5" onclick="BoardSet(this.value)"></button>
                         <button class="TIC" value="6" onclick="BoardSet(this.value)"></button>
                         <button class="TAC" value="7" onclick="BoardSet(this.value)"></button>
-                        <button class="TIC" value="8" onclick="BoardSet(this.value)"></button>
+                        <button class="TIC" value="8" onclick="BoardSet(this.value)"></button> -->
                     </div>
                 </div>
             </div>
