@@ -73,7 +73,6 @@ function buildPage(BoardSize, BoardSizeSqrt){
         Refresh(setBoardSize);
         delBoard();
         buildPage(setBoardSize, setBoardSizeSqrt);
-
         document.getElementById("pageConsole").animate(
             [
               { fontSize: '0px'},
@@ -84,7 +83,6 @@ function buildPage(BoardSize, BoardSizeSqrt){
           );
 
         document.getElementById("pageConsole").style.animation = "flyIn";
-        
     };
 
 
@@ -162,7 +160,6 @@ function changeName(){
 function ShapeChange() {
     currentShape == "O"? currentShape = "X" : currentShape = "O";  
     changeName();
-    checkGameStatus(currentShape);
 }
 
 
@@ -259,22 +256,12 @@ function checkWin(player) {
         console.scrollTop = pageConsole.scrollHeight;
         return true;
         
-    }
-  
-    
-    if (!gameBoardArr.includes("■")) {
-        if(checkWin(player)){
+    }else if(!gameBoardArr.includes("■")) {
         pageConsole.value = pageConsole.value.replace(/\n+$/, "");
         pageConsole.value += "\n\n" + "It's A Tie!" + "\n\n";
         console.log("\n\n" + "It's A Tie!" + "\n\n");
         pageConsole.scrollTop = pageConsole.scrollHeight;
         gameRunning = false;
-        }else{
-        pageConsole.value = pageConsole.value.replace(/\n+$/, "");
-        pageConsole.value += "\n\n" + "So Close!" + "\n\n";
-        console.log("\n\n" + "So Close!" + "\n\n");
-        pageConsole.scrollTop = pageConsole.scrollHeight;
-        }
       return;
     }
   }
