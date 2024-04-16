@@ -9,19 +9,25 @@
 </head>
 <body>
     <div id="Container">
-            <div id="confettiContainer">
+        <div id="confettiContainer">
         <img id="confettiR" alt="">
         <img id="confettiL" alt="">
         </div>
         <div id="consoleContainer">
             <textarea id="pageConsole" readonly></textarea> 
             <div id="controlPane">
+                <div id="NameInputs">
+                    <label id="X_Label" for="X_Name">Player 1  <font size="4", color="#93dd00">×</font></label>
+                    <input type="text" id="X_Name" placeholder="Enter Your Name">
+                    <label id="O_Label" for="O_Name">Player 2  <font size="4", color="#93dd00">○</font></label>
+                    <input type="text" id="O_Name" placeholder="Enter Your Name">
+                </div>
                 <div id="turnLabelContainer">
                     <label id="turnLabel" for="board"></label>         
                 </div>
                 <div id="boardContainer">
                     <button id="Refresh">Refresh</button>
-                    <input id="sizeRange" type="range" min="3" max="6" value="3" class="slider" oninput="sliderChange(this.value)">
+                    <input id="sizeRange" type="range" min="3" max="7" value="3" class="slider" oninput="sliderChange(this.value)">
                     <div id="board">      
                         <!-- <button class="TIC" value="0" onclick="BoardSet(this.value)"></button>
                         <button class="TAC" value="1" onclick="BoardSet(this.value)"></button>

@@ -4,15 +4,23 @@ const Label = document.getElementById('turnLabel');
 let board = document.getElementById("board");
 let confettiL = document.getElementById("confettiL");
 let confettiR = document.getElementById("confettiR");
+let refreshButton = document.getElementById("Refresh");
+let sizeSlider = document.getElementById("sizeRange");
+let NameInputs = document.getElementById("NameInputs");
+let sizeSliderValue;
+let lastLabel;
+let labelShow = true;
+let haveNames = false;
+let namePattern = /([a-zA-Z0-9_\s]+)/i; 
 
-let refreshButton;
 
 let gameBoardArr = [];
-let Console2DArray = [];
+let Console2DArray;
 let currentShape = "○";
-let X_Name = null;
-let O_Name = null;
+let X_Name = "×";
+let O_Name = "○";
 let gameRunning;
+let row;
 
 let setBoardSize = 9;
 let setBoardSizeSqrt = Math.round(Math.sqrt(setBoardSize));
@@ -71,9 +79,18 @@ function buildPage(BoardSize, BoardSizeSqrt){
 
 
     //  RefreshButton
-    refreshButton = document.getElementById("Refresh"); 
+  
     refreshButton.onclick = function() {
-        confettiOFF();
+        RefreshAll();
+    };
+
+
+    
+    Refresh(setBoardSize);
+}
+
+function RefreshAll(){
+    confettiOFF();
         Refresh(setBoardSize);
         delBoard();
         buildPage(setBoardSize, setBoardSizeSqrt);
@@ -87,12 +104,30 @@ function buildPage(BoardSize, BoardSizeSqrt){
           );
 
         document.getElementById("pageConsole").style.animation = "flyIn";
-    };
-
-
-    
-    Refresh(setBoardSize);
 }
+
+function RefreshAllPlus(){
+        NameInputs.style.display = "none";
+        RefreshAll();
+
+        document.getElementById("pageConsole").style.animation = "flyIn";
+
+        refreshButton.style.background = "#9FEF00";
+        refreshButton.style.color = "black";
+        refreshButton.innerHTML = "Refresh";
+        refreshButton.onclick = () => {
+            RefreshAll();
+        };
+
+        sizeSlider.id = "sizeRange";
+        sizeSlider = document.getElementById("sizeRange");
+        sizeSlider.type = "range";
+        value = sizeSliderValue;
+        sizeSlider.onclick = () => {
+        };
+
+}
+
 
 
 function Refresh(BoardSize) {
@@ -109,55 +144,62 @@ function Refresh(BoardSize) {
 
 
 function changeName(){
-    let namePattern = /^A-Z*[A-Z]$/i;
-    if (!namePattern.test(X_Name) && !namePattern.test(O_Name)) {
+    if (!namePattern.test(X_Name) || !namePattern.test(O_Name) && X_Name == null || O_Name == null) {
         turnLabel.innerHTML = `<font size="6", color="#93dd00">${currentShape}</font>'s Turn!`;  
     } else {
-        if (currentShape == "×") {
-            X_Name = turnLabel.innerHTML;
-        } else {
-            O_Name = turnLabel.innerHTML;
-        }
-        currentShape == "×" ? turnLabel.innerHTML = `${X_Name}'s Turn!` : turnLabel.innerHTML = `${O_Name}'s Turn!`;
+        haveNames = true;
+        currentShape == "×" ? turnLabel.innerHTML = `<font size="5", color="#93dd00">${X_Name}'s</font> Turn!` : turnLabel.innerHTML = `<font size="5", color="#93dd00">${O_Name}'s</font> Turn!`;
     }
 
     turnLabel.addEventListener('mouseover', () => {
-            turnLabel.innerHTML = "Enter Your Name";
+            if (turnLabel.innerHTML != "Enter Your Names"){lastLabel = turnLabel.innerHTML};
+            turnLabel.innerHTML = "Enter Your Names";
             turnLabel.style.color = "grey";
-            turnLabel.contentEditable = true;
+            turnLabel.style.cursor = "pointer";
         
-    });
+    }); 
 
     turnLabel.addEventListener('mouseout', () => {
-        if (turnLabel.innerHTML == "Enter Your Name") {
-            turnLabel.innerHTML = `<font size="6", color="#93dd00">${currentShape}</font>'s Turn!`;
+        if (turnLabel.innerHTML == "Enter Your Names" && labelShow == true) {
+            turnLabel.innerHTML = lastLabel;
             turnLabel.style.color = "white";
-            turnLabel.contentEditable = false;
         }
     });
 
     turnLabel.addEventListener('click', () => {
-        if (turnLabel.innerHTML == "Enter Your Name") {
-            turnLabel.style.color = "white";
-            turnLabel.innerHTML = "";
-        }
-    });
+        NameInputs.style.display = "flex";
+        turnLabel.style.color = "white";
+        labelShow = false;
+        delBoard();
+        turnLabel.innerHTML = "Enter Your Names";
+        refreshButton.style.background = "#1573E2";
+        refreshButton.style.color = "white";
+        refreshButton.innerHTML = "Set Names";
+        refreshButton.onclick = () => {
+            turnLabel.innerHTML = lastLabel;
+            labelShow = true;
+            RefreshAllPlus();
+            X_Name = document.getElementById("X_Name").value;
+            O_Name = document.getElementById("O_Name").value;
+            changeName();
+        };
 
-    turnLabel.addEventListener('focusout', () => {
-        if (turnLabel.innerHTML != "") {            
-            if (currentShape == "×") {
+        sizeSliderValue = sizeSlider.value;
+        sizeSlider.id = "Slider2Buttom";
+        sizeSlider = document.getElementById("Slider2Buttom");
+        sizeSlider.type = "button";
+        sizeSlider.value = "Cancel";
+        sizeSlider.onclick = () => {
+            turnLabel.innerHTML = lastLabel;
+            labelShow = true;
+            RefreshAllPlus();
+        };
 
-                X_Name = turnLabel.innerHTML;
-                turnLabel.innerHTML = `${X_Name}'s Turn!`;
-            } else {
-                O_Name = turnLabel.innerHTML;
-                turnLabel.innerHTML = `${O_Name}'s Turn!`;
-            }
-        } else {
-            currentShape == "×" ? turnLabel.innerHTML = `${currentShape}'s Turn!` : turnLabel.innerHTML = `${currentShape}'s Turn!`;
-        }
-    });
+        //buildPage(setBoardSize, setBoardSizeSqrt);
+});
+
 }
+
 
 
 function ShapeChange() {
@@ -190,8 +232,7 @@ function BoardOutput(BoardSizeSqrt) {
     BoardSizeSqrt > 4 ? pageConsole.value += '\n': pageConsole.value += '\n\n';
 
     logBoard(gameBoardArr);
-    
-    console.table(Console2DArray);
+
     console.log("\n\n");
     pageConsole.scrollTop = pageConsole.scrollHeight;
     if (checkGameStatus(currentShape)) {
@@ -202,46 +243,43 @@ function BoardOutput(BoardSizeSqrt) {
 }
 
 function logBoard(gameBoardArr) {
-    let n = Math.sqrt(gameBoardArr.length); // Square root of the array length
-    let twoDimensionalArr = [];
-
-    for (let i = 0; i < gameBoardArr.length; i += n) {
-        let row = gameBoardArr.slice(i, i + n);
-        twoDimensionalArr.push(row);
+    Console2DArray = [];
+    setBoardSizeSqrt = Math.round(Math.sqrt(setBoardSize));
+    for (let i = 0; i < gameBoardArr.length; i += setBoardSizeSqrt) {
+        row = gameBoardArr.slice(i, i + setBoardSizeSqrt);
+        Console2DArray.push(row);
     }
 
-    console.table(twoDimensionalArr);
+    console.table(Console2DArray);
 }
 
 
 
 function checkWin(player) {
-    let size = Math.sqrt(gameBoardArr.length);
-
     // Check rows
     for (let i = 0; i < gameBoardArr.length; i++) {
-        if (i % size < size - 2 && gameBoardArr[i] === player && gameBoardArr[i + 1] === player && gameBoardArr[i + 2] === player) {
+        if (i % setBoardSizeSqrt < setBoardSizeSqrt - 2 && gameBoardArr[i] === player && gameBoardArr[i + 1] === player && gameBoardArr[i + 2] === player) {
             return true;
         }
     }
 
     // Check columns
-    for (let i = 0; i < gameBoardArr.length - 2 * size; i++) {
-        if (gameBoardArr[i] === player && gameBoardArr[i + size] === player && gameBoardArr[i + 2 * size] === player) {
+    for (let i = 0; i < gameBoardArr.length - 2 * setBoardSizeSqrt; i++) {
+        if (gameBoardArr[i] === player && gameBoardArr[i + setBoardSizeSqrt] === player && gameBoardArr[i + 2 * setBoardSizeSqrt] === player) {
             return true;
         }
     }
 
     // Check main diagonal
-    for (let i = 0; i < gameBoardArr.length - 2 * size; i++) {
-        if (i % size < size - 2 && gameBoardArr[i] === player && gameBoardArr[i + size + 1] === player && gameBoardArr[i + 2 * size + 2] === player) {
+    for (let i = 0; i < gameBoardArr.length - 2 * setBoardSizeSqrt; i++) {
+        if (i % setBoardSizeSqrt < setBoardSizeSqrt - 2 && gameBoardArr[i] === player && gameBoardArr[i + setBoardSizeSqrt + 1] === player && gameBoardArr[i + 2 * setBoardSizeSqrt + 2] === player) {
             return true;
         }
     }
 
     // Check secondary diagonal
-    for (let i = 0; i < gameBoardArr.length - 2 * size; i++) {
-        if (i % size > 1 && gameBoardArr[i] === player && gameBoardArr[i + size - 1] === player && gameBoardArr[i + 2 * size - 2] === player) {
+    for (let i = 0; i < gameBoardArr.length - 2 * setBoardSizeSqrt; i++) {
+        if (i % setBoardSizeSqrt > 1 && gameBoardArr[i] === player && gameBoardArr[i + setBoardSizeSqrt - 1] === player && gameBoardArr[i + 2 * setBoardSizeSqrt - 2] === player) {
             return true;
         }
     }
@@ -264,6 +302,11 @@ function confettiOFF(){
   function checkGameStatus(player) {
 
     if (checkWin(player)) {
+        if (player == "○") {
+            player = O_Name;
+        }else{
+            player = X_Name;
+        }
         pageConsole.value = pageConsole.value.replace(/\n+$/, "");
         pageConsole.value += "\n\n" + player +" Wins!" + "\n\n";
         console.log("\n\n" + player +" Wins!" + "\n\n");
