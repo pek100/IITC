@@ -1,3 +1,28 @@
+
+::-webkit-scrollbar {
+  background-color: #313f5500;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #313f5500;
+        /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #313F55;
+           /* color of the scroll thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6e83a5;
+          /* color of the scroll thumb on hover*/
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-color: #313F55 #f1f1f100; /* scroll thumb and track color */
+}
+
 button{
     border-style: none;
     border-radius: 10px;
@@ -201,6 +226,7 @@ button:hover{
     justify-content: center;
     align-items: center;
     animation: growOut 0.2s;
+   
     
 }
 
@@ -213,13 +239,16 @@ button:hover{
     font-family: monospace;
     padding: 10px;
     overflow: auto;
-    border-radius: 6px;
-    font-size: 80px;
+    border-radius: 20px;
+    font-size: 89px;
     text-align: center;
     min-width: 60%;
     min-height: 60%;
     /* box-shadow: 5px 5px 15px #00000081; */
     animation: flyIn 0.6s;
+    overflow-y: scroll;
+    resize: none;
+
 }
 
 
@@ -290,6 +319,7 @@ button:hover{
 #confettiContainer{
   position:absolute;
   z-index:1;
+  pointer-events: none; 
 }
 
 #confettiR{

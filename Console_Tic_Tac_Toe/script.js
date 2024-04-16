@@ -13,7 +13,7 @@ let labelShow = true;
 let haveNames = false;
 let namePattern = /([a-zA-Z0-9_\s]+)/i; 
 
-
+let oneMore = false; // edge case for the last button to react to click after the game ends
 let gameBoardArr = [];
 let Console2DArray;
 let currentShape = "○";
@@ -24,6 +24,10 @@ let row;
 
 let setBoardSize = 9;
 let setBoardSizeSqrt = Math.round(Math.sqrt(setBoardSize));
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
 function sliderChange(val) {
     setBoardSize = val*val;
@@ -45,7 +49,6 @@ function delBoard(){
 }
 
 function buildPage(BoardSize, BoardSizeSqrt){
-   
     //  create Board
     board.style.display = "grid";
     board.style.gridTemplateColumns = "1fr ".repeat(BoardSizeSqrt);
@@ -75,6 +78,18 @@ function buildPage(BoardSize, BoardSizeSqrt){
                 boardButton.innerHTML = "";
             }
         });
+
+        boardButton.addEventListener('click', () => {
+            if (gameRunning == true || oneMore == true){
+            oneMore = true;
+            boardButton.style.background = "transparent";
+            boardButton.style.color = "red";
+            boardButton.style.animation = "none";}else{
+            }
+            if (gameRunning == false){
+                oneMore = false;
+            }
+        });
     }
 
 
@@ -90,6 +105,7 @@ function buildPage(BoardSize, BoardSizeSqrt){
 }
 
 function RefreshAll(){
+    sleep(390).then(() => {pageConsole.scrollTop = pageConsole.scrollHeight;});
     confettiOFF();
         Refresh(setBoardSize);
         delBoard();
@@ -106,7 +122,7 @@ function RefreshAll(){
         document.getElementById("pageConsole").style.animation = "flyIn";
 }
 
-function RefreshAllPlus(){
+function RefreshAllPlus(SliderValue){
         NameInputs.style.display = "none";
         RefreshAll();
 
@@ -122,7 +138,7 @@ function RefreshAllPlus(){
         sizeSlider.id = "sizeRange";
         sizeSlider = document.getElementById("sizeRange");
         sizeSlider.type = "range";
-        value = sizeSliderValue;
+        sizeSlider.value = SliderValue;
         sizeSlider.onclick = () => {
         };
 
@@ -167,6 +183,7 @@ function changeName(){
     });
 
     turnLabel.addEventListener('click', () => {
+        sizeSliderValue = sizeSlider.value;
         NameInputs.style.display = "flex";
         turnLabel.style.color = "white";
         labelShow = false;
@@ -178,21 +195,21 @@ function changeName(){
         refreshButton.onclick = () => {
             turnLabel.innerHTML = lastLabel;
             labelShow = true;
-            RefreshAllPlus();
+            RefreshAllPlus(sizeSliderValue);
             X_Name = document.getElementById("X_Name").value;
             O_Name = document.getElementById("O_Name").value;
             changeName();
         };
-
-        sizeSliderValue = sizeSlider.value;
+     
         sizeSlider.id = "Slider2Buttom";
         sizeSlider = document.getElementById("Slider2Buttom");
         sizeSlider.type = "button";
         sizeSlider.value = "Cancel";
         sizeSlider.onclick = () => {
+            RefreshAllPlus(sizeSliderValue);
             turnLabel.innerHTML = lastLabel;
             labelShow = true;
-            RefreshAllPlus();
+            
         };
 
         //buildPage(setBoardSize, setBoardSizeSqrt);
@@ -229,8 +246,10 @@ function BoardOutput(BoardSizeSqrt) {
         else pageConsole.value += " ";
     }
 
-    BoardSizeSqrt > 4 ? pageConsole.value += '\n': pageConsole.value += '\n\n';
-
+    //less /n if more than 4*4
+    BoardSizeSqrt == 3 ? pageConsole.value += '\n\n': BoardSizeSqrt == 4 ? pageConsole.value += '\n': BoardSizeSqrt == 5 ? pageConsole.value += '\n' : BoardSizeSqrt == 6 ? pageConsole.value += '' : pageConsole.value = pageConsole.value.replace(/\n+$/, "");
+    BoardSizeSqrt == 7 ? pageConsole.value += '\n' : null;
+    
     logBoard(gameBoardArr);
 
     console.log("\n\n");
@@ -256,30 +275,34 @@ function logBoard(gameBoardArr) {
 
 
 function checkWin(player) {
-    // Check rows
+//dynamic board check
+//if boardsize is 3*3 combo of 3 wins
+//if boardsize is n*n > 3*3 combo of 4 wins
+    
+    // Checks rows
     for (let i = 0; i < gameBoardArr.length; i++) {
-        if (i % setBoardSizeSqrt < setBoardSizeSqrt - 2 && gameBoardArr[i] === player && gameBoardArr[i + 1] === player && gameBoardArr[i + 2] === player) {
+        if (i % setBoardSizeSqrt < setBoardSizeSqrt - 2 && gameBoardArr[i] === player && gameBoardArr[i + 1] === player && gameBoardArr[i + 2] === player && (setBoardSizeSqrt>3 ? gameBoardArr[i + 3] === player: true)) {
             return true;
         }
     }
 
-    // Check columns
+    // Checks columns
     for (let i = 0; i < gameBoardArr.length - 2 * setBoardSizeSqrt; i++) {
-        if (gameBoardArr[i] === player && gameBoardArr[i + setBoardSizeSqrt] === player && gameBoardArr[i + 2 * setBoardSizeSqrt] === player) {
+        if (gameBoardArr[i] === player && gameBoardArr[i + setBoardSizeSqrt] === player && gameBoardArr[i + 2 * setBoardSizeSqrt] === player && (setBoardSizeSqrt>3 ? gameBoardArr[i + 3 * setBoardSizeSqrt]  === player: true)) {
             return true;
         }
     }
 
-    // Check main diagonal
+    // Checks L>R diagonal
     for (let i = 0; i < gameBoardArr.length - 2 * setBoardSizeSqrt; i++) {
-        if (i % setBoardSizeSqrt < setBoardSizeSqrt - 2 && gameBoardArr[i] === player && gameBoardArr[i + setBoardSizeSqrt + 1] === player && gameBoardArr[i + 2 * setBoardSizeSqrt + 2] === player) {
+        if (i % setBoardSizeSqrt < setBoardSizeSqrt - 2 && gameBoardArr[i] === player && gameBoardArr[i + setBoardSizeSqrt + 1] === player && gameBoardArr[i + 2 * setBoardSizeSqrt + 2] === player && (setBoardSizeSqrt>3 ? gameBoardArr[i + 3 * setBoardSizeSqrt + 3] === player: true)) {
             return true;
         }
     }
 
-    // Check secondary diagonal
+    // Checks R>L diagonal
     for (let i = 0; i < gameBoardArr.length - 2 * setBoardSizeSqrt; i++) {
-        if (i % setBoardSizeSqrt > 1 && gameBoardArr[i] === player && gameBoardArr[i + setBoardSizeSqrt - 1] === player && gameBoardArr[i + 2 * setBoardSizeSqrt - 2] === player) {
+        if (i % setBoardSizeSqrt > 1 && gameBoardArr[i] === player && gameBoardArr[i + setBoardSizeSqrt - 1] === player && gameBoardArr[i + 2 * setBoardSizeSqrt - 2] === player && (setBoardSizeSqrt>3 ? gameBoardArr[i + 3 * setBoardSizeSqrt - 3] === player: true)) {
             return true;
         }
     }
