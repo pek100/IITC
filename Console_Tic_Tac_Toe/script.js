@@ -12,7 +12,6 @@ let lastLabel;
 let labelShow = true;
 let haveNames = false;
 let namePattern = /([a-zA-Z0-9_\s]+)/i; 
-
 let oneMore = false; // edge case for the last button to react to click after the game ends
 let gameBoardArr = [];
 let Console2DArray;

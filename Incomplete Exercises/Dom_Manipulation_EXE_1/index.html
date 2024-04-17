@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DomExe 1</title>
+</head>
+<body>
+    
+</body>
+</html>
+<style>
+    button:hover {cursor: pointer;
+    filter: brightness(80%);}
+    #divTurq:hover, #divRed:hover {
+    filter: brightness(80%);}
+</style>
+
+<script>
+const body = document.body;
+let container = document.createElement("div");
+let textInputContainer = document.createElement("div");
+
+let divTurq = document.createElement("div");
+let divRed = document.createElement("div");
+let yellowBTN = document.createElement("button");
+
+let inputHobby = document.createElement("input");
+let inputEyeColor = document.createElement("input");
+
+//1 task a
+const addContainer = () => {
+    container.style.display = "flex";
+    container.style.height = "98vh";
+    container.style.justifyContent = "center";
+    container.style.alignItems= "center";
+    container.style.flexDirection = "row";
+    container.style.textAlign = "center";
+    container.style.fontSize = "1.2rem";
+    body.append(container);
+}
+
+const addTwoDivs = () => {
+
+    divTurq.style.background = "turquoise";
+    divTurq.id = "divTurq";
+    divTurq.style.width = "200px";
+    divTurq.style.height = "10px";
+    divTurq.style.paddingTop = "90px";
+    divTurq.style.paddingBottom = "100px";
+    container.appendChild(divTurq);
+
+    divRed.style.background = "red";
+    divRed.id = "divRed";
+    divRed.style.width = "200px";
+    divRed.style.height = "10px";
+    divRed.style.paddingTop = "90px";
+    divRed.style.paddingBottom = "100px";
+    container.appendChild(divRed);
+}
+//
+
+//1 task b
+const addYellowBtn = () => {
+    yellowBTN.style.width="60px";
+    yellowBTN.style.height="200px";
+    yellowBTN.innerHTML = ">";
+    yellowBTN.style.fontSize = "40px"
+    yellowBTN.style.background = "yellow";
+    container.append(yellowBTN);
+}
+
+const showFavoriteFood = () => {
+    divTurq.innerHTML = "My favourite food is";
+    divRed.innerHTML = "pizza";
+
+}
+//
+
+//1 task c
+const toggleWidth = () => {
+    divRed.style.width === "200px"?divRed.style.width = "300px":divRed.style.width = "200px";
+}
+//
+
+const editYellowBtn = () => {
+    if (yellowBTN.style.background == "yellow"){
+        yellowBTN.innerHTML = "<";
+        yellowBTN.style.background = "teal";
+    }else{
+        yellowBTN.innerHTML = ">";
+        yellowBTN.style.background = "yellow";
+    }
+}
+
+
+//2 task a
+const addTextInputContainer = () => {
+    textInputContainer.style.display = "flex";
+    textInputContainer.style.height = "400px";
+    textInputContainer.style.width = "400px";
+    textInputContainer.style.justifyContent = "center";
+    textInputContainer.style.alignItems= "center";
+    textInputContainer.style.flexDirection = "column";
+    container.append(textInputContainer);
+}
+
+const addInputs = () => {
+    inputHobby.type = "text";
+    inputEyeColor.type = "text";
+    inputHobby.style.width = "200px";
+    inputEyeColor.style.width = "200px";
+    inputHobby.style.height = "30px";
+    inputEyeColor.style.height = "30px";
+    inputHobby.style.padding = "30px";
+    inputEyeColor.style.padding = "30px";
+    inputHobby.placeholder = "Enter your hobby";
+    inputEyeColor.placeholder = "Enter your eye color";
+
+    textInputContainer.append(inputHobby);
+    textInputContainer.append(inputEyeColor);
+}
+//
+
+//2 task b
+const showinputHobbyText = () => {
+    divTurq.innerHTML = " Hobby";
+    divRed.innerHTML = inputHobby.value;
+}
+const showinputEyeColorText = () => {
+    divTurq.innerHTML = "Eye Color";
+    divRed.innerHTML = inputEyeColor.value;
+}
+//
+
+
+//1 execution
+addContainer();
+addTwoDivs();
+divTurq.addEventListener('mouseover', showFavoriteFood);
+divRed.addEventListener('mouseover', showFavoriteFood);
+addYellowBtn();
+yellowBTN.addEventListener('click', toggleWidth);
+yellowBTN.addEventListener('click', editYellowBtn);
+//
+//2 execution
+addTextInputContainer();
+addInputs();
+inputHobby.addEventListener('change', showinputHobbyText)
+inputEyeColor.addEventListener('input', showinputEyeColorText)
+//
+
+
+</script>
