@@ -52,6 +52,8 @@ function buildPage(BoardSize, BoardSizeSqrt){
     board.style.display = "grid";
     board.style.gridTemplateColumns = "1fr ".repeat(BoardSizeSqrt);
     board.style.gridTemplateRows = "1fr ".repeat(BoardSizeSqrt);
+    (BoardSizeSqrt == 7) ? (document.getElementById("pageConsole").style.height = "96%"):
+     (document.getElementById("pageConsole").style.height = "80%") ;
     board.style.gap = "10px";
     
     //  create Board Buttons
