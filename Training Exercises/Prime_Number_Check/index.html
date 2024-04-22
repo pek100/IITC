@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DomExe 2</title>
+</head>
+<body>
+    
+</body>
+</html>
+<style>
+    button:hover {cursor: pointer;
+    filter: brightness(80%);}
+</style>
+
+<script>
+const numReg = /^\d+$/;  
+const body = document.body;
+let container = document.createElement("div");
+let Label = document.createElement("h1");
+let answerLabel = document.createElement("h2");
+let button = document.createElement("button");
+let textInputContainer = document.createElement("div");
+let inputNum = document.createElement("input");
+let num;
+
+const addContainer = () => {
+    container.style.display = "flex";
+    container.style.height = "96vh";
+    container.style.justifyContent = "center";
+    container.style.alignItems= "center";
+    container.style.flexDirection = "column";
+    container.style.textAlign = "center";
+    container.style.fontSize = "1.2rem";
+    container.style.borderStyle = "solid";
+    container.style.borderColor = "salmon";
+    container.style.borderRadius = "12px";
+    container.style.borderWidth = "10px";
+    body.append(container);
+}
+
+const addBtn = () => {
+    button.style.width="200px";
+    button.style.height="60px";
+    button.innerHTML = "Check";
+    button.style.color = "white";
+    button.style.background = "green";
+    button.style.fontSize = "40px"
+    button.style.margin = "40px"
+    button.style.borderRadius = "12px";
+    button.style.borderColor = "transparent";
+    container.append(button);
+    button.onclick = () => {
+            showAnswer();
+        };
+}
+
+const addLabel = () => {
+    Label.style.color ="DarkSlateGray";
+    Label.innerHTML = "Prime-Number Checker";
+    container.append(Label);
+}
+
+const addTxtInput = () => {
+    textInputContainer.style.display = "flex";
+    textInputContainer.style.margin ="40px";
+    textInputContainer.style.height = "100px";
+    textInputContainer.style.width = "100px";
+    textInputContainer.style.justifyContent = "center";
+    textInputContainer.style.alignItems= "center";
+    textInputContainer.style.flexDirection = "column";
+    container.append(textInputContainer);
+}
+
+const addInputs = () => {
+    inputNum.type = "text";
+    inputNum.style.fontSize = "20px"
+    inputNum.style.width = "200px";
+    inputNum.style.height = "30px";
+    inputNum.style.padding = "30px";
+    inputNum.placeholder = "Enter a number";
+    inputNum.style.borderRadius = "12px";
+    textInputContainer.append(inputNum);
+}
+
+
+const addAnswerLabel = () => {
+    answerLabel.style.background="white"
+    answerLabel.innerHTML = "";
+    container.append(answerLabel);
+}
+
+const showAnswer = () => {
+    num = parseInt(inputNum.value);
+    if (numReg.test(num)){
+        (calcAnswer(num)) ? (answerLabel.innerHTML = "<font color=green>The number is prime!</font>") + (container.style.borderColor = "green")
+: (answerLabel.innerHTML = "<font color=red>The number is not prime!</font>") + (container.style.borderColor = "red");
+    }else{
+        container.style.borderColor = "red";
+        answerLabel.style.color = "red";
+        answerLabel.innerHTML = "Invalid input!";
+}
+}
+
+function calcAnswer(num){
+    for(let i = 2; i <= Math.sqrt(num); i++) {
+        if(num % i == 0) return false;
+    }
+    return num > 1;
+}
+
+//execution
+addContainer();
+addLabel();
+addTxtInput();
+addInputs();
+addAnswerLabel();
+addBtn();
+//
+
+
+</script>
