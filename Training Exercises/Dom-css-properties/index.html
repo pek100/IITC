@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Border Properties</title>
+</head>
+<body>
+    
+</body>
+</html>
+<style>
+    html{background-color: #0c0c13}
+
+    input{
+    position: absolute;
+    height: 30px;
+    width: 150px;
+}
+
+  input{
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    background: #0c0c13;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+    border-radius: 3px;
+  }
+
+  input:hover {
+    opacity: 1;
+    transform: scale(104%);
+  }
+  
+  input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border-color: transparent;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+
+  input::-moz-range-thumb {
+    border-color: transparent;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+  
+  #CardSlider1::-moz-range-thumb {
+    border-color: #ffe9c2;
+  }
+
+  #CardSlider2::-moz-range-thumb {
+    background: #ffc2c2;
+  }
+
+  #CardSlider3::-moz-range-thumb {
+    background: #c8ffc2;
+  }
+
+  #CardSlider4::-moz-range-thumb {
+    background: #c2f1ff;
+  }
+
+  #CardSlider1::-webkit-slider-thumb {
+    background: #ffe9c2;
+  }
+
+  #CardSlider2::-webkit-slider-thumb {
+    background: #ffc2c2;
+  }
+
+  #CardSlider3::-webkit-slider-thumb {
+    background: #c8ffc2;
+  }
+
+  #CardSlider4::-webkit-slider-thumb {
+    background: #c2f1ff;
+  }
+
+
+
+</style>
+
+<script src="https://unpkg.com/animate-css-grid@latest"></script>
+
+
+<script>
+const body = document.body;
+let container = document.createElement("div");
+let Label = document.createElement("h1");
+
+let Card1 = document.createElement("div");
+let Card2 = document.createElement("div");
+let Card3 = document.createElement("div");
+let Card4 = document.createElement("div");
+
+let CardLabel1 = document.createElement("h3");
+let CardLabel2 = document.createElement("h3");
+let CardLabel3 = document.createElement("h3");
+let CardLabel4 = document.createElement("h3");
+
+let ArrLabel1 = ["hidden", "dotted", "solid", "double",  "dashed", "groove", "ridge", "inset", "outset", "none"];
+let ArrLabel2 = ["1px", "5px", "10px", "15px", "20px", "25px", "30px", "35px", "40px", "0px"];
+let ArrLabel3 = ["5px", "10px", "20px", "30px", "40px", "50px", "60px", "70px", "80px", "0px"];
+let ArrLabel4 = ["black", "grey", "green", "yellow", "red", "yellow", "pink", "salmon", "darksalmon", "transparent"];
+
+let ParamLabel1 = ArrLabel1[4];
+let ParamLabel2 = ArrLabel2[4];
+let ParamLabel3 = ArrLabel3[4];
+let ParamLabel4 = ArrLabel4[4];
+
+let CardSlider1 = document.createElement("input");
+let CardSlider2 = document.createElement("input");
+let CardSlider3 = document.createElement("input");
+let CardSlider4 = document.createElement("input");
+
+CardSlider1.id = "CardSlider1";
+CardSlider2.id = "CardSlider2"
+CardSlider3.id = "CardSlider3"
+CardSlider4.id = "CardSlider4"
+
+let CardSquare1 = document.createElement("div");
+let CardSquare2 = document.createElement("div");
+let CardSquare3 = document.createElement("div");
+let CardSquare4 = document.createElement("div");
+
+const addLabel = () => {
+    Label.style.margin = "40px";
+    Label.style.textAlign = "center";
+    Label.style.color ="#e8e8ef";
+    Label.innerHTML = "CSS Border Properties";
+    body.append(Label);
+}
+
+
+const addContainer = () => {
+    container.style.display = "grid";
+    container.style.height = "84vh";
+    container.style.gridTemplateColumns = "repeat(18, 1fr)";
+    container.style.gridTemplateRows = "1fr 1fr ";
+    container.style.fontSize = "1.2rem";
+    // container.style.borderStyle = "solid";
+    // container.style.borderColor = "DarkSlateGray";
+    // container.style.borderRadius = "12px";
+    // container.style.borderWidth = "8px";
+    body.append(container);
+}
+
+
+const cardProps = (cardName) => {
+    cardName.style.display = "flex";
+    // cardName.style.justifyContent = "center";
+    cardName.style.margin = "8px";
+    cardName.style.alignItems= "center";
+    cardName.style.flexDirection = "column";
+    cardName.style.textAlign = "center";
+    cardName.style.fontSize = "1.2rem";
+    cardName.style.borderRadius = "9px";
+    cardName.style.boxShadow = "4px 4px 12px 4px"
+    cardName.addEventListener('mouseover', () => (cardName.style.transform = "scale(1.01)") + (cardName.style.opacity = "90%") + (cardName.style.borderRadius = "4px"))
+    cardName.addEventListener('mouseout', () => (cardName.style.transform = "scale(1)") + (cardName.style.opacity = "100%") + (cardName.style.borderRadius = "9px"))
+    cardName.style.transition=".6s";
+    container.append(cardName);
+}
+
+const SliderProps = (cardName, sliderName, SquareName) => {
+    sliderName.style.position = "relative";
+    sliderName.style.top = "270px";
+    sliderName.type = "range";
+    sliderName.min = 0;
+    sliderName.max = 9;
+
+    sliderName.value = 4 ;
+    sliderName.oninput = () => {sliderChange()};
+
+    
+    // CardSlider1.style.background = "#ffe9c2"; 
+    // CardSlider2.style.background = "#ffc2c2";
+    // CardSlider3.style.background = "#c8ffc2";
+    // CardSlider4.style.background = "#c2f1ff";
+
+    cardName.append(sliderName);
+}
+
+    function sliderChange() {
+
+        ParamLabel1 = ArrLabel1[CardSlider1.value];
+        ParamLabel2 = ArrLabel2[CardSlider2.value];
+        ParamLabel3 = ArrLabel3[CardSlider3.value];
+        ParamLabel4 = ArrLabel4[CardSlider4.value];
+
+        CardSquare1.style.borderStyle = ParamLabel1;
+        CardSquare2.style.borderWidth = ParamLabel2;
+        CardSquare3.style.borderRadius = ParamLabel3;
+        CardSquare4.style.borderColor = ParamLabel4;
+
+        CardLabel1.innerHTML = "border - style : " +  ParamLabel1 ;
+        CardLabel2.innerHTML = "border - width : " + ParamLabel2;
+        CardLabel3.innerHTML = "border - radius : " + ParamLabel3;
+        ParamLabel4 != "transparent" ? CardLabel4.innerHTML = "border - color : " + `<font color = ${ParamLabel4} > ${ParamLabel4} </font>`
+        : CardLabel4.innerHTML = "border - color : " + ParamLabel4;
+
+        CardSquare2.style.marginTop = (106 - parseInt(ParamLabel2)) + "px";
+
+
+    }
+
+const SquareProps = (cardName, SquareName) => {
+    SquareName.style.position = "absolute";
+    SquareName.style.marginTop = SquareName.style.borderWidth != 0 ?(106 - parseInt(SquareName.style.borderWidth)) + "px" : "106px";
+    SquareName.style.boxShadow = "0px 0px 140px 10px";
+    SquareName.style.boxShadow = "5px 5px 10px 0px";
+    SquareName.style.borderStyle = "solid";
+    SquareName.style.borderWidth = "4px";
+
+    CardSquare1.style.background = "#ffe9c2";
+    CardSquare2.style.background = "#ffc2c2";
+    CardSquare3.style.background = "#c8ffc2";
+    CardSquare4.style.background = "#c2f1ff";
+
+    sliderChange();
+
+    // SquareName.style.opacity = "95%";
+    SquareName.style.width = "150px";
+    SquareName.style.height = "150px";
+
+    
+    cardName.append(SquareName);
+}
+
+
+const contentCards = () =>{
+    contentCard1(cardProps(Card1));
+    contentCard2(cardProps(Card2));
+    contentCard3(cardProps(Card3));
+    contentCard4(cardProps(Card4));
+}
+
+const contentCard1 = () => {
+    Card1.style.gridColumn = "1 / 12";
+    CardLabel1.style.color = "#ffe9c2";
+    // CardLabel1.innerHTML = "border - style : " + ParamLabel1;
+    Card1.append(CardLabel1);
+    Card1.style.background = "linear-gradient(-0.1turn, #ffe9c2, #090911)";
+    SliderProps(Card1, CardSlider1, CardSquare1);
+    SquareProps(Card1, CardSquare1);
+
+    Card1.addEventListener('mouseover', () => (Card1.style.background = "linear-gradient(-0.6turn, #ffe9c2, #090911)"))
+    Card1.addEventListener('mouseout', () => (Card1.style.background = "linear-gradient(-0.1turn, #ffe9c2, #090911)"))
+
+    Card1.addEventListener('mouseover', () => (  Card1.style.gridColumn = "1 / 14") + ( Card2.style.gridColumn = "14 / 20"))
+    Card1.addEventListener('mouseout', () => ( Card1.style.gridColumn = "1 / 12") + ( Card2.style.gridColumn = "12 / 20"))
+
+    
+}
+
+const contentCard2 = () => {
+    Card2.style.gridColumn = "12 / 20";
+    CardLabel2.style.color = "#ffc2c2";
+    // CardLabel2.innerHTML = "border - width : " + ParamLabel2;
+    Card2.append(CardLabel2);
+    Card2.style.background = "linear-gradient(0.1turn, #ffc2c2, #090911)";
+    SliderProps(Card2, CardSlider2, CardSquare2);
+    SquareProps(Card2, CardSquare2);
+
+    Card2.addEventListener('mouseover', () => (Card2.style.background ="linear-gradient(0.6turn, #ffc2c2, #090911)"))
+    Card2.addEventListener('mouseout', () => (Card2.style.background = "linear-gradient(0.1turn, #ffc2c2, #090911)"))
+
+    Card2.addEventListener('mouseover', () => ( Card2.style.gridColumn = "8 / 20") + ( Card1.style.gridColumn = "1 / 8"))
+    Card2.addEventListener('mouseout', () => ( Card2.style.gridColumn = "12 / 20") + ( Card1.style.gridColumn = "1 / 12"))
+}
+
+const contentCard3 = () => {
+    Card3.style.gridColumn = "1 / 10";
+    CardLabel3.style.color = "#c8ffc2";
+    // CardLabel3.innerHTML = "border - radius : " + ParamLabel3;
+    Card3.append(CardLabel3);
+    Card3.style.background = "linear-gradient(0.6turn, #c8ffc2, #090911)";
+    SliderProps(Card3, CardSlider3, CardSquare3);
+    SquareProps(Card3, CardSquare3);
+
+    Card3.addEventListener('mouseover', () => (Card3.style.background = "linear-gradient(0.1turn, #c8ffc2, #090911)"))
+    Card3.addEventListener('mouseout', () => (Card3.style.background = "linear-gradient(0.6turn, #c8ffc2, #090911)"))
+
+    Card3.addEventListener('mouseover', () => (  Card3.style.gridColumn = "1 / 14") + ( Card4.style.gridColumn = "14 / 20"))
+    Card3.addEventListener('mouseout', () => ( Card3.style.gridColumn = "1 / 10") + ( Card4.style.gridColumn = "10 / 20"))
+}
+
+const contentCard4 = () => {
+    Card4.style.gridColumn = "10 / 20";
+    CardLabel4.style.color = "#c2f1ff";
+    // CardLabel4.innerHTML = "border - color : " + ParamLabel4;
+    Card4.append(CardLabel4);
+    Card4.style.background = "linear-gradient(-0.6turn, #4643dc, #090911)";
+    SliderProps(Card4, CardSlider4, CardSquare4);
+    SquareProps(Card4, CardSquare4);
+    
+    Card4.addEventListener('mouseover', () => (Card4.style.background = "linear-gradient(-0.1turn, #4643dc, #090911)"))
+    Card4.addEventListener('mouseout', () => (Card4.style.background = "linear-gradient(-0.6turn, #4643dc, #090911)"))
+
+    Card4.addEventListener('mouseover', () => ( Card4.style.gridColumn = "8 / 20") + ( Card3.style.gridColumn = "1 / 8"))
+    Card4.addEventListener('mouseout', () => ( Card4.style.gridColumn = "10 / 20") + ( Card3.style.gridColumn = "1 / 10"))
+}
+
+
+    //execution
+    addLabel();
+    addContainer();
+    contentCards();
+    //
+
+</script>
