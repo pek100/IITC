@@ -89,10 +89,9 @@
 
 </style>
 
-<script src="https://unpkg.com/animate-css-grid@latest"></script>
-
 
 <script>
+
 const body = document.body;
 let container = document.createElement("div");
 let Label = document.createElement("h1");
@@ -274,7 +273,7 @@ const contentCard2 = () => {
     Card2.addEventListener('mouseover', () => (Card2.style.background ="linear-gradient(0.6turn, #ffc2c2, #090911)"))
     Card2.addEventListener('mouseout', () => (Card2.style.background = "linear-gradient(0.1turn, #ffc2c2, #090911)"))
 
-    Card2.addEventListener('mouseover', () => ( Card2.style.gridColumn = "8 / 20") + ( Card1.style.gridColumn = "1 / 8"))
+    Card2.addEventListener('mouseover', () => ( Card2.style.gridColumn = "6 / 20") + ( Card1.style.gridColumn = "1 / 6"))
     Card2.addEventListener('mouseout', () => ( Card2.style.gridColumn = "12 / 20") + ( Card1.style.gridColumn = "1 / 12"))
 }
 
@@ -306,7 +305,7 @@ const contentCard4 = () => {
     Card4.addEventListener('mouseover', () => (Card4.style.background = "linear-gradient(-0.1turn, #4643dc, #090911)"))
     Card4.addEventListener('mouseout', () => (Card4.style.background = "linear-gradient(-0.6turn, #4643dc, #090911)"))
 
-    Card4.addEventListener('mouseover', () => ( Card4.style.gridColumn = "8 / 20") + ( Card3.style.gridColumn = "1 / 8"))
+    Card4.addEventListener('mouseover', () => ( Card4.style.gridColumn = "6 / 20") + ( Card3.style.gridColumn = "1 / 6"))
     Card4.addEventListener('mouseout', () => ( Card4.style.gridColumn = "10 / 20") + ( Card3.style.gridColumn = "1 / 10"))
 }
 
