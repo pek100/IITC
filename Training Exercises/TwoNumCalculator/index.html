@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Num Calculator</title>
+</head>
+<body>
+    <div id="container">
+    <!-- add onclick to the buttons
+         and oninput (onchange) to the inputs -->
+    <input type="number" placeholder="Input 1" id="num1" oninput="updateInput1(this.value)">
+    <input placeholder="Input 2" type="number" id="num2" oninput="updateInput2(this.value)">
+    <input readonly placeholder="Operator (Choose)" id="Operator">
+    <input readonly placeholder="Result" type="number" id="Output">
+    <button onclick="calc(this.innerHTML)">+</button>
+    <button onclick="calc(this.innerHTML)">-</button>
+    <button onclick="calc(this.innerHTML)">*</button>
+    <button onclick="calc(this.innerHTML)">/</button>
+    <button onclick="calc(this.innerHTML)">%</button>
+    <button onclick="calc(this.innerHTML)">^</button>
+    <h3 id="result"></h3>
+</div>
+</body>
+</html>
+
+<style>
+    button:hover {cursor: pointer;
+    filter: brightness(80%);}
+
+    button{
+        grid-column: 3;
+        padding: 10px;
+    }
+    input{
+        padding: 10px;
+        text-align: center;
+    }
+</style>
+
+<script>
+const body = document.body;
+let container = document.getElementById("container");
+let input1;
+let input2;
+let output = document.getElementById("Output");
+let operator = document.getElementById("Operator");
+
+const updateInput1 = (value)  => {input1 = +value;}
+const updateInput2 = (value)  => {input2 = +value;}
+
+const styleBody = () => {
+    body.style.display = "flex";
+    body.style.height = "96vh";
+    body.style.justifyContent = "center";
+    body.style.alignItems= "center";
+    body.style.flexDirection = "column";
+    body.style.textAlign = "center";
+    
+}
+
+const styleContainer = () => {
+    container.style.display = "grid";
+    container.style.gridTemplateColumns = "repeat(4, 1fr)";
+    container.style.gap = "5px";
+    container.style.height = "200px";
+    container.style.textAlign = "center";
+    container.style.fontSize = "1.2rem";
+    
+}
+
+
+const add = () => {
+    output.value = input1 + input2;
+    operator.value = "+";
+}
+const subtract = () => {
+    output.value = input1 - input2;
+    operator.value = "-";
+}
+const multiply = () => {
+    output.value = input1 * input2;
+    operator.value = "*";
+}
+const divide = () => {
+    output.value = input1 / input2;
+    operator.value = "/";
+}
+const modulus = () => {
+    output.value = input1 % input2;
+    operator.value = "%";
+}
+const power = () => {
+    output.value = input1 ** input2;
+    operator.value = "^";
+}
+
+const calc = (Operator) => {
+switch (Operator){
+    case "+": add();;
+    break;
+    case "-": subtract();
+    break;
+    case "*": multiply();
+    break;
+    case "/": divide();
+    break;
+    case "%": modulus();
+    break;
+    case "^": power();
+    break;
+}
+}
+
+
+styleBody();
+styleContainer();
+
+</script>

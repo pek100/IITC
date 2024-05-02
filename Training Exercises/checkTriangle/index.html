@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Triangle</title>
+</head>
+<body>
+    <div id="container">
+    <h1>Check Triangle</h1>
+    <!-- this - the input -->
+    <input type="number" id="a" placeholder="Edge-A Length" 
+           oninput="checkNum(this.value,'A');checkTotal();">
+
+    <input type="number" id="b" placeholder="Edge-B Length"
+            oninput="checkNum(this.value,'B');checkTotal();">
+
+    <input type="number" id="c" placeholder="Edge-C Length"
+            oninput="checkNum(this.value,'C');checkTotal();">
+
+    <h3>
+        The current input is
+        <span id="validation">not valid</span>
+        <br>
+        The total input is
+        <span id="total-validation">not valid</span>
+        <br>
+        This triangle is <span id="result">...</span>
+    </h3>
+    </div>
+
+    
+    <script src="./js/check-triangle.js"></script>
+</body>
+</html>
+
+<style>
+   #container{
+    display: flex;
+    height: 96vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   } 
+
+   input{
+    padding: 10px;
+    margin: 20px;
+    text-align: center;
+   }
+</style>
+
+<script>
+let edgeA;
+let edgeB;
+let edgeC;
+
+let validation = document.getElementById("validation");
+let totalValidation = document.getElementById("total-validation");
+let result = document.getElementById("result");
+
+const checkNum = (length, edge) => {
+switch (edge){
+    case 'A': edgeA = +length;
+    break;
+    case 'B': edgeB = +length;
+    break;
+    case 'C': edgeC = +length;
+    break;
+}
+}
+
+const checkTotal = () =>{
+    if((edgeA + edgeB > edgeC || edgeA + edgeC > edgeB || edgeC + edgeB > edgeA) && (edgeA * edgeB * edgeC > 0)){
+        validation.innerHTML = "valid";
+        totalValidation.innerHTML = "valid";
+        (edgeA == edgeB && edgeB == edgeC) ? result.innerHTML = "Equilateral" : (edgeA == edgeB || edgeA == edgeC || edgeB == edgeC) ? result.innerHTML = "Isosceles": result.innerHTML = "Regular";
+    }else{
+        validation.innerHTML = "not valid";
+        totalValidation.innerHTML = "not valid";
+        result.innerHTML = "..."
+    }
+}
+</script>
