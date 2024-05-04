@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NumberSystems</title>
+    <style>
+        body{
+        display: flex;
+        height: 96vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 0 auto;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Binary-Decimal Conversions</h1>
+    <table>
+        <tr>
+            <th>Conversion</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td>426 decimal to binary</td>
+            <td id="decimal-to-binary"></td>
+        </tr>
+        <tr>
+            <td>100100001 binary to decimal</td>
+            <td id="binary-to-decimal"></td>
+        </tr>
+    </table>
+
+    <script>
+        function decimalToBinary(decimal) {
+            let binary = "";
+            let remainder;
+
+            while (decimal > 0) {
+                remainder = decimal % 2;
+                binary = remainder + binary;
+                decimal = Math.floor(decimal / 2);
+            }
+
+            return binary;
+        }
+
+        function binaryToDecimal(binary) {
+            let decimal = 0;
+            let position = 0;
+
+            for (let i = binary.length - 1; i >= 0; i--) {
+                if (binary[i] === "1") {
+                    decimal += Math.pow(2, position);
+                }
+                position++;
+            }
+
+            return decimal;
+        }
+
+        const decimalNumber = 426;
+        const binaryNumber = "100100001";
+
+        const binaryResult = decimalToBinary(decimalNumber);
+        document.getElementById('decimal-to-binary').textContent = binaryResult;
+
+        const decimalResult = binaryToDecimal(binaryNumber);
+        document.getElementById('binary-to-decimal').textContent = decimalResult;
+    </script>
+</body>
+</html>

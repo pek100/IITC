@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        input{
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 150px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #555555;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            filter: brightness(80%);
+        }
+
+        #numberOutput, #nameOutput {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Checker</h1>
+        <input type="text" id="numberInput" placeholder="Enter a number">
+        <button onclick="checkNumber()">Check Number</button>
+        <p id="numberOutput"></p>
+        <br><br><br>
+        <h1>Name Checker</h1>
+        <input type="text" id="firstNameInput" placeholder="Enter your first name">
+        <input type="text" id="lastNameInput" placeholder="Enter your last name">
+        <button onclick="checkName()">Check Name</button>
+        <p id="nameOutput"></p>
+    </div>
+
+    <script>
+        function checkNumber() {
+            let input = document.getElementById('numberInput').value;
+            let output = document.getElementById('numberOutput');
+
+            output.innerHTML = (input !== null && input.trim() !== "")
+                ? (isNaN(input)
+                ? "Not a number"
+                : (input < 70 ? input + " < 70"
+                : (input > 210 ? input + " > 210"
+                : input + " is between 70 and 210")))
+                : "No input";
+        }
+
+        function checkName() {
+            let firstName = document.getElementById('firstNameInput').value;
+            let lastName = document.getElementById('lastNameInput').value;
+            let output = document.getElementById('nameOutput');
+
+            output.innerHTML = (firstName !== null && firstName.trim() !== "" && lastName !== null && lastName.trim() !== "")
+                ? ((firstName.toLowerCase() === "john" && lastName.toLowerCase() === "smith") ||
+                (firstName.toLowerCase() === "jane" && lastName.toLowerCase() === "smith") ||
+                (firstName.toLowerCase() === "jack" && lastName.toLowerCase() === "daniels")
+                ? "Happy to see you!"
+                : "Go away!")
+                : "Please enter your name";
+        }
+    </script>
+</body>
+</html>

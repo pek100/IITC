@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .first, .second, .third {
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            color: #fff;
+        }
+
+        .purple {
+            background-color: purple;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .streetlight {
+            width: 100px;
+            height: 300px;
+            background-color: rgb(128, 128, 128);
+            border-radius: 20px;
+            position: relative;
+            margin: 1rem;
+        }
+
+        .person {
+            width: 40px;
+            height: 80px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .standing {
+            border-radius: 10px;
+            
+        }
+
+        .going {
+            animation: walk 1s infinite;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+        
+        .invisible{
+            position: absolute;
+            visibility: hidden;
+        }
+        @keyframes walk {
+            0% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .purple-btn {
+            background-color: purple;
+            color: #fff;
+        }
+
+        .orange-btn {
+            background-color: orange;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="first purple"><i class="fa-solid fa-circle"></i></div>
+        <div class="second orange"></div>
+        <div class="third purple">
+            <i class="fa-solid fa-hourglass-start invisible"></i>
+            <i class="fa-solid fa-hourglass-half invisible"></i>
+            <i class="fa-solid fa-hourglass-end invisible"></i>
+        </div>
+        <div class="streetlight red">
+            <div class="person standing"><i class="fa-solid fa-person-walking"></i></div>
+        </div>
+    </div>
+    <button id="show" class="purple-btn"><i class="fa-solid fa-eye"></i> Show</button>
+    <button id="firstColor" class="orange-btn"><i class="fa-solid fa-palette"></i> Change Color</button>
+    <button id="start" class="purple-btn"><i class="fa-solid fa-clock"></i> Start</button>
+    <button id="stop" class="orange-btn"><i class="fa-solid fa-stopwatch"></i> Stop</button>
+    <button id="reset" class="purple-btn"><i class="fa-solid fa-undo"></i> Reset</button>
+    <button id="go" class="green-btn"><i class="fa-solid fa-walking"></i> Go!</button>
+    <button id="maintenance" class="yellow-btn"><i class="fa-solid fa-wrench"></i> Maintenance</button>
+
+    <script>
+        const streetlight = document.querySelector('.streetlight');
+        const person = document.querySelector('.person');
+        const secondDiv = document.querySelector('.second');
+        const hourglassIcons = document.querySelectorAll('.third i');
+
+        const resetBtn = document.getElementById('reset');
+        const goBtn = document.getElementById('go');
+        const maintenanceBtn = document.getElementById('maintenance');
+
+        let goTimeout;
+        let redTimeout;
+        let hourglassInterval;
+
+        resetBtn.addEventListener('click', () => {
+            streetlight.classList.remove('yellow', 'green');
+            streetlight.classList.add('red');
+            person.classList.remove('going');
+            person.classList.add('standing');
+            person.innerHTML = '<i class="fa-solid fa-person-walking"></i>';
+            clearInterval(hourglassInterval);
+        });
+
+        goBtn.addEventListener('click', () => {
+            secondDiv.textContent = 'The button was pressed, wait!';
+            streetlight.classList.remove('red', 'yellow');
+            streetlight.classList.add('green');
+            person.classList.remove('standing');
+            person.classList.add('going');
+            person.innerHTML = '<i class="fa-solid fa-person-running"></i>';
+
+            let currentIndex = 0;
+            hourglassIcons[currentIndex].style.animation = 'rotate 2s infinite';
+            hourglassInterval = setInterval(() => {
+                hourglassIcons.forEach(icon => icon.classList.add('invisible'));
+                hourglassIcons[currentIndex].classList.remove('invisible');
+                currentIndex = (currentIndex + 1) % hourglassIcons.length;
+            }, 1000);
+
+
+            goTimeout = setTimeout(() => {
+                streetlight.classList.remove('green');
+                streetlight.classList.add('red');
+                person.classList.remove('going');
+                person.classList.add('standing');
+                person.innerHTML = '<i class="fa-solid fa-person-walking"></i>';
+                clearInterval(hourglassInterval);
+                hourglassIcons.forEach(icon => {
+                    icon.classList.add('invisible');
+                    icon.style.animation = 'none';
+                });
+            }, 5000);
+
+            redTimeout = setTimeout(() => {
+                resetBtn.click();
+            }, 10000);
+        });
+
+        maintenanceBtn.addEventListener('click', () => {
+            clearTimeout(goTimeout);
+            clearTimeout(redTimeout);
+            clearInterval(hourglassInterval);
+            streetlight.classList.remove('red', 'green');
+            streetlight.classList.add('yellow');
+            person.classList.remove('going', 'standing');
+            person.innerHTML = '<i class="fa-solid fa-wrench"></i>';
+            hourglassIcons.forEach(icon => {
+                icon.classList.add('invisible');
+                icon.style.animation = 'none';
+            });
+        });
+
+        resetBtn.click();
+    </script>
+</body>
+</html>

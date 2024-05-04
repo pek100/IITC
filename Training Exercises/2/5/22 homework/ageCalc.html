@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalcAge</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Calculate Age</h1>
+        <input type="number" id="birthYear" placeholder="Year" oninput="calculateAge();">
+        <input type="number" id="birthMonth" placeholder="Month" oninput="calculateAge();">
+        <input type="number" id="birthDay" placeholder="Day" oninput="calculateAge();">
+        <h3>Your age is <span id="answer">...</span></h3>
+    </div>
+</body>
+</html>
+    <style>
+        #container {
+            display: flex;
+            height: 96vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        input {
+            padding: 10px;
+            margin: 20px;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        let currDate = new Date();
+        let currYear = currDate.getFullYear();
+        let currMonth = currDate.getMonth();
+        let currDay = currDate.getDate();
+        let answer = document.getElementById("answer");
+
+
+        function calculateAge() {
+            let birthYear = parseInt(document.getElementById("birthYear").value);
+            let birthMonth = parseInt(document.getElementById("birthMonth").value) - 1;
+            let birthDay = parseInt(document.getElementById("birthDay").value);
+
+            if (isNaN(birthYear) || isNaN(birthMonth) || isNaN(birthDay)) {
+                answer.textContent = "...";
+                return;
+            }
+
+            let age = currYear - birthYear;
+
+            if (currMonth < birthMonth || (currMonth === birthMonth && currDay < birthDay)) {
+                age--;
+            }
+
+            answer.textContent = age;
+        }
+
+
+        
+    </script>
