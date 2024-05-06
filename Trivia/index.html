@@ -5,48 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Trivia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <div id="container">
         <div id="menuContainer">
             <div id="menuLabel">
                 <h1>Welcome to the <span> Frontend trivia! </span></h1>
-                <hr>
-                
+                <!-- <hr> -->
             </div>
-            <div id="playerNames">
-                <label id="player1Label" for="player1Name">Player 1</label>
-                <input type="text" id="player1Name" placeholder="Enter Your Name">
-                <label id="player2Label" for="player2Name">Player 2</label>
-                <input type="text" id="player2Name" placeholder="Enter Your Name">
+            <div id="subjects">
+                <label for="topicHTML" style="color: rgb(183, 192, 212);">Pick a subject to get started</label>
+                <!-- <hr> -->
+                <button id="topicHTML" onclick="startGame(this.id)"><h2><i class="fa-solid fa-code"></i></h2> HTML</button>
+                <button id="topicCSS" onclick="startGame(this.id)"><h2><i class="fa-brands fa-css3"></i></h2> CSS</button>
+                <button id="topicJS" onclick="startGame(this.id)"><h2><i class="fa-brands fa-square-js"></i></h2> Javascript</button>
+
             </div>
             <div>
                 
-                <button id="start" onclick="startGame()">Start</button>
+                <!-- <button id="start" onclick="startGame()">Start</button> -->
             </div>
-            <div id="start"></div>
         </div>
-        <div id="gameContainer">
-            <div id="questionContainer">
-                <h1></h1>
+
+
+    </div>
+            <div id="gameContainer">
+            <div id="exit" onclick="exitGame()"><i class="fa-solid fa-door-closed"></i><i class="fa-solid fa-door-open"></i><h4>Exit</h4></div>
+            <div id="progressCard"></div>
+            <div id="infoCard">            
+                <!-- <progress id="timeLeft" value="2000" max="2000"></progress> -->
+                <!-- <br><br> -->
+                <div><h3>score: <span id="score">0</span></h3></div>
+                <div><h3>correct answers: <span id="correctAns">0/0</span></h3></div>
+                
+                
             </div>
                 <div id="cardContainer">
                 <div class="card" id="questionCard">
                 </div>
-                <div class="card" id="Card1" onmousedown="answerCheck('A')">
+                <div class="card" id="Card1" onmousedown="answerCheck('A')">a
                 </div>
-                <div class="card" id="Card2" onmousedown="answerCheck('B')">
+                <div class="card" id="Card2" onmousedown="answerCheck('B')">b
                 </div>
-                <div class="card" id="Card3" onmousedown="answerCheck('C')">
+                <div class="card" id="Card3" onmousedown="answerCheck('C')">c
                 </div>
-                <div class="card" id="Card4" onmousedown="answerCheck('D')">
+                <div class="card" id="Card4" onmousedown="answerCheck('D')">d
                 </div>
             </div>
 
         </div>
-
-    </div>
-    
 </body>
 </html>
+<script src="questions.js"></script>
 <script src="script.js"></script>
