@@ -92,7 +92,7 @@ const computerNumber = () =>{
 }
 
 const CheckUserNum = () => {
-    if (parseInt(userInput.value) == userInput.value){
+    if (parseInt(userInput.value) == userInput.value && Math.sign(userInput.value) == 1 && userInput.value<100){
     if( parseInt(userInput.value) < computerGenNumber){
         computerResponse.innerHTML = "My number is greater!";
         computerResponse.style.color = "#DCC5B0"; 
@@ -107,7 +107,7 @@ const CheckUserNum = () => {
         computerResponse.style.color = "#DB9898";
     }
 }else{
-    computerResponse.innerHTML = "My number is an integer...";
+    computerResponse.innerHTML = "My number is a positive integer between 1 - 100...";
     computerResponse.style.color = "#DB9898";
 }
 }

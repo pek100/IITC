@@ -14,11 +14,11 @@ body{
 
 #container{
     display: flex;
-    width: 650px;
+    width: 600px;
     height: 700px;
-    background-color: #26304D;
+    background-color: #26304d;
     border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 15px #0000006e;
     border-style: solid;
     border-color: #161d3054;
 
@@ -69,7 +69,7 @@ border-color: #ABB0DB;
     border-radius: 20px;
     width: 55px;
     height: 55px;
-    top: 15px;
+    top: 10px;
     left: 10px;
     cursor: pointer;
     font-size: xx-large;
@@ -107,7 +107,7 @@ border-color: #ABB0DB;
     border-radius: 20px;
     width: 55px;
     height: 55px;
-    top: 15px;
+    top: 10px;
     left: 10px;
     cursor: pointer;
     font-size: xx-large;
@@ -121,7 +121,7 @@ border-color: #ABB0DB;
     border-radius: 20px;
     width: 55px;
     height: 55px;
-    top: 15px;
+    top: 10px;
     left: 10px;
     cursor: pointer;
     font-size: xx-large;
@@ -177,7 +177,7 @@ border-color: #ABB0DB;
 }
 
 #UserInput{
-    font-size: 30px;
+    font-size: 60px;
     color: #000000;
     margin-top: 40px;
     width: 220px;
