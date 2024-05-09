@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Guesser</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="script.js" defer></script>
+
+
+</head>
+<body>
+    <div id="confettiContainer">
+        <img id="confettiR" alt="">
+        <img id="confettiL" alt="">
+        </div>
+    <div id="container">
+        <div id="innerContainer">
+            <h1 id="menuLbl">Binary Guesser</h1>
+            <button onclick="MakeItGuessContainerOpen()" style="background-color: #3E528A;" class="menuButton">Make It guess</button>
+            <button  onclick="UserGuessContainerOpen()" style="background-color: #303F67;" class="menuButton">Guess</button>
+            <button id="instructions" onclick="instructionsOpen()">?</button>
+        </div>
+
+        <div id="instructionsContainer"> 
+        <button id="instructionsClose" onclick="instructionsClose()"><i class="fa-solid fa-chevron-left"></i></button>
+        <ul>
+        <li><strong>Objective:</strong> The machine will think of a number between 1 and 100, and your goal is to guess it.</li>
+        <li><strong>Tries:</strong> The maximum number of Tries is 7 (rounded up from the logarithm base 2 of 100).</li>
+        <li><strong>Input:</strong> Enter your guess in the input field.</li>
+        <li><strong>Start Game:</strong> Click the “Start Game” button to begin.</li>
+        <li><strong>Output:</strong> The machine will provide feedback on your guess.</li>
+        <li><strong>Winning:</strong> Celebrate when you guess the correct number!</li>
+        <li><strong>Good luck!</strong> 🎲👍</li>
+        </ul>
+        </div>
+
+        <div id="MakeItGuessContainer">
+            <h1 id="menuLbl">your number is:</h1>
+            <button id="MakeItGuessContainerClose" onclick="GuessContainerClose()"><i class="fa-solid fa-chevron-left"></i></button>
+            <input id="ComputerOut" readonly type="number"></input>
+    
+            <div id="buttonContainer">
+            <button style="background-color: #3E528A;" onclick="Greater()" id="shortButton" class="menuButton">It’s Greater</button>
+            <button style="background-color: #3E528A;" onclick="Smaller()" id="shortButton" class="menuButton">It’s Smaller</button>
+            <button style="background-color: #303F67;" onclick="Correct()" id="longButton" class="menuButton">Spot On!</button>
+            </div>
+        </div>
+
+        <div id="GuessContainer">
+            <h1 id="menuLbl">Guess My Number!</h1>
+            <h4 id="computerResponse"></h4>
+            <button id="MakeItGuessContainerClose" onclick="UserGuessContainerClose()"><i class="fa-solid fa-chevron-left"></i></button>
+            <input id="UserInput" type="number"></input>
+
+            <button style="background-color: #303F67;" id="GuessBtn" onclick="CheckUserNum()" class="menuButton">Guess</button>
+        </div>
+        
+
+
+
+    </div>
+</div>
+    
+</body>
+</html>
