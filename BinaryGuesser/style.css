@@ -94,20 +94,6 @@ border-color: #ABB0DB;
     height: inherit;
 }
 
-#instructionsClose{
-    position: absolute;
-    background-color: #161D30;
-    border-style: solid;
-    border-radius: 20px;
-    width: 55px;
-    height: 55px;
-    top: 15px;
-    left: 10px;
-    cursor: pointer;
-    font-size: xx-large;
-    color: white;
-}
-
 #instructionsClose:hover{
     transform: scale(104%);
     filter: brightness(110%);
@@ -140,6 +126,12 @@ border-color: #ABB0DB;
     cursor: pointer;
     font-size: xx-large;
     color: white;
+}
+
+#MakeItGuessContainerClose:hover{
+    transform: scale(104%);
+    filter: brightness(110%);
+    color: rgb(255, 240, 223);
 }
 
 #MakeItGuessContainer{
