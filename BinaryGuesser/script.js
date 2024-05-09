@@ -54,6 +54,9 @@ function UserGuessContainerOpen(){
 function UserGuessContainerClose(){
     innerContainer.style.display = "flex";
     GuessContainer.style.display = "none";
+    computerResponse.innerHTML = "";
+    userInput.value="";
+    confettiOFF();
 }
 
 
@@ -89,13 +92,24 @@ const computerNumber = () =>{
 }
 
 const CheckUserNum = () => {
-    if(parseInt(userInput.value) > computerGenNumber){
+    if (parseInt(userInput.value) == userInput.value){
+    if( parseInt(userInput.value) < computerGenNumber){
         computerResponse.innerHTML = "My number is greater!";
+        computerResponse.style.color = "#DCC5B0"; 
     }else if(parseInt(userInput.value) > computerGenNumber){
         computerResponse.innerHTML = "My number is smaller!"; 
+        computerResponse.style.color = "#81AED8"; 
     }else if(parseInt(userInput.value) == computerGenNumber){
-        computerResponse.innerHTML = "Spot On!"; 
-    }else{ computerResponse.innerHTML = "ERROR"; }
+        computerResponse.innerHTML = "Spot On!";
+        computerResponse.style.color = "#98DB9F"; 
+        confettiON();
+    }else{ computerResponse.innerHTML = "ERROR"; 
+        computerResponse.style.color = "#DB9898";
+    }
+}else{
+    computerResponse.innerHTML = "My number is an integer...";
+    computerResponse.style.color = "#DB9898";
+}
 }
 
 
