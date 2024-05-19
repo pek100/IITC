@@ -85,9 +85,3 @@ function playGame() {
 
 playGame();
 
-const fs = require('fs');
-
-let data = fs.readFileSync('E:\\IITC\\IITC\\Training Exercises\\5T5\\avocado.txt', 'utf-8');
-
-console.log(data);
-

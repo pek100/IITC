@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/more-events.css">
+</head>
+<body>
+    <div class="container">
+
+        <label for="username">Enter your username:</label>
+        <input type="text" name="" id="username"><br><br>
+
+
+        <label for="password">Enter your password:</label>
+        <input type="password" name="" id="password"><br><br>
+
+        <label for="birth-year">Birth year:</label>
+        <input type="number" name="" id="birth-year" max="2022" min="1902"><br><br>
+
+        <input type="button" value="Submit" class="btn one">
+        <input type="button" value="Submit2" class="btn two">
+
+        <div class="output"></div>
+
+    </div>
+    <script>
+        const out = document.querySelector('.output');
+        const userInp = document.querySelector('#username');
+        const passInp = document.querySelector('#password');
+        const birthYearInp = document.querySelector('#birth-year');
+        const btn = document.querySelector('.btn.one');
+        const btn2 = document.querySelector('.btn.two');
+
+        btn.classList.add('blue');
+        btn2.classList.add('red');
+
+        
+        /*a) Create function showEvent, which 
+             shows in the output statements like this
+           "This is a <event-type> event. Value = <value>"
+
+            For event-type use event propety "type",
+            for value use event.target property "value".
+
+            
+        b) Add listeners that will run this function for the event "input" on userInp,
+                for the event "change" on userPass,
+                for the event "blur" on birthYearInp
+
+        c) Create function changeColor that exchanges class "blue" by class "red" 
+           of the target element if it has class "blue", and vice versa.
+
+        d) Add listeners that will run this function for the event "click" on 
+           btn and btn1*/
+
+        function showEvent(ev)  {
+            ev.target.className == "blue" ? ev.target.className = "red" : ev.target.className = "blue";
+
+            out.innerText += `This is a ${ev.type} event. Value = ${ev.target.value}`;
+
+            console.log(ev);
+
+        }
+
+        userInp.addEventListener('input', showEvent);
+        passInp.addEventListener('change', showEvent);
+        birthYearInp.addEventListener('blur', showEvent);
+        btn.addEventListener('click', showEvent);
+        btn2.addEventListener('click', showEvent);
+    </script>
+    <style>
+        body {
+    font-size: 32px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+input {
+    font-size: 32px;
+    padding: 7px;
+}
+
+.blue {
+    background-color: blue;
+    color: white;
+}
+
+.red {
+    background-color: red;
+    color: yellow;
+}
+    </style>
+</body>
+</html>

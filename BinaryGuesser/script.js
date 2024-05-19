@@ -6,17 +6,16 @@ const GuessContainer = document.querySelector("#GuessContainer");
 const GuessBtn = document.querySelector("#GuessContainer");
 let confettiL = document.getElementById("confettiL");
 let confettiR = document.getElementById("confettiR");
-
-
 const userInput =  document.querySelector("#UserInput");
 const computerResponse = document.querySelector("#computerResponse");
-
 let computerGenNumber;
-
 let center = 50;
 let min = 1;
 let max = 100;
 let computerWin = false;
+let userWin = false;
+
+let numOfTries = 0;
 
 ComputerOut.value = center;
 
@@ -48,6 +47,7 @@ function GuessContainerClose(){
 function UserGuessContainerOpen(){
     innerContainer.style.display = "none";
     GuessContainer.style.display = "flex";
+    numOfTries = 0;
     computerNumber();
 
 }
@@ -56,6 +56,7 @@ function UserGuessContainerClose(){
     GuessContainer.style.display = "none";
     computerResponse.innerHTML = "";
     userInput.value="";
+    userWin = false;
     confettiOFF();
 }
 
@@ -92,16 +93,20 @@ const computerNumber = () =>{
 }
 
 const CheckUserNum = () => {
+    if (userWin == false){
+    if (numOfTries != 7){
     if (parseInt(userInput.value) == userInput.value && Math.sign(userInput.value) == 1 && userInput.value<100){
+        numOfTries++;
     if( parseInt(userInput.value) < computerGenNumber){
-        computerResponse.innerHTML = "My number is greater!";
+        computerResponse.innerHTML = "My number is greater! Try: " + numOfTries + "/7";
         computerResponse.style.color = "#DCC5B0"; 
     }else if(parseInt(userInput.value) > computerGenNumber){
-        computerResponse.innerHTML = "My number is smaller!"; 
+        computerResponse.innerHTML = "My number is smaller! Try: " + numOfTries + "/7"; 
         computerResponse.style.color = "#81AED8"; 
     }else if(parseInt(userInput.value) == computerGenNumber){
-        computerResponse.innerHTML = "Spot On!";
+        computerResponse.innerHTML = "Spot On! It took you: " + numOfTries + "/7 tries!";
         computerResponse.style.color = "#98DB9F"; 
+        userWin = true;
         confettiON();
     }else{ computerResponse.innerHTML = "ERROR"; 
         computerResponse.style.color = "#DB9898";
@@ -110,7 +115,11 @@ const CheckUserNum = () => {
     computerResponse.innerHTML = "My number is a positive integer between 1 - 100...";
     computerResponse.style.color = "#DB9898";
 }
+} else {
+    computerResponse.innerHTML = "Out of tries!";
+    computerResponse.style.color = "#DB9898";
 }
+}}
 
 
 function confettiON(){
