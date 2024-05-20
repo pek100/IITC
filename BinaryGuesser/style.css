@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+
+body{
+    display: flex;
+    width: 100dvw;
+    height: 100dvh;
+    justify-content: center;
+    align-items: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#container{
+    display: flex;
+    width: 600px;
+    height: 700px;
+    background-color: #26304d;
+    border-radius: 30px;
+    box-shadow: 5px 5px 15px #0000006e;
+    border-style: solid;
+    border-color: #161d3054;
+
+}
+
+#innerContainer{
+    display: flex;
+    /* display: none; */
+
+    position: relative;
+    width: inherit;
+    height: inherit;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+#menuLbl{
+    color: #ABB0DB;
+    font-size: 50px;
+    margin-bottom:60px;
+    margin-top:80px;
+}
+
+.menuButton{
+    font-size: 20px;
+    color: aliceblue;
+    width:350px;
+    height: 55px;
+    border-radius: 50px;
+    margin: 50px;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.menuButton:hover{
+transform: scaleX(104%);
+border-color: #ABB0DB;
+
+}
+
+#instructions{
+    position: absolute;
+    background-color: #161D30;
+    border-style: solid;
+    border-radius: 20px;
+    width: 55px;
+    height: 55px;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    font-size: xx-large;
+    color: white;
+}
+
+#instructions:hover{
+    transform: scale(104%);
+    filter: brightness(110%);
+    color: rgb(255, 240, 223);
+}
+
+#instructionsContainer{
+    display: none; 
+    position: relative;
+    justify-content: center;
+    padding: 30px;
+    font-size: larger;
+    line-height: 40px;
+    align-items: center;
+    color: aliceblue;
+    height: inherit;
+}
+
+#instructionsClose:hover{
+    transform: scale(104%);
+    filter: brightness(110%);
+    color: rgb(255, 240, 223);
+}
+
+#instructionsClose{
+    position: absolute;
+    background-color: #161D30;
+    border-style: solid;
+    border-radius: 20px;
+    width: 55px;
+    height: 55px;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    font-size: xx-large;
+    color: white;
+}
+
+#MakeItGuessContainerClose{
+    position: absolute;
+    background-color: #161D30;
+    border-style: solid;
+    border-radius: 20px;
+    width: 55px;
+    height: 55px;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    font-size: xx-large;
+    color: white;
+}
+
+#MakeItGuessContainerClose:hover{
+    transform: scale(104%);
+    filter: brightness(110%);
+    color: rgb(255, 240, 223);
+}
+
+#MakeItGuessContainer{
+    display: none; 
+    position: relative;
+    width: inherit;
+    height: inherit;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#ComputerOut{
+    font-size: 50px;
+    color: #fff;
+    margin-top: 20px;
+    width: 220px;
+    height: 200px;
+    border-radius: 12px;
+    background-color: #3E528A;
+    text-align: center;
+}
+
+#buttonContainer{
+    margin-top: 70px;
+    display: grid;
+    height: 300px;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100px 100px;
+    justify-items: center;
+    /* border-style: solid; */
+}
+
+#shortButton{
+    width:80%;
+}
+
+#longButton{
+    width:90%;
+    grid-column: 1/3;
+}
+
+#UserInput{
+    font-size: 60px;
+    color: #000000;
+    margin-top: 40px;
+    width: 220px;
+    height: 200px;
+    border-radius: 12px;
+    background-color: #ABB0DB;
+    text-align: center;
+}
+
+#GuessBtn{
+    margin-top: 100px;
+}
+
+#GuessContainer{
+    display: none; 
+    position: relative;
+    width: inherit;
+    height: inherit;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#confettiContainer{
+    position:absolute;
+    z-index:1;
+    pointer-events: none; 
+  }
+
+
+  #computerResponse{
+    position: absolute;
+    top: 180px;
+    color:#ABB0DB;
+  }
+  
+  #confettiR{
+    position:relative;
+    right: 75%;
+    width: 280px;
+  }
+  
+  #confettiL{
+    position:relative;
+    left: 75%;
+    width: 280px;
+  }

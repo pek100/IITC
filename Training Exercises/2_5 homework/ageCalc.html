@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalcAge</title>
+  <style>
+    #container {
+      display: flex;
+      height: 96vh;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    input {
+      padding: 10px;
+      margin: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Calculate Age</h1>
+    <input type="number" id="birthYear" placeholder="Year" oninput="calculateAge();">
+    <input type="number" id="birthMonth" placeholder="Month" oninput="calculateAge();">
+    <input type="number" id="birthDay" placeholder="Day" oninput="calculateAge();">
+    <h3>Your age is <span id="answer">...</span></h3>
+  </div>
+
+  <script>
+    let currDate = new Date();
+    let currYear = currDate.getFullYear();
+    let currMonth = currDate.getMonth();
+    let currDay = currDate.getDate();
+    let answer = document.getElementById("answer");
+
+    function calculateAge() {
+      let birthYear = parseInt(document.getElementById("birthYear").value);
+      let birthMonth = parseInt(document.getElementById("birthMonth").value) - 1;
+      let birthDay = parseInt(document.getElementById("birthDay").value);
+
+      if (isNaN(birthYear) || isNaN(birthMonth) || isNaN(birthDay)) {
+        answer.textContent = "...";
+        return;
+      }
+
+      let age = currYear - birthYear;
+      let ageMonth = currMonth - birthMonth;
+      let ageDay = currDay - birthDay;
+
+      if (ageMonth < 0 || (ageMonth === 0 && ageDay < 0)) {
+        age--;
+        ageMonth += 12;
+      }
+
+      if (ageDay < 0) {
+        ageMonth--;
+        ageDay += getDaysInMonth(birthYear, birthMonth);
+      }
+
+      answer.textContent = `${age} years, ${ageMonth} months, and ${ageDay} days`;
+    }
+
+    function getDaysInMonth(year, month) {
+      return new Date(year, month + 1, 0).getDate();
+    }
+  </script>
+</body>
+</html>

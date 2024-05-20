@@ -92,7 +92,8 @@ const addAnswerLabel = () => {
 }
 
 const showAnswer = () => {
-    num = parseInt(inputNum.value);
+    num = parseFloat(inputNum.value);
+    if (num%1 == 0 ){
     if (numReg.test(num)){
         (calcAnswer(num)) ? (answerLabel.innerHTML = "<font color=green>The number is prime!</font>") + (container.style.borderColor = "green")
 : (answerLabel.innerHTML = "<font color=red>The number is not prime!</font>") + (container.style.borderColor = "red");
@@ -100,11 +101,15 @@ const showAnswer = () => {
         container.style.borderColor = "red";
         answerLabel.style.color = "red";
         answerLabel.innerHTML = "Invalid input!";
+}}else{
+    answerLabel.innerHTML = "<font color=red>The number is not prime!</font>";
+    container.style.borderColor = "red";
 }
+    
 }
 
 function calcAnswer(num){
-    for(let i = 2; i <= Math.sqrt(num); i++) {
+    for(let i = 2; i <= Math.sqrt(num); i=i+2) {
         if(num % i == 0) return false;
     }
     return num > 1;
