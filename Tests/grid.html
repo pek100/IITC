@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="parent">
+    <div style="background-color:rgb(51, 51, 51);"></div>
+    <div style="background-color: rgb(118, 218, 164);"></div>
+    <div style="background-color: rgb(83, 160, 226);"></div>
+    <div style="background-color: rgb(51, 51, 51);"></div>
+
+    <div style="background-color: rgb(118, 218, 164); grid-row: 2/4"></div>
+    <div style="background-color: rgb(83, 160, 226); grid-column: 2/4"></div>
+    <div style="background-color: rgb(51, 51, 51); grid-column: 4; grid-row: 2/4"></div>
+    <div style="background-color: rgb(118, 218, 164);"></div>
+    <div style="background-color: rgb(83, 160, 226);"></div>
+
+
+</div>
+</body>
+</html>
+
+<style> 
+    body{
+        height: 100vh;
+    }
+    #parent{
+        display: grid; 
+        height: 100%;
+        width: 100%;
+        margin: 0;
+
+        grid-template-columns: repeat(4, 1fr); 
+        grid-template-rows: 0.7fr 1fr 1fr;
+    }
+    div{
+        border-style: solid;
+        display: flex;
+        width: 99;
+        height: inherit;
+    }
+</style>
