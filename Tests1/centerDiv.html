@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="divParent">
+        <div id="centerDiv"></div>
+        </div>
+
+
+        <!-- solution 1: flex -->
+        <style>#divParent{display: flex; height: 100vh; justify-content:center; align-items:center}
+            #centerDiv{width: 100px; height:100px; background-color:black}</style>
+
+        <!-- solution 2: grid -->
+        <style>
+            #divParent{display: grid; height: 100vh; grid-template-columns: 1fr, 100px, 1fr; grid-template-rows: 1fr 100px, 1fr;}
+            #centerDiv{width: 100px; height:100px; grid-column:2; grid-row:2; background-color:black}
+        </style>
+    
+</body>
+</html>
+
