@@ -1,0 +1,216 @@
+1. Download NodeJS and install Next->Next->Next
+   
+   Odd number of main version number -> newest, but with bugs
+   Even number - stable version, use for production
+
+
+2. Download Git - for get Git Bash together 
+    with it
+
+3. Open terminal in VS Code or 
+   Git Bash separate Window and 
+    check that you've got NodeJS 
+    installed and it's version
+
+$ node -v
+v18.20.0
+
+4. HOW TO RUN js in NodeJS Environment:
+create a program, for example, hello.js,
+get to it's directory and run it:
+
+$ cd nodejs
+$ node hello.js
+
+5. Create directory farm,
+   put there inside overview.html and product.html and
+   put there inside farm/data/data.json 
+
+   JSON - it's a text, specially formatted to be converted to 
+          some object. JavaScript Object Notation - רישום של אובייקט
+
+6. $ cd farm
+
+7. npm - node package manager
+ 
+ It was installed together with NodeJS.
+
+ Initialize the project:
+
+ $ npm init
+
+ This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (farm)
+version: (1.0.0)
+description: NodeJS Express beginner
+entry point: (index.js) farm.js
+test command:
+git repository:
+keywords:
+author: Natalie
+license: (ISC)
+About to write to C:\Users\natal\Desktop\b\Courses\IITC\FullStack_2024_03_20_Ashquelon_Carmiel\course\Web-2024-05-16-Express-AsyncRead\nodejs\farm\package.json:
+
+{
+  "name": "farm",
+  "version": "1.0.0",
+  "description": "NodeJS Express beginner",
+  "main": "farm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Natalie",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes)
+
+
+8. Now we've got new file package.json:
+
+
+{
+  "name": "farm",
+  "version": "1.0.0",
+  "description": "NodeJS Express beginner",
+  "main": "farm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Natalie",
+  "license": "ISC"
+}
+  
+
+  a) It's just text file - we could fix it manually 
+  b) If we want to change it - we should save it for backup
+
+
+9. Install package "express"
+
+  $ cd farm
+  $ npm i express
+    (or
+      $ npm install express)
+
+10. Now we see inside package.json also property
+
+
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+
+  On what packages of what versions my program depends.
+
+11. We see also inside "farm" dir package-lock.json also
+    that contains all the versions of all the dependencies of
+    express and the dir "node-modules" which contains the
+    the installation of express and it's dependencies
+
+12. Create farm/farm.js:
+
+const express = require('express');
+
+let port = 3051;
+
+// Create the server of express.
+// Traditionally we call it "app".
+const app = express();
+
+app.get('/',(req,res) => {
+
+    res.send(`<h1>Sweet, Sweet Home of EXPRESS Server😀</h1>`)
+
+})
+
+app.get('/product',(req,res) => {
+
+    res.send(`<h1>Our farm has the best meat 🥩</h1>`)
+
+})
+
+
+app.listen(port,() => {
+
+    console.log(`Listening on the port ${port} ...`)
+
+})
+
+13. Run the server:
+
+   $ cd farm
+   $ node farm.js
+
+  The server shows in the terminal:
+
+  Listening on the port 3051 ...
+
+14. Now we can send requests from the browser:
+
+localhost:3051 - shows Sweet, Sweet Home of EXPRESS Server😀
+
+or
+
+127.0.0.1:3051
+
+or 
+
+localhost:3051/product - shows Our farm has the best meat 🥩
+
+15. Read data file and show it's content 
+using route "/data":
+
+const express = require('express');
+const fs = require('fs');
+
+let port = 3051;
+
+let dataJSON = fs.readFileSync('./data/data.json','utf-8');
+
+// Create the server of express.
+// Traditionally we call it "app".
+const app = express();
+
+app.get('/',(req,res) => {
+
+    res.send(`<h1>Sweet, Sweet Home of EXPRESS Server😀</h1>`)
+
+})
+
+app.get('/product',(req,res) => {
+
+    res.send(`<h1>Our farm has the best meat 🥩</h1>`)
+
+})
+
+// MISSION: create route to get /data and to send
+//    the whole dataJSON
+
+app.get('/data',(req,res) => {
+
+    res.send(dataJSON);
+
+})
+
+app.listen(port,() => {
+
+    console.log(`Listening on the port ${port} ...`)
+
+})
+
+16. To see the change, restart the server:
+
+Ctrl-C
+$ node farm.js
+
+17.

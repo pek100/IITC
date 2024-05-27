@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NimGame</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="script.js" defer></script>
+    <script src="animation.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="gameContainer">
+        </div>
+        
+        <div class="gameControlsContainer">
+            <div class="gameControls">
+
+                <h2 id="sticksLeft"></h2> 
+                <!-- ///////////// -->
+
+                <div id="modeContainer">
+                    <div id="modeStupid" onclick="play(this.id)"><i class="Modes fa-solid fa-robot"></i><h4 class="modeTXT" style="background-color: #86c900;" >Stupid</h4></div>
+                    <div id="modeSmart" onclick="play(this.id)"><i class="Modes fa-sharp fa-solid fa-robot"></i><h4 style="background-color: #007398;" class="modeTXT">Smart</h4></div>
+                </div>
+
+                <div id="gamePlayContainer">
+                    
+                <button id="back" onclick="back()" ><i class="fa-solid fa-chevron-left"  style="color:aliceblue"></i></button>
+                    <div class="BlockLeft" style="background-color:#94D728">
+                   <label for="you">You</label>
+                    <div id="you">1</div>                
+                    <div id="confirmBtn" onclick="confirm()"><i class="correct fa-solid fa-check"></i></div>
+                    <input id="sizeRange" type="range" min="1" max="9" value="1" class="slider" oninput="sliderChange(this.value)">
+                    </div>
+
+                    <div class="BlockRight" style="background-color:#007398">
+                    <label for="bot">Bot</label>
+                   <div id="bot">?</div>
+                </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
