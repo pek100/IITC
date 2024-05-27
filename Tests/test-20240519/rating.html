@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="view-transition" content="same-origin" />
+
+    <meta charset="UTF-8" />
+    <link rel="icon" href="./img/logo.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Rating | Test 20240519</title>
+    <link href="./css/style.css" rel="stylesheet" />
+    <link href="./css/rating.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav>
+      <ul class="nav-list">
+        <li>
+          <a href="./index.html"><span>Home</span></a>
+        </li>
+        <li class="active">
+          <a href="./rating.html" aria-current="page"><span>Rating</span></a>
+        </li>
+        <li>
+          <a href="./about.html"><span>About</span></a>
+        </li>
+        <li><a href="#">Another</a></li>
+        <li><a href="#">Page</a></li>
+        <li><a href="#">And another</a></li>
+      </ul>
+    </nav>
+    <!--MAIN STARTS HERE-->
+    <main>
+      <h1>Rating</h1>
+      <div class="container">
+        <span id="value"></span>
+        <div class="button-container">
+          <button class="btn decrease">decrease</button>
+          <button class="btn reset">reset</button>
+          <button class="btn increase">increase</button>
+        </div>
+      </div>
+    </main>
+    <script src="./js/rating.js"></script>
+  </body>
+</html>

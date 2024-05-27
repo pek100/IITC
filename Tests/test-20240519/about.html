@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="view-transition" content="same-origin" />
+
+    <meta charset="UTF-8" />
+    <link rel="icon" href="./img/logo.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>About | Test 20240519</title>
+    <link href="./css/style.css" rel="stylesheet" />
+    <link href="./css/about.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav>
+      <ul class="nav-list">
+        <li>
+          <a href="./index.html"><span>Home</span></a>
+        </li>
+        <li>
+          <a href="./rating.html"><span>Rating</span></a>
+        </li>
+        <li class="active">
+          <a href="./about.html" aria-current="page"><span>About</span></a>
+        </li>
+        <li><a href="#">Another</a></li>
+        <li><a href="#">Page</a></li>
+        <li><a href="#">And another</a></li>
+      </ul>
+    </nav>
+    <!--MAIN STARTS HERE-->
+    <main>
+      <div class="wrapper">
+      <h1>About: Name List</h1>
+      <div class="container">
+        <header>
+            <div class="buttons">
+                <button id="boys">boys</button>
+                <button id="girls">girls</button>
+                <button id="everybody">everybody</button>
+                <button id="shuffle-faces" class="hide">shuffle faces</button>
+                <button id="shuffle" class="hide">shuffle all</button>
+              </div>
+              <label for="search">Search:
+                <input type="text" id="search">
+              </label>
+              <label for="random" class="hide">Number of Random Persons:
+                <input type="text" id="random">
+              </label>
+        </header>
+        <ul class="list">
+
+        </ul>
+      </div>
+    </main>
+    <script src="./js/person-list.js" defer></script>
+    <script src="./js/about.js" defer></script>
+  </body>
+</html>
