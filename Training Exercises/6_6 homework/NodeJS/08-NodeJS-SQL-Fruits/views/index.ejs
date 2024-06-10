@@ -1,0 +1,39 @@
+<%- include('partials/header.ejs') %>
+    <div class="table-wrapper">
+        <% if (fruit.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Fruit Name</th>
+                        <th scope="col">Color Id</th>
+                        <th scope="col">Calories</th>
+                        <th scope="col">season</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% fruit.forEach((yum, index) => { %>
+                        <tr>
+                            <th scope="row"><%= yum.id %></th>
+                            <td><img src="/assets/img/<%= yum.image %>" class="rounded-circle food-img" alt=""></td>
+                            <td><%= yum.fruit_name %></td>
+                            <td><%= yum.color_id %></td>
+                            <td><%= yum.calories %>kcal</td>
+                            <td><%= yum.season %></td>
+                            <td>
+                                <a href="/edit/<%= yum.id %>" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%= yum.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No fruit found. Go <a href="/add" >here</a> to add fruit.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
