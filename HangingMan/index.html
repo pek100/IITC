@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hang Man</title>
-    <link rel="icon" type="image" href="assets/svg/hang-man-icon.svg">
+    <title>Hangman Game</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,38 +15,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="assets/svg/icon.svg" type="image/svg+xml">
     <script type="module" src="src/script.js" defer></script>
 </head>
 
 <body>
+    <div class="additional-background"></div>
     <div class="spotlight"></div>
     <div class="clouds"></div>
     <div class="rain front-row"></div>
     <div class="rain back-row"></div>
+    <div class="lives-count"></div>
+    <div class="readme">
+        <p>
+            Project By:
+            <span>Or & Beni & Michael</span>
+        </p>
+    </div>
+    <button class="start-game">New Game</button>
     <div id="container">
         <div class="stage">
-            <span class="hangman-text"></span>
-            <img class="hangman-img" src="assets/svg/hang-man-text.svg" alt="">
-            <object type="image/svg+xml" data="assets/svg/scenes/stage-vibrate.svg">
+            <span class="hangman-text">hang man</span>
+            <object type="image/svg+xml" data="assets/svg/scenes/stage-start-static.svg">
                 Your browser does not support SVGs
             </object>
         </div>
         <div class="crowd">
-            <img id="crowdPerson_1" src="assets/svg/crowd-person-1.svg" alt="crowd">
-            <!-- <img id="crowdPerson_2" src="assets/svg/crowd-person-2.svg" alt="crowd"> -->
-            <img id="crowdPerson_3" src="assets/svg/crowd-person-3.svg" alt="crowd">
-            <!-- <img id="crowdPerson_4" src="assets/svg/crowd-person-4.svg" alt="crowd"> -->
-            <img id="crowdPerson_5" src="assets/svg/crowd-person-5.svg" alt="crowd">
-            
+            <img src="assets/svg/crowd/crowd-person-1.svg" alt="crowd">
+            <img src="assets/svg/crowd/crowd-person-2.svg" alt="crowd">
+            <img src="assets/svg/crowd/crowd-person-3.svg" alt="crowd">
+            <img src="assets/svg/crowd/crowd-person-4.svg" alt="crowd">
+        </div>
+        <div class="crowd2">
+            <img src="assets/svg/crowd/crowd-person-2.svg" alt="crowd">
+            <img src="assets/svg/crowd/crowd-person-3.svg" alt="crowd">
+            <img src="assets/svg/crowd/crowd-person-4.svg" alt="crowd">
         </div>
     </div>
     <div class="player-interaction">
-        <button class="start-game">New Game</button>
-        <p class="lives-count"></p>
         <div class="bubble-bottom">
             <p></p>
         </div>
-        <div class="keyboard hide">
+        <div class="keyboard">
             <div class="keyboard-row">
                 <div class="key-letter">Q</div>
                 <div class="key-letter">W</div>

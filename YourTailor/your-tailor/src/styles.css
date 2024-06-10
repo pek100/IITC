@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+body, html{
+  background-color: #E6E9DE;
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+.container{
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.gallery{
+  display: grid;
+  position: absolute;
+  top: 220px;
+  height:max-content;
+  width: 100vw;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  scroll-snap-type:mandatory;
+}
+
+.lblTop{
+  position: fixed;
+  top: 5px;
+  left:50px;
+  font-size: 60px;
+  color: #1B3363;
+  z-index: 2;
+}
+
+.generateBtn{
+  position:fixed;
+  bottom: 40px;
+  right: 0;
+  border: none;
+  height: 100px;
+  width: 120px;
+  background-color: #1D2E4C;
+  color: #E6E9DE;
+  border-radius: 20px 0px 0px 20px;
+  cursor: pointer;
+  transition: 0.05s;
+}
+
+.generateBtn>h2{
+  font-size: 34px;
+  text-align: center;
+  width:100%;
+}
+.generateBtn>h2>i{
+  font-size: 45px;
+
+}
+
+.generateBtn:hover{
+  width: 140px;
+  background-color: #2f4975;
+  transition: 0.05s;
+}
+
+.generateBtn:active{
+  width: 160px;
+  background-color: #577dbe;
+}
+
+
+.card{
+  display: grid;
+  height: 512px;
+  width: 512px;
+  border-radius: 20px;
+  /* grid-template-rows: subgrid; */
+  background-color: white;
+  box-shadow: 0px 0px 100px 0px #00000025;
+  object-fit: none;
+  margin-bottom: 220px;
+}
+
+.card:hover{
+  transform: scale(102%);
+
+}
+
+
+.scrollBtn{
+  position:fixed;
+  top: 40px;
+  right: 20px;
+  border: none;
+  height: 80px;
+  width: 80px;
+  background-color: #2f49753a;
+
+  color: #E6E9DE;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.05s;
+}
+
+.scrollBtn:hover{
+  background-color: #2f497585;
+
+}
+.scrollBtn:active{
+  background-color: #2f4975;
+}
+
+.scrollBtn>h2{
+  font-size: 28px;
+  text-align: center;
+  width:100%;
+}
+
+.invisible{
+  visibility: hidden;
+}

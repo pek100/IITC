@@ -5,7 +5,7 @@ export function hangmanTextTransform(clear, winStatus = undefined) {
 	hangmanText.classList.add("fade-out");
 
 	setTimeout(() => {
-		hangmanText.innerText = clear ? "" : winStatus ? "Saved!" : "HANGED!";
+		hangmanText.innerText = clear ? "hang man" : winStatus ? "Saved!" : "HANGED!";
 
 		if (clear) hangmanText.classList.remove("hanged", "saved");
 		else hangmanText.classList.add(winStatus ? "saved" : "hanged");
