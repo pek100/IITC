@@ -19,9 +19,7 @@ export default function App() {
   }
 
   function addCards() {
-    setNewCard((currentCards) => {return [...currentCards, {id: crypto.randomUUID(), completed: false},]});
-    setNewCard((currentCards) => {return [...currentCards, {id: crypto.randomUUID(), completed: false},]});
-    setNewCard((currentCards) => {return [...currentCards, {id: crypto.randomUUID(), completed: false},]});
+    setNewCard((currentCards) => {return [...currentCards, {}, {}, {}]});
     setScrollButton("");
     setScrollButtonIcon("fa-solid fa-chevron-up");
     setScrollButtonVisibility(newCard.length > 2? "scrollBtn": "invisible");
@@ -37,8 +35,8 @@ export default function App() {
   </div>
 
 
-  <a onClick={changescroll} href={scrollButton} className={scrollButtonVisibility}><h2><i class={scrollButtonIcon}></i></h2></a>
-  <a onClick={addCards} href={"#"+latestId} className="generateBtn"><h2><i class="fa-solid fa-rotate"></i></h2></a>
+  <a onClick={changescroll} href={scrollButton} className={scrollButtonVisibility}><h2><i className={scrollButtonIcon}></i></h2></a>
+  <a onClick={addCards} href={"#"+latestId} className="generateBtn"><h2><i className="fa-solid fa-rotate"></i></h2></a>
 
   <footer id="footer"></footer>
   </div>

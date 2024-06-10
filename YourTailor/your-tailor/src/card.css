@@ -1,0 +1,49 @@
+.card>.orderBtn{
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 200px;
+    height: 80px;
+    background-color: #1B3363;
+    border-radius: 6px;
+  }
+  
+  .card:hover>.orderBtn{
+  visibility: visible;
+  }
+  
+  .card>.orderBtn:hover{
+    transform: scale(104%);
+  }
+  
+  .orderBtn>h2{
+    position: absolute;
+    font-size: 40px;
+    bottom: -25%;
+    left: 28%;
+    color: white;
+    text-align: center;
+  }
+  
+  .card>.likeBtn{
+    display: block;
+    position: relative;
+    top: 0px;
+    right: -84%;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  .card>.likeBtn>h2>i{
+    font-size: 60px;
+  }
+
+  .card>.likeBtn:hover>h2>i{
+    transform: scale(110%);
+    color: #FE4543;
+  }
+  
+
+  
