@@ -1,65 +1,92 @@
 let display = document.querySelector('#display');
-let body = document.querySelector('body');
-const regex = /^[\d\+\-\*\/\%\^\(\)]+$/;
+const regex = /^[\d+\-*/%^()÷\b\(.)\(!)\(√)]+$/;
+const sqrtRegex = /√(\d+(\.\d+)?)/g;
+const factorialRegex = /(\d+(\.\d+)?)!/g;
+const percentageRegex = /(\d+(\.\d+)?)%(\d+(\.\d+)?)/g;
 
-const appendValue = value => display.value += value;
+const isValidInput = value => regex.test(value);
+const appendValue = value => {display.value += value;}
 
-body.addEventListener('keydown', (e) => {
-    if (!regex.test(display.value)){display.value=''};
-    e.code === 'Enter' || '=' ?(calculate()):(regex.test(e.key)?appendValue(e.key):null)
-}
-);
-body.addEventListener('click', (event) => {
-    if (!regex.test(display.value)){display.value=''};
+const onKeydown = e => {
+    input();
+  if (e.code === 'Backspace') display.value = display.value.slice(0, -1);
+  else if (isValidInput(e.key)) {
+    (e.code === 'Enter' || e.code === '=' || e.code === 'Space') ? calculate(display.value) : appendValue(e.key);
+  }}
 
-    if (regex.test(event.target.getAttribute('data-operation'))) {
-        appendValue(event.target.getAttribute('data-operation'));
+  const onClick = target => {    
+    input();
+    if (!isValidInput(display.value) || clear) display.value = '';
+    clear = false;
+    if (isValidInput(target.innerHTML)) {
+        appendValue(target.innerHTML);
     } else {
-        switch (event.target.getAttribute('data-operation')) {
-            case 'root':
-                display.value = Math.sqrt(parseFloat(display.value));
-                break;
-            case 'factorial':
-                const num = parseInt(display.value);
-                if (isNaN(num) || num < 0) {
-                    display.value = 'Error';
-                } else if (num === 0) {
-                    display.value = 1;
-                } else {
-                    let result = 1;
-                    for (let i = 1; i <= num; i++) {
-                        result *= i;
-                    }
-                    display.value = result;
-                }
-                break;
-            case 'bin2dec':
-                display.value = parseInt(display.value, 2);
-                break;
-            case 'dec2bin':
-                display.value = parseInt(display.value).toString(2);
-                break;
-            case 'hex2dec':
-                display.value = parseInt(display.value, 16);
-                break;
-            case 'dec2hex':
-                display.value = parseInt(display.value).toString(16);
-                break;
-            case 'clearDisplay':
-                display.value = '';
-                break;
-            case 'calculate':
-                calculate();
-                break;
-        }
+      success();
+        const handlers = {
+            'BinToDec': () => parseInt(display.value, 2),
+            'DecToBin': () => parseInt(display.value).toString(2),
+            'HexToDec': () => parseInt(display.value, 16),
+            'DecToHex': () => parseInt(display.value).toString(16),
+            'C': () => {display.value = ''; display.style.backgroundColor="#282a32";},
+            '=': calculate(display.value)
+        };
+        const result = handlers[target.innerHTML]();
+        if (result !== undefined) display.value = result;
     }
-});
-
-const calculate = () => {
-    if (regex.test(display.value)){
-    try {display.value = eval(display.value)} catch (error) {display.value = 'Error'}
-    }else{
-    display.value = "Bad input";
 }
-};
 
+  const error = (isbad) => { display.style.backgroundColor = "rgb(97, 0, 0)";;
+    display.value = isbad==0?'Bad Input':'Error';}
+
+  const success = () => {
+    display.style.backgroundColor="rgb(62, 104, 0)";}
+
+  const input = () => {
+    display.style.backgroundColor="#282a3a";
+  }
+
+
+  const onFactorial = (value) => {
+    if (isNaN(value) || value < 0) {
+      error();
+      
+    } else if (value === 0) {
+      return 1;
+    } else {
+      let result = 1;
+      for (let i = 1; i <= value; i++) {
+        result *= i;
+      }
+      return result;
+    }}
+    const calculate = (value) => {
+      if (value.includes("-") || value.includes("+") ||
+          value.includes("÷") || value.includes("*") ||
+          value.includes("^") || value.includes("%") ||
+          value.includes("/") || value.includes("√") ||
+          value.includes("!")) {
+        if (isValidInput(display.value)) {
+          try {
+            let result = value;
+            // Handle square roots
+            result = result.replace(sqrtRegex, (match, number) => Math.sqrt(parseFloat(number)));
+            // Handle factorials
+            result = result.replace(factorialRegex, (match, number) => onFactorial(parseFloat(number)));
+            // Handle percentages
+            result = result.replace(percentageRegex, (match, percentage, _, number) => (parseFloat(number) * parseFloat(percentage) / 100));  
+            // Replace special characters
+            result = result.replace(/÷/g, "/");
+            result = result.replace(/\^/g, "**");
+    
+            // Evaluate the expression
+            display.value = eval(result);
+          } catch {
+            error(0);
+          }
+        } else {
+          error();
+        }
+      }
+    }
+document.body.addEventListener('keydown', onKeydown);
+document.body.addEventListener('click', e => e.target.matches('button') && onClick(e.target));

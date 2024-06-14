@@ -19,7 +19,10 @@ export default function App() {
   }
 
   function addCards() {
-    setNewCard((currentCards) => {return [...currentCards, {}, {}, {}]});
+    setNewCard((currentCards) => {
+      return [...currentCards,{id: crypto.randomUUID()}, {id: crypto.randomUUID()}, {id: crypto.randomUUID()}];
+    });
+    
     setScrollButton("");
     setScrollButtonIcon("fa-solid fa-chevron-up");
     setScrollButtonVisibility(newCard.length > 2? "scrollBtn": "invisible");

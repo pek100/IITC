@@ -14,28 +14,15 @@ body, html{
   height: 100vh;
   width: 100vw;
   margin: 0;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
-}
-
-
-.gallery{
-  display: grid;
-  position: absolute;
-  top: 220px;
-  height:max-content;
-  width: 100vw;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px;
-  scroll-snap-type:mandatory;
 }
 
 .lblTop{
   position: fixed;
-  top: 5px;
-  left:50px;
-  font-size: 60px;
+  top: -0.7vw;
+  left:3vw;
+  font-size: 3.4vw;
   color: #1B3363;
   z-index: 2;
 }
@@ -45,8 +32,8 @@ body, html{
   bottom: 40px;
   right: 0;
   border: none;
-  height: 100px;
-  width: 120px;
+  height: 5vw;
+  width: 6vw;
   background-color: #1D2E4C;
   color: #E6E9DE;
   border-radius: 20px 0px 0px 20px;
@@ -55,38 +42,62 @@ body, html{
 }
 
 .generateBtn>h2{
-  font-size: 34px;
+  font-size: 1.6vw;
   text-align: center;
   width:100%;
 }
 .generateBtn>h2>i{
-  font-size: 45px;
+  font-size: 2.4vw;
 
 }
 
 .generateBtn:hover{
-  width: 140px;
+  width: 7vw;
   background-color: #2f4975;
   transition: 0.05s;
 }
 
 .generateBtn:active{
-  width: 160px;
+  width: 8vw;
   background-color: #577dbe;
 }
 
 
+.gallery{
+  display: grid;
+  position: absolute;
+  /* top: 220px; */
+  height:max-content;
+  width: 96vw;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2vw;
+  scroll-snap-type:mandatory;
+}
+
 .card{
   display: grid;
-  height: 512px;
-  width: 512px;
+  height: 30vw;
+  width: 30vw;
   border-radius: 20px;
-  /* grid-template-rows: subgrid; */
   background-color: white;
   box-shadow: 0px 0px 100px 0px #00000025;
   object-fit: none;
-  margin-bottom: 220px;
+  position: relative;
+  margin-top:calc((100vh - 30vw)/2);
+  margin-bottom: calc((100vh - 30vw)/2);
 }
+
+/* .card{
+  display: grid;
+  grid-template-columns: 1fr 40%;
+  grid-template-rows: 15% 1fr 15%;
+  border-radius: 20px;
+  width: 120%;
+  background-color: white;
+  box-shadow: 0px 0px 100px 0px #00000025;
+  object-fit: none;
+} */
 
 .card:hover{
   transform: scale(102%);
@@ -96,17 +107,16 @@ body, html{
 
 .scrollBtn{
   position:fixed;
-  top: 40px;
-  right: 20px;
+  top: 2vw;
+  right: 2vw;
   border: none;
-  height: 80px;
-  width: 80px;
+  height: 4.5vw;
+  width: 4.5vw;
   background-color: #2f49753a;
-
   color: #E6E9DE;
   border-radius: 20px;
   cursor: pointer;
-  transition: 0.05s;
+  transition: 0.2s;
 }
 
 .scrollBtn:hover{
@@ -118,7 +128,7 @@ body, html{
 }
 
 .scrollBtn>h2{
-  font-size: 28px;
+  font-size: 1.7vw;
   text-align: center;
   width:100%;
 }
