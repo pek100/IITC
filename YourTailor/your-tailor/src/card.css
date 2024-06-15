@@ -1,3 +1,32 @@
+  
+.card{
+  display: grid;
+  height: 30vw;
+  width: 30vw;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 100px 0px #00000025;
+  object-fit: none;
+  position: relative;
+  /* margin-top:calc((100vh - 30vw)/2);
+  margin-bottom: calc((100vh - 30vw)/2); */
+  /* top: 10vw; */
+}
+
+.unmargined-cards{
+  margin-top:calc((100vh - 30vw)/2);
+}
+
+.margined-cards{
+  margin-top:calc((100vh - 30vw)/2);
+  margin-bottom: calc((100vh - 30vw)/2);
+}
+
+.card:hover{
+  transform: scale(102%);
+
+}
+  
   .orderBtn{
     display: block;
     visibility: hidden;
@@ -8,6 +37,8 @@
     height: 4vw;
     background-color: #1B3363;
     border-radius: 6px;
+    transition: 0.1s;
+    cursor: pointer;
   }
   
   .card:hover>.orderBtn{
@@ -15,7 +46,13 @@
   }
   
   .orderBtn:hover{
-    transform: scale(104%);
+    transform: scale(110%);
+    transition: 0.2s;
+  }
+
+  .orderBtn:active{
+    transform: scale(100%);
+    transition: 0.1s;
   }
   
   .orderBtn>h2{
@@ -28,28 +65,49 @@
   }
   
   .likeBtn{
-    display: block;
-    position: absolute;
-    visibility: hidden;
-    top:1vw;
-    right: 1vw;
-    width: fit-content;
-    height: fit-content;
+    display:flex;
+    position: relative;
+    right: -26vw;
+    top: -1.6vw;
+    width: max-content;
+    height: max-content;
+    color: #1b3363c2;
+    cursor: pointer;
+    visibility: hidden; 
   }
+  
   
   .card:hover>.likeBtn{
     visibility: visible;
     }
     
 
-  .likeBtn>h2>i{
+  .likeBtn>h2{
     font-size: 2.8vw;
+  }
+
+  .likeBtn>h2>i{
+    transition: 0.1s;
   }
 
   .likeBtn:hover>h2>i{
     transform: scale(110%);
     color: #FE4543;
+    transition: 0.2s;
   }
   
+  .likeBtn:active>h2>i{
+    transform: scale(100%);
+    color: #FE4543;
+    text-shadow: 0px 0px 20px #fe4643a8;
+    transition: 0.1s;
+  }
+
+  .is-liked{
+    color: #FE4543;
+    visibility: visible;
+  }
+  
+
 
   

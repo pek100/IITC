@@ -7,6 +7,14 @@ body, html{
   font-style: normal;
   margin: 0;
   scroll-behavior: smooth;
+  /*scroll-snap-stop: always;*/
+  /*scroll-snap-type:both;*/
+  /*scroll-snap-align:center;*/
+}
+
+
+a, i{
+  user-select: none;
 }
 
 .container{
@@ -20,23 +28,26 @@ body, html{
 
 .lblTop{
   position: fixed;
-  top: -0.7vw;
-  left:3vw;
+  top: -2vw;
+  padding: 10px;
   font-size: 3.4vw;
   color: #1B3363;
+  /* background-color: #E6E9DE; */
+  width: 100%;
+  text-align: center;
   z-index: 2;
 }
 
 .generateBtn{
   position:fixed;
-  bottom: 40px;
-  right: 0;
+  bottom: 2vw;
+  right: 2vw;
   border: none;
-  height: 5vw;
-  width: 6vw;
+  height: 4.5vw;
+  width: 4.5vw;
   background-color: #1D2E4C;
   color: #E6E9DE;
-  border-radius: 20px 0px 0px 20px;
+  border-radius: 120px;
   cursor: pointer;
   transition: 0.05s;
 }
@@ -47,18 +58,18 @@ body, html{
   width:100%;
 }
 .generateBtn>h2>i{
-  font-size: 2.4vw;
+  font-size: 2vw;
 
 }
 
 .generateBtn:hover{
-  width: 7vw;
+  transform: scale(110%);
   background-color: #2f4975;
   transition: 0.05s;
 }
 
 .generateBtn:active{
-  width: 8vw;
+  transform: scale(100%);
   background-color: #577dbe;
 }
 
@@ -72,49 +83,19 @@ body, html{
   justify-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2vw;
-  scroll-snap-type:mandatory;
-}
-
-.card{
-  display: grid;
-  height: 30vw;
-  width: 30vw;
-  border-radius: 20px;
-  background-color: white;
-  box-shadow: 0px 0px 100px 0px #00000025;
-  object-fit: none;
-  position: relative;
-  margin-top:calc((100vh - 30vw)/2);
-  margin-bottom: calc((100vh - 30vw)/2);
-}
-
-/* .card{
-  display: grid;
-  grid-template-columns: 1fr 40%;
-  grid-template-rows: 15% 1fr 15%;
-  border-radius: 20px;
-  width: 120%;
-  background-color: white;
-  box-shadow: 0px 0px 100px 0px #00000025;
-  object-fit: none;
-} */
-
-.card:hover{
-  transform: scale(102%);
-
 }
 
 
 .scrollBtn{
   position:fixed;
-  top: 2vw;
-  right: 2vw;
+  bottom: 2vw;
+  right: 7.5vw;
   border: none;
   height: 4.5vw;
   width: 4.5vw;
   background-color: #2f49753a;
   color: #E6E9DE;
-  border-radius: 20px;
+  border-radius: 120px;
   cursor: pointer;
   transition: 0.2s;
 }
