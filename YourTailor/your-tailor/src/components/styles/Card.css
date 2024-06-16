@@ -35,6 +35,7 @@
   background-color: #1B3363;
   border-radius: 6px;
   transition: 0.1s;
+  transition: background-color .4s;
   cursor: pointer;
 }
 
@@ -54,12 +55,20 @@
 
 .orderBtn > h2 {
   position: absolute;
-  font-size: calc(2 * var(--dynamic-sizing));
-  bottom: -25%;
-  left: 28%;
+  font-size: calc(1.7 * var(--dynamic-sizing));
+  width: 100%;
+  height: 80%;
+  top: -10%;
   color: white;
   text-align: center;
 }
+
+.order-visible {
+  background-color: #FE4543;
+  visibility: visible;
+  transition: .4s;
+}
+
 
 .likeBtn {
   display: flex;

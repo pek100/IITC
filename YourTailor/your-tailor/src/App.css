@@ -33,14 +33,14 @@ a, i {
   position:fixed;
   left: 0;
   right: 0;
-  padding: calc(15 * var(--dynamic-sizing) / 10);
-  font-size: calc(3.4 * var(--dynamic-sizing));
+  padding: calc(24 * var(--dynamic-sizing) / 10);
+  font-size: calc(2.4 * var(--dynamic-sizing));
   color: #1B3363;
   background-color: #E6E9DE;
   text-align: center;
   z-index: 2;
   margin: 0;
-  border-radius: 0px 0px 40% 40%;
+  /* border-radius: 0px 0px 40% 40%; */
 }
 
 .container {
@@ -160,6 +160,23 @@ a, i {
 }
 
 
+.icon {
+  position: fixed;
+  cursor: pointer;
+  transition: 0.05s;
+  z-index: 4;
+}
+
+.icon > h2 > i {
+  font-size: calc(2 * var(--dynamic-sizing));
+}
+
+.icon:active {
+  transform: scale(95%);
+}
+
+
+
 @media screen and (min-width:0px) and (max-width: 600px){
   :root {
     --multiplier: 3.2; 
@@ -168,11 +185,14 @@ a, i {
     grid-template-columns: 1fr;
   }
   .lblTop::after{
-  content: 'Would you wear this?';
+  content: 'Do you like this?';
 }
 .profileBtn {
   bottom: calc(2 * var(--dynamic-sizing));
   left: calc(2 * var(--dynamic-sizing));
+}
+.icon{
+  visibility: hidden;
 }
 }
 
@@ -184,11 +204,14 @@ a, i {
     grid-template-columns: 1fr;
   }
   .lblTop::after{
-  content: 'Would you wear this?';
+  content: 'Do you like this?';
 }
 .profileBtn {
   bottom: calc(2 * var(--dynamic-sizing));
   left: calc(2 * var(--dynamic-sizing));
+}
+.icon{
+  visibility: hidden;
 }
 }
 
@@ -200,17 +223,20 @@ a, i {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  .lblTop{
-    border-radius: 0px 0px 20% 20%;
-  }
 
   .lblTop::after{
-    content: 'What would you wear?';
+    content: 'What do you like most?';
   }
 
   .profileBtn {
     top: calc(1.4 * var(--dynamic-sizing));
     right: calc(2 * var(--dynamic-sizing));
+  }
+
+  
+  .icon {
+    top: calc(0.4 * var(--dynamic-sizing));
+    left: calc(2 * var(--dynamic-sizing));
   }
 
 }

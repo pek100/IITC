@@ -2,17 +2,20 @@ import "./App.css";
 import "https://kit.fontawesome.com/2bae59e414.js";
 import {Card} from "./components/Card.jsx";
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useMediaQuery } from 'react-responsive'
+import { useMediaQuery } from 'react-responsive';
+import icon from './assets/YourTailor.svg';
 
 export default function App() {
   const [newCard, setNewCard] = useState([]);
   const [scrollButton, setscrollButton] = useState("");
   const [scrollButtonIcon, setScrollButtonIcon] = useState("fa-solid fa-chevron-up");
   const [scrollButtonVisibility, setScrollButtonVisibility] = useState("invisible");
+  
 
   const isSmallScreen = useMediaQuery({ query: '(min-width:0px) and (max-width: 600px)' })
   const isMobile = useMediaQuery({ query: '(min-width:600px) and (max-width: 800px)' })
   const isBigScreen = useMediaQuery({ query: '(min-width: 800px)' })
+  
 
   // Refs for pull-to-load-more
   const pullStartY = useRef(0);
@@ -65,17 +68,19 @@ export default function App() {
       if (dynamicFocus) {
         dynamicFocus.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-    }, 0);
+    }, 10);
   }, [isSmallScreen ,isMobile, isBigScreen, newCard.length]);
     //
 
-  const marginCards = useCallback((index, cardCount) => {
-    setTimeout(() => {
+
+
+  const marginCards = useCallback((index, cardCount, secondPass) => {
+
       const onLoadFocus = document.getElementById(latestIdRef.current);
       if (onLoadFocus) {
         onLoadFocus.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-    }, 0);
+
 
     if (isMobile || isSmallScreen){
       return index + 1 == cardCount ? "margined-cards" :
@@ -84,10 +89,12 @@ export default function App() {
     
     if (isBigScreen) {
       const leftOverCards = 3 - Math.round(((index) % 3)) ;
-        return index + 1 > cardCount - leftOverCards? "margined-cards" :
-        index < 3 ? "unmargined-cards" : "";  
+      return index + 1 > cardCount - leftOverCards - 3? "margined-cards" :
+      index < 3 ? "unmargined-cards" : "";  
     }
     return "";
+
+
 
   }, [isMobile, isBigScreen, isSmallScreen]);
 
@@ -157,14 +164,13 @@ export default function App() {
     <div className="container" ref={containerRef}>
       <div className="gallery">
       {newCard.map((card, index) => (
-        <div className={marginCards(index, newCard.length)} id={index + 1} key={card.id}>
-          <Card/>
-          </div>
+        <div className={marginCards(index, newCard.length, false)} id={index + 1} key={card.id}><Card/></div>
         ))}
       </div>
+      <a className="icon"><h2><img src={icon} alt="" /></h2></a>
+      <a className="profileBtn"><h2><i className="fa-solid fa-user"></i></h2></a>
       <a onClick={changescroll} href={scrollButton} className={scrollButtonVisibility}><h2><i className={scrollButtonIcon}></i></h2></a>
       <a onClick={addCards} className="generateBtn"><h2><i className="fa-solid fa-rotate"></i></h2></a>
-      <a className="profileBtn"><h2><i className="fa-solid fa-user"></i></h2></a>
       <footer id="footer"></footer>
     </div>
     </>
