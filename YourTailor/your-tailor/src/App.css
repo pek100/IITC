@@ -1,50 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
 
-body, html{
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap');
+
+:root {
+  --base: 1vw;
+  --multiplier: 1;
+  --dynamic-sizing: calc(var(--base) * var(--multiplier));
+}
+
+body, html {
   background-color: #E6E9DE;
-  font-family: "Caveat", cursive;
+  font-family: "ABeeZee", sans-serif;
+  /* font-family: "Caveat", cursive; */
+  /* font-family: "Love Ya Like A Sister", cursive; */
   font-optical-sizing: auto;
   font-style: normal;
   margin: 0;
+  padding: 0;
   scroll-behavior: smooth;
-  /*scroll-snap-stop: always;*/
-  /*scroll-snap-type:both;*/
-  /*scroll-snap-align:center;*/
+  /* scroll-snap-stop: always; */
+  /* scroll-snap-type: both; */
+  /* scroll-snap-align: center; */
 }
 
-
-a, i{
+a, i {
   user-select: none;
 }
 
-.container{
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  /* align-items: center; */
-  justify-content: center;
-}
-
-.lblTop{
-  position: fixed;
-  top: -2vw;
-  padding: 10px;
-  font-size: 3.4vw;
+.lblTop {
+  position:fixed;
+  left: 0;
+  right: 0;
+  padding: calc(15 * var(--dynamic-sizing) / 10);
+  font-size: calc(3.4 * var(--dynamic-sizing));
   color: #1B3363;
-  /* background-color: #E6E9DE; */
-  width: 100%;
+  background-color: #E6E9DE;
   text-align: center;
   z-index: 2;
+  margin: 0;
+  border-radius: 0px 0px 40% 40%;
 }
 
-.generateBtn{
-  position:fixed;
-  bottom: 2vw;
-  right: 2vw;
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  padding-top: calc(6 * var(--dynamic-sizing)); /* Adjust this value to match your .lblTop height */
+  box-sizing: border-box;
+}
+
+.gallery {
+  display: grid;
+  width: 96vw;
+  margin: 0 auto;
+  justify-items: center;
+  gap: calc(2 * var(--dynamic-sizing));
+}
+
+.generateBtn {
+  position: fixed;
+  bottom: calc(2 * var(--dynamic-sizing));
+  right: calc(2 * var(--dynamic-sizing));
   border: none;
-  height: 4.5vw;
-  width: 4.5vw;
+  height: calc(4.5 * var(--dynamic-sizing));
+  width: calc(4.5 * var(--dynamic-sizing));
   background-color: #1D2E4C;
   color: #E6E9DE;
   border-radius: 120px;
@@ -52,47 +74,66 @@ a, i{
   transition: 0.05s;
 }
 
-.generateBtn>h2{
-  font-size: 1.6vw;
+.generateBtn > h2 {
+  font-size: calc(1.6 * var(--dynamic-sizing));
   text-align: center;
-  width:100%;
-}
-.generateBtn>h2>i{
-  font-size: 2vw;
-
+  width: 100%;
 }
 
-.generateBtn:hover{
+.generateBtn > h2 > i {
+  font-size: calc(2 * var(--dynamic-sizing));
+}
+
+.generateBtn:hover {
   transform: scale(110%);
   background-color: #2f4975;
   transition: 0.05s;
 }
 
-.generateBtn:active{
+.generateBtn:active {
   transform: scale(100%);
   background-color: #577dbe;
 }
 
+.profileBtn {
+  position: fixed;
+  height: calc(4.5 * var(--dynamic-sizing));
+  width: calc(4.5 * var(--dynamic-sizing));
+  background-color: #1D2E4C;
+  color: #E6E9DE;
+  border-radius: 120px;
+  cursor: pointer;
+  transition: 0.05s;
+  z-index: 4;
+}
 
-.gallery{
-  display: grid;
-  position: absolute;
-  /* top: 220px; */
-  height:max-content;
-  width: 96vw;
-  justify-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2vw;
+.profileBtn > h2 {
+  font-size: calc(1.6 * var(--dynamic-sizing));
+  text-align: center;
+  width: 100%;
+}
+
+.profileBtn > h2 > i {
+  font-size: calc(2 * var(--dynamic-sizing));
+}
+
+.profileBtn:hover {
+  background-color: #2f4975;
+  transition: 0.05s;
+}
+
+.profileBtn:active {
+  background-color: #577dbe;
 }
 
 
-.scrollBtn{
-  position:fixed;
-  bottom: 2vw;
-  right: 7.5vw;
+.scrollBtn {
+  position: fixed;
+  bottom: calc(2 * var(--dynamic-sizing));
+  right: calc(7.5 * var(--dynamic-sizing));
   border: none;
-  height: 4.5vw;
-  width: 4.5vw;
+  height: calc(4.5 * var(--dynamic-sizing));
+  width: calc(4.5 * var(--dynamic-sizing));
   background-color: #2f49753a;
   color: #E6E9DE;
   border-radius: 120px;
@@ -100,21 +141,76 @@ a, i{
   transition: 0.2s;
 }
 
-.scrollBtn:hover{
+.scrollBtn:hover {
   background-color: #2f497585;
-
 }
-.scrollBtn:active{
+
+.scrollBtn:active {
   background-color: #2f4975;
 }
 
-.scrollBtn>h2{
-  font-size: 1.7vw;
+.scrollBtn > h2 {
+  font-size: calc(1.7 * var(--dynamic-sizing));
   text-align: center;
-  width:100%;
+  width: 100%;
 }
 
-.invisible{
+.invisible {
   visibility: hidden;
 }
 
+
+@media screen and (min-width:0px) and (max-width: 600px){
+  :root {
+    --multiplier: 3.2; 
+  }
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+  .lblTop::after{
+  content: 'Would you wear this?';
+}
+.profileBtn {
+  bottom: calc(2 * var(--dynamic-sizing));
+  left: calc(2 * var(--dynamic-sizing));
+}
+}
+
+@media screen and (min-width:600px) and (max-width: 800px){
+  :root {
+    --multiplier: 2.2; 
+  }
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+  .lblTop::after{
+  content: 'Would you wear this?';
+}
+.profileBtn {
+  bottom: calc(2 * var(--dynamic-sizing));
+  left: calc(2 * var(--dynamic-sizing));
+}
+}
+
+@media screen and (min-width: 800px) {
+  :root {
+    --multiplier: 0.9; 
+  }
+  .gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .lblTop{
+    border-radius: 0px 0px 20% 20%;
+  }
+
+  .lblTop::after{
+    content: 'What would you wear?';
+  }
+
+  .profileBtn {
+    top: calc(1.4 * var(--dynamic-sizing));
+    right: calc(2 * var(--dynamic-sizing));
+  }
+
+}

@@ -1,0 +1,123 @@
+
+
+.card {
+  display: grid;
+  height: calc(30 * var(--dynamic-sizing));
+  width: calc(30 * var(--dynamic-sizing));
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 100px 0px #00000025;
+  object-fit: none;
+  position: relative;
+}
+
+.unmargined-cards {
+  margin-top: calc((100vh - (30 * var(--dynamic-sizing))) / 2);
+}
+
+.margined-cards {
+  margin-top: calc((100vh - (30 * var(--dynamic-sizing))) / 2);
+  margin-bottom: calc((100vh - (30 * var(--dynamic-sizing))) / 2);
+}
+
+.card:hover {
+  transform: scale(102%);
+}
+
+.orderBtn {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+  width: calc(10 * var(--dynamic-sizing));
+  height: calc(4 * var(--dynamic-sizing));
+  background-color: #1B3363;
+  border-radius: 6px;
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+.card:hover > .orderBtn {
+  visibility: visible;
+}
+
+.orderBtn:hover {
+  transform: scale(110%);
+  transition: 0.2s;
+}
+
+.orderBtn:active {
+  transform: scale(100%);
+  transition: 0.1s;
+}
+
+.orderBtn > h2 {
+  position: absolute;
+  font-size: calc(2 * var(--dynamic-sizing));
+  bottom: -25%;
+  left: 28%;
+  color: white;
+  text-align: center;
+}
+
+.likeBtn {
+  display: flex;
+  position: relative;
+  right: calc(-26 * var(--dynamic-sizing));
+  top: calc(-1.6 * var(--dynamic-sizing));
+  width: max-content;
+  height: max-content;
+  color: #1b3363c2;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.card:hover > .likeBtn {
+  visibility: visible;
+}
+
+.likeBtn > h2 {
+  font-size: calc(2.8 * var(--dynamic-sizing));
+}
+
+.likeBtn > h2 > i {
+  transition: 0.1s;
+}
+
+.likeBtn:hover > h2 > i {
+  transform: scale(110%);
+  color: #FE4543;
+  transition: 0.2s;
+}
+
+.likeBtn:active > h2 > i {
+  transform: scale(100%);
+  color: #FE4543;
+  text-shadow: 0px 0px 20px #fe4643a8;
+  transition: 0.1s;
+}
+
+.is-liked {
+  color: #FE4543;
+  visibility: visible;
+}
+
+@media screen and (min-width:0px) and (max-width: 600px){
+.card{
+  border-radius: 3px;
+  height: calc(30 * var(--dynamic-sizing));
+}
+
+}
+
+.merchImg{
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  width: 90%;
+  height: 90%;
+  border-radius: 12px;
+  position: absolute;
+  /* border-style: solid; */
+}

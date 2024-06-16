@@ -1,5 +1,6 @@
-import "./Card.css";
+import "./styles/Card.css";
 import { useState } from 'react';
+import tshirt from './assets/tshirt1.png'
 
 
 export function Card(){
@@ -12,6 +13,7 @@ export function Card(){
 
 
     return <div className="card">
+        <img className="merchImg" src={tshirt} alt="tshirt image" />
         <a className="orderBtn"><h2>Order</h2></a>
         <a onClick={like} className="likeBtn"><h2><i className={likeIcon}></i></h2></a>
     </div>
