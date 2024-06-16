@@ -48,7 +48,6 @@ a, i {
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  padding-top: calc(6 * var(--dynamic-sizing)); /* Adjust this value to match your .lblTop height */
   box-sizing: border-box;
 }
 
@@ -165,11 +164,11 @@ a, i {
   cursor: pointer;
   transition: 0.05s;
   z-index: 4;
+  margin: 0;
+  padding: 0;
 }
 
-.icon > h2 > i {
-  font-size: calc(2 * var(--dynamic-sizing));
-}
+
 
 .icon:active {
   transform: scale(95%);
@@ -235,7 +234,7 @@ a, i {
 
   
   .icon {
-    top: calc(0.4 * var(--dynamic-sizing));
+    top: calc(-0.2 * var(--dynamic-sizing));
     left: calc(2 * var(--dynamic-sizing));
   }
 
