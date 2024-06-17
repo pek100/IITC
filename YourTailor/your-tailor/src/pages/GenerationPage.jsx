@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useMediaQuery } from 'react-responsive';
 import { Card } from "../components/Card.jsx";
 import icon from '../assets/YourTailor.svg';
+import logo from '../assets/YourTailorLogo.svg';
 
 const GenerationPage = () => {
 
@@ -145,21 +146,20 @@ const isBigScreen = useMediaQuery({ query: '(min-width: 800px)' })
   }, [isMobile, isSmallScreen]);
 
   return (
-    <>
-      <h1 className="lblTop"></h1>
+    <div className="generation-page">
+      <h1 className="lblTop"><a className="icon"><h2><img src={logo} alt="" /></h2></a></h1>
       <div className="container" ref={containerRef}>
         <div className="gallery">
         {newCard.map((card, index) => (
           <div className={marginCards(index, newCard.length)} id={index + 1} key={card.id}><Card/></div>
           ))}
         </div>
-        <a className="icon"><h2><img src={icon} alt="" /></h2></a>
         <a className="profileBtn"><h2><i className="fa-solid fa-user"></i></h2></a>
         <a onClick={changescroll} href={scrollButton} className={scrollButtonVisibility}><h2><i className={scrollButtonIcon}></i></h2></a>
         <a onClick={addCards} className="generateBtn"><h2><i className="fa-solid fa-rotate"></i></h2></a>
         <footer id="footer"></footer>
       </div>
-    </>
+    </div>
   );
 };
 

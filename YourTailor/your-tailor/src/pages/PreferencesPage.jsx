@@ -7,7 +7,7 @@ const PreferencesPage = ({ onSubmit }) => {
 
   return (
     <div className="preferences-page">
-      <h1>Preferences</h1>
+      <h1 className="page-title">Preferences</h1>
       <div className="gender-selection">
         <h2>What is your gender?</h2>
         <button onClick={() => setGender('Male')} className={gender === 'Male' ? 'selected' : ''}>Male</button>

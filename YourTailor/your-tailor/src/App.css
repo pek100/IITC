@@ -40,6 +40,7 @@ a, i {
   text-align: center;
   z-index: 2;
   margin: 0;
+  top: 0;
   /* border-radius: 0px 0px 40% 40%; */
 }
 
@@ -166,9 +167,12 @@ a, i {
   z-index: 4;
   margin: 0;
   padding: 0;
-  transform: scale(80%);
 }
 
+img {
+  height: calc(2.5 * var(--dynamic-sizing));
+  width: calc(11 * var(--dynamic-sizing));
+}
 
 
 .icon:active {
@@ -184,7 +188,7 @@ a, i {
   .gallery {
     grid-template-columns: 1fr;
   }
-  .lblTop::after{
+  .generation-page>.lblTop::after{
   content: 'Do you like this?';
 }
 .profileBtn {
@@ -203,7 +207,7 @@ a, i {
   .gallery {
     grid-template-columns: 1fr;
   }
-  .lblTop::after{
+  .generation-page>.lblTop::after{
   content: 'Do you like this?';
 }
 .profileBtn {
@@ -224,7 +228,7 @@ a, i {
   }
 
 
-  .lblTop::after{
+  .generation-page>.lblTop::after{
     content: 'What do you like most?';
   }
 
@@ -233,10 +237,9 @@ a, i {
     right: calc(2 * var(--dynamic-sizing));
   }
 
-  
   .icon {
-    top: calc(-0.2 * var(--dynamic-sizing));
-    left: calc(2 * var(--dynamic-sizing));
+    top: calc( -1.5 * var(--dynamic-sizing));
+    left: calc(1 * var(--dynamic-sizing));
   }
 
 }
