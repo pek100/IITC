@@ -1,9 +1,36 @@
 module.exports = 
+{
 
+getHomePage:(req,res) => {
+
+  let querySQL = `SELECT f.* , c.color_name AS colors
+  FROM fruit f JOIN colors c
+      ON color_id = c.id`;
+
+db.query(querySQL,(err, result) => {
+
+  if (err) {
+
+    console.log(err.message);
+    return res.status(500).send(`<h1>ERROR: ${err.message} \n
+         while performing \n
+         ${querySQL}</h1>`);
+
+  }
+
+  // Controller (we've got it here close to the Model)
+  res.render('index.ejs', {
+    title: 'Yummy',
+    fruit: result
+  })
+
+})
+
+},
 
 
 //getSampleHomePage
-(req,res) => {
+getSampleHomePage: (req,res) => {
 
   res.render('index.ejs',
     {title: 'Yummy',
@@ -29,7 +56,7 @@ module.exports =
 
 },
 
-function (req,res) {
+  getSmallHomePage: (req,res) => {
 
     res.render('small-index.ejs',
       {title: 'Yummy!'})
@@ -37,6 +64,6 @@ function (req,res) {
 }
 
   
-
+}
 
 

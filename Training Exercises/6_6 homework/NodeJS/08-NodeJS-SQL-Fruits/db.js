@@ -15,4 +15,5 @@ db.connect(err => {
     console.log('Connected to the database!');
 });
 
-module.exports = db;
+global.db = db
+module.exports = global.db;
