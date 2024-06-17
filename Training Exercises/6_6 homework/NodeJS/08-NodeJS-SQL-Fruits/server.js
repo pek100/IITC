@@ -27,6 +27,9 @@ app.use(fileUpload());
 app.get('/',home.getHomePage);
 app.get('/add',fruit.getAddPage);
 app.post('/add',fruit.addFruit);
+app.get('/edit/:id',fruit.getEditPage);
+app.post('/edit/:id',fruit.editFruit);
+app.get('/delete/:id',fruit.deleteFruit);
 
 
 app.listen(port, () => { console.log(`Listening on the port ${port}`)})
