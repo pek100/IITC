@@ -1,0 +1,206 @@
+
+.landing-page, .login-page, .preferences-page, .signup-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #E6E9DE;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    
+  }
+  
+  .logo-container {
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    width:fit-content;
+    height: 80px;
+    padding: 30px;
+  }
+  
+  .slogen{
+    color: #35415A;
+    font-size: calc(1.5 * var(--dynamic-sizing));
+  }
+
+  .app-title {
+    font-size: 24px;
+    color: #1B3363;
+    margin-bottom: 10px;
+  }
+  
+  .app-description {
+    font-size: 16px;
+    color: #1B3363;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  input {
+    width: calc(40 * var(--dynamic-sizing));
+    padding: 20px;
+    border-bottom: 2px solid #1B3363;
+    border-width: 0 0 medium 0;
+    background-color: transparent;
+    font-size: calc(1.4 * var(--dynamic-sizing));
+    outline: none;
+    transition: .4s;
+  }
+
+  input:hover {
+    width: calc(39 * var(--dynamic-sizing));
+    border-bottom: 4px solid #1B3363;
+    transition: .4s;
+  }
+
+  input:focus{
+    color: #2853a8;
+  }
+
+  #emailLabel, #passwordLabel{
+    margin-top: calc(4 * var(--dynamic-sizing));
+    text-align: left;
+    width: calc(42 * var(--dynamic-sizing));
+    font-size: calc(1.2 * var(--dynamic-sizing));
+  }
+
+  .remember-me{
+    margin-top:  calc(1.2 * var(--dynamic-sizing));;
+    width: calc((42 * var(--dynamic-sizing))/2);
+    display: inline-flex;
+  }
+
+  .remember-me-Lbl{
+    font-size:calc (1 * var(--dynamic-sizing)); 
+    align-content: center;
+    margin-left: calc(1 * var(--dynamic-sizing));
+  }
+
+  .forgot-pass-Lbl{
+    font-size:calc (1 * var(--dynamic-sizing)); 
+    align-content: center;
+    text-align: right;
+    width: calc((42 * var(--dynamic-sizing))/2);
+    border-style: solid;
+  }
+
+  .custom-input{
+    appearance: none;
+    display: block;
+    width: calc(2.5 * var(--dynamic-sizing));
+    height: calc(2.5 * var(--dynamic-sizing));
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #1B3363;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: .1s;
+  }
+
+  .custom-input-checked{
+    background-color:#2853a8;
+    align-content: center;
+    font-size: calc(1.3 * var(--dynamic-sizing));
+    transition: .1s;
+}
+
+
+  .continue-button,
+  .login-button,
+  .submit-button {
+    background-color: #1B3363;
+    margin-top: calc(3 * var(--dynamic-sizing));
+    width: calc(42 * var(--dynamic-sizing));
+    padding: calc(1.4 * var(--dynamic-sizing));
+    color: white;
+    font-size: calc(1.4 * var(--dynamic-sizing));
+    cursor: pointer;
+    border-radius: 120px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    color: #1B3363;
+    margin-bottom: 30px;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .user-icon {
+    font-size: 40px;
+    color: #1B3363;
+    margin-bottom: 30px;
+  }
+  
+  .preferences-form {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .form-question {
+    font-size: 18px;
+    color: #1B3363;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .gender-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .gender-button {
+    background-color: white;
+    border: 1px solid #1B3363;
+    color: #1B3363;
+    padding: 5px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .gender-button.selected {
+    background-color: #1B3363;
+    color: white;
+  }
+  
+  .gender-note {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; /* added line */
+  }
+
+  .Login{
+    margin-top: calc(2 * var(--dynamic-sizing));
+    font-size: 24px
+  }
+
+  .page-title{
+    font-size: calc(3 * var(--dynamic-sizing));;
+  }

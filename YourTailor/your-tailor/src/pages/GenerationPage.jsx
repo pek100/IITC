@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useMediaQuery } from 'react-responsive';
-import { Card } from "./Card.jsx";
+import { Card } from "../components/Card.jsx";
 import icon from '../assets/YourTailor.svg';
 
 const GenerationPage = () => {

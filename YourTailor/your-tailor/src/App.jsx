@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import LandingPage from './components/LandingPage';
-import SignupPage from './components/SignupPage';
-import LoginPage from './components/LoginPage';
-import PreferencesPage from './components/PreferencesPage';
-import GenerationPage from './components/GenerationPage';
+import LandingPage from './pages/LandingPage';
+import SignupPage from './pages/SignupPage';
+import LoginPage from './pages/LoginPage';
+import PreferencesPage from './pages/PreferencesPage';
+import GenerationPage from './pages/GenerationPage';
 import './App.css';
-import './Pages.css';
+import './pages/Pages.css';
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState('landing');
