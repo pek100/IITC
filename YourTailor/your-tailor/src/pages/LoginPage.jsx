@@ -12,9 +12,10 @@ const LoginPage = ({ onLogin }) => {
   const [checkMarkVisibility, setCheckMarkVisibility] = useState("");
 
   function checkInput(){
-    setInputState(inputState=="custom-input"?"custom-input custom-input-checked": "custom-input");
+    setInputState(inputState=="custom-input"?"custom-input custom-input-checked": "custom-input"); //! setIsChecked(prev => !prev)
     setCheckMarkVisibility(checkMarkVisibility==""?"fa-solid fa-check": "")
   }
+
 
   return (
     <div className="login-page">
@@ -31,7 +32,7 @@ const LoginPage = ({ onLogin }) => {
       </div>
 
       <div className="loginOps">
-        <a onClick={checkInput} id="remember-me" className={inputState}><i className={checkMarkVisibility}></i></a>
+        <a onClick={checkInput} id="remember-me" className={inputState}><i className={checkMarkVisibility}></i></a> //! className={isChecked ? '...' : '...'}
         <label id='rmbme' className='remember-me-Lbl' htmlFor="remember-me">Remember me</label>
         <a href="#" className="forgot-pass-Lbl">Lost Password?</a>
       </div>

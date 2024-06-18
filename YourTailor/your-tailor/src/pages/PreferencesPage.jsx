@@ -10,9 +10,11 @@ const PreferencesPage = ({ onSubmit }) => {
       <h1 className="page-title">Preferences</h1>
       <div className="gender-selection">
         <h2>What is your gender?</h2>
+        <div className="gender-button-container">
         <button onClick={() => setGender('Male')} className={gender === 'Male' ? 'selected' : ''}>Male</button>
         <button onClick={() => setGender('Female')} className={gender === 'Female' ? 'selected' : ''}>Female</button>
         <button onClick={() => setGender('Other')} className={gender === 'Other' ? 'selected' : ''}>Other</button>
+        </div>
         <p>Your gender will impact generations</p>
       </div>
       <div className="clothing-preference">

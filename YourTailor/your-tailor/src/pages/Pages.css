@@ -45,8 +45,17 @@ button:active {
     width: calc(43 * var(--dynamic-sizing-pages));
   }
 
-  .preferences-page>div>h2, p{
+  .preferences-page>div>h2{
     text-align: left;
+    color: #1B3363;
+    font-size: calc(1.5 * var(--dynamic-sizing-pages));
+    margin-top: calc(4 * var(--dynamic-sizing-pages));
+  }
+
+  p{
+    text-align: left;
+    color: #35415A;
+    font-size: calc(1.1 * var(--dynamic-sizing-pages));
   }
 
 
@@ -54,6 +63,7 @@ button:active {
   .logo-container {
     margin-bottom: 20px;
   }
+  
   
   .logo {
     width:fit-content;
@@ -83,8 +93,8 @@ button:active {
     width: calc(43 * var(--dynamic-sizing-pages));
     height: calc(4 * var(--dynamic-sizing-pages));
 
-    border-bottom: 2px solid #1B3363;
-    border-width: 0 0 medium 0;
+    border:solid #1B3363;
+    border-width: 0 0 3px 0;
     background-color: transparent;
     font-size: calc(1.4 * var(--dynamic-sizing-pages));
     outline: none;
@@ -178,9 +188,9 @@ button:active {
   .login-button,
   .submit-button {
     background-color: #1B3363;
-    margin-top: calc(3 * var(--dynamic-sizing-pages));
+    margin-top: calc(4.2 * var(--dynamic-sizing-pages));
     width: calc(42 * var(--dynamic-sizing-pages));
-    padding: calc(1.4 * var(--dynamic-sizing-pages));
+    padding: calc(1.6 * var(--dynamic-sizing-pages)) calc(1.4 * var(--dynamic-sizing-pages));
     color: white;
     font-size: calc(1.4 * var(--dynamic-sizing-pages));
     cursor: pointer;
@@ -220,7 +230,39 @@ button:active {
     margin-bottom: calc(1.2 * var(--dynamic-sizing-pages));
     text-align: left;
   }
+
+
+  .gender-button-container{
+    display: flex;
+    width: calc(44 * var(--dynamic-sizing-pages));
+    justify-content: space-between;
+    /* border-style: solid; */
+  }
+
+  .gender-button-container>button{
+    display: inline-flex;
+    margin: 0;
+    /* margin-bottom: calc(1.2 * var(--dynamic-sizing-pages)); */
+    background-color: transparent;
+    border: 1px solid #1B3363;
+    color: #1B3363;
+    padding: calc(1.4 * var(--dynamic-sizing-pages)) calc(4 * var(--dynamic-sizing-pages));
+    font-size: calc(1.4 * var(--dynamic-sizing-pages));
+    cursor: pointer;
+    border-radius: 5px;
+  }
   
+  .gender-button-container>button:hover{
+    background-color: #1B3363;
+    color: white;
+  }
+
+  .gender-button-container>button.selected{
+    background-color: #1B3363;
+    color: white;
+  }
+
+/*   
   .gender-buttons {
     display: flex;
     justify-content: space-between;
@@ -241,7 +283,7 @@ button:active {
     background-color: #1B3363;
     color: white;
   }
-  
+   */
   .gender-note {
     font-size: 14px;
     color: #666;
@@ -271,4 +313,25 @@ button:active {
     text-decoration: none;
     color:#35415A;
   }
+
+
+  
+@media screen and (min-width:0px) and (max-width: 600px){
+  :root {
+    --multiplier-pages: 2.6; 
+    }
+}
+
+@media screen and (min-width:600px) and (max-width: 1000px){
+  :root {
+    --multiplier-pages: 2; 
+  }
+
+}
+
+@media screen and (min-width: 1000px) {
+  :root {
+    --multiplier-pages: 1;
+  }
+}
 

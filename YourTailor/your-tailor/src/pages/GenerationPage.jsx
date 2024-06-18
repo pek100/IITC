@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useMediaQuery } from 'react-responsive';
 import { Card } from "../components/Card.jsx";
 import icon from '../assets/YourTailor.svg';
@@ -10,6 +10,7 @@ const isSmallScreen = useMediaQuery({ query: '(min-width:0px) and (max-width: 60
 const isMobile = useMediaQuery({ query: '(min-width:600px) and (max-width: 800px)' })
 const isBigScreen = useMediaQuery({ query: '(min-width: 800px)' })
 
+const mockProducts = [{id: 123, type: 'tshirt', price: 123, currency: 'USD', imgUrl: ''}, ]//? what the server will output
     
   const [newCard, setNewCard] = isBigScreen ? useState([{id: crypto.randomUUID()}, {id: crypto.randomUUID()}, {id: crypto.randomUUID()}]):
   useState([{id: crypto.randomUUID()}])
@@ -17,8 +18,6 @@ const isBigScreen = useMediaQuery({ query: '(min-width: 800px)' })
   const [scrollButtonIcon, setScrollButtonIcon] = useState("fa-solid fa-chevron-up");
   const [scrollButtonVisibility, setScrollButtonVisibility] = useState("invisible");
   
-
-
   // Refs for pull-to-load-more
   const pullStartY = useRef(0);
   const pullMoveY = useRef(0);
@@ -71,7 +70,7 @@ const isBigScreen = useMediaQuery({ query: '(min-width: 800px)' })
         dynamicFocus.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }, 10);
-  }, [isSmallScreen ,isMobile, isBigScreen, newCard.length]);
+  }, [isSmallScreen ,isMobile, isBigScreen, newCard]);
     //
 
   const marginCards = useCallback((index, cardCount) => {
@@ -150,8 +149,8 @@ const isBigScreen = useMediaQuery({ query: '(min-width: 800px)' })
       <h1 className="lblTop"><a className="icon"><h2><img src={logo} alt="" /></h2></a></h1>
       <div className="container" ref={containerRef}>
         <div className="gallery">
-        {newCard.map((card, index) => (
-          <div className={marginCards(index, newCard.length)} id={index + 1} key={card.id}><Card/></div>
+        {newCard.map(({id}, index) => ( // products instead of newCard
+          <div className={marginCards(index, newCard.length)} id={index + 1} key={id}><Card/></div>
           ))}
         </div>
         <a className="profileBtn"><h2><i className="fa-solid fa-user"></i></h2></a>
