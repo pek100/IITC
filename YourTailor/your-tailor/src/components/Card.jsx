@@ -1,4 +1,4 @@
-import "./styles/Card.css";
+import "../styles/Card.css";
 import { useState } from 'react';
 import tshirt from '../assets/tshirt1.png'
 

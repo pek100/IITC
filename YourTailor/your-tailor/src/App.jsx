@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import LandingPage from './pages/LandingPage';
-import SignupPage from './pages/SignupPage';
-import LoginPage from './pages/LoginPage';
-import PreferencesPage from './pages/PreferencesPage';
-import GenerationPage from './pages/GenerationPage';
-import './App.css';
-import './pages/Pages.css';
+import LandingPage from './pages/Landing';
+import SignupPage from './pages/Signup';
+import LoginPage from './pages/Login';
+import PreferencesPage from './pages/Preferences';
+import GenerationsPage from './pages/Generate';
+import './styles/App.css';
+import './styles/Pages.css';
 
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
       {currentPage === 'signup' && <SignupPage onSignup={handleSignup} />}
       {currentPage === 'login' && <LoginPage onLogin={handleLogin} />}
       {currentPage === 'preferences' && <PreferencesPage onSubmit={handlePreferencesSubmit} />}
-      {currentPage === 'generation' && <GenerationPage />}
+      {currentPage === 'generation' && <GenerationsPage />}
     </div>
   );
 }
