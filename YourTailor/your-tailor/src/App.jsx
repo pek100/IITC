@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import {BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from './pages/Landing';
 import SignupPage from './pages/Signup';
 import LoginPage from './pages/Login';
@@ -9,42 +9,17 @@ import './styles/Pages.css';
 
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('landing');
-
-  const handleContinue = () => {
-    setCurrentPage('signup');
-  };
-
-  const handleLoginLoad = () => {
-    setCurrentPage('login');
-  };
-
-
-  const handleSignup = () => {
-    setCurrentPage('preferences');
-  };
-  
-
-  const handleLogin = (preferences) => {
-    console.log('Preferences loaded:', preferences);
-    //send preferences to your backend
-    setCurrentPage('generation');
-  };
-
-  const handlePreferencesSubmit = (preferences) => {
-    console.log('Preferences submitted:', preferences);
-    //send preferences to your backend
-    setCurrentPage('generation');
-  };
-
   return (
-    <div className="App">
-      {currentPage === 'landing' && <LandingPage onContinue={handleContinue} onloginLoad={handleLoginLoad}/>}
-      {currentPage === 'signup' && <SignupPage onSignup={handleSignup} />}
-      {currentPage === 'login' && <LoginPage onLogin={handleLogin} />}
-      {currentPage === 'preferences' && <PreferencesPage onSubmit={handlePreferencesSubmit} />}
-      {currentPage === 'generation' && <GenerationsPage />}
-    </div>
+    <Router>
+      <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/preferences" element={<PreferencesPage />} />
+          <Route path="/generate" element={<GenerationsPage />} />
+          <Route path="/*" element={<div>Not Found</div>} />
+      </Routes>
+    </Router>
   );
 }
 

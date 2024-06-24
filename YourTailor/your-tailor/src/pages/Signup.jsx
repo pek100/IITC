@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../assets/YourTailorLogo.svg';
 
 
-const SignupPage = ({ onSignup }) => {
+const SignupPage = () => {
   return (
     <div className="login-page">
     <img src={logo} alt="Your Tailor" className="logo" />
