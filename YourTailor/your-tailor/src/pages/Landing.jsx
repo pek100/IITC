@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../assets/YourTailorLogo.svg';
 
-const LandingPage = ({ onContinue, onloginLoad }) => {
+const LandingPage = () => {
   return (
     <div className="landing-page">
       <img src={logo} alt="Your Tailor" className="logo" />
@@ -10,8 +10,8 @@ const LandingPage = ({ onContinue, onloginLoad }) => {
       <label id='emailLabel' htmlFor="email">Email</label>
       <input type="email" id='email' placeholder="" className="email-input" />
       </div>
-      <button onClick={onContinue} className="continue-button">Continue</button>
-      <a href="#" onClick={onloginLoad} className="Login">Log In</a>
+      <button className="continue-button">Continue</button>
+      <a href="/login" className="Login">Log In</a>
     </div>
   );
 };

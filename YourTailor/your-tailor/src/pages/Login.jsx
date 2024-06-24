@@ -6,7 +6,7 @@ import icon from '../assets/YourTailor.svg';
 
 
 
-const LoginPage = ({ onLogin }) => {
+const LoginPage = () => {
 
   const [inputState, setInputState] = useState("custom-checkbox");
   const [checkMarkVisibility, setCheckMarkVisibility] = useState("");
