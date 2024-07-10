@@ -28,7 +28,8 @@ module.exports = {
                     title: 'Edit | Fruit',
                     message: module.exports.message,
                     colors: color,
-                    fruit: fruit.length > 0 ? fruit[0] : null
+                    fruit: fruit.length > 0 ? fruit[0] : null,
+                    hostingDir
                 })
             })
 
@@ -67,7 +68,7 @@ module.exports = {
                 ${querySQL}</h1>`);
             }
 
-            res.redirect('/');
+            res.redirect(hostingDir + '/');
 
         }) // end of db.query('UPDATE ...')
 
@@ -109,10 +110,10 @@ module.exports = {
                         if (err && err.code !== 'ENOENT') {
                             console.error(`Failed to remove image: static/assets/img/${imageName}`, err);
                         }
-                        res.redirect('/');
+                        res.redirect(hostingDir + '/');
                     });
                 } else {
-                    res.redirect('/');
+                    res.redirect(hostingDir + '/');
                 }
             });
         });
@@ -126,7 +127,8 @@ module.exports = {
         res.render('add-fruit.ejs', {
             title: 'Add | Fruit',
             message: '',
-            color: result
+            color: result,
+            hostingDir
         });
     });
 
@@ -139,7 +141,7 @@ module.exports = {
     if (!req.files) {
 
         module.exports.message = 'No file was uploaded';
-        return res.redirect('/add');
+        return res.redirect(hostingDir + '/add');
     }
 
 
@@ -157,7 +159,7 @@ module.exports = {
     if (!/^(gif|heic|jpeg|jpg|png|svg|webp)$/.test(extension)) {
 
         module.exports.message = `Wrong file extension: ${extension}`;
-        return res.redirect('/add');
+        return res.redirect(hostingDir + '/add');
 
     }
 
@@ -178,7 +180,7 @@ module.exports = {
     if (result.length > 0) {
 
         module.exports.message = `Fruit named ${fruitName} already exist`;
-        return res.redirect('/add');
+        return res.redirect(hostingDir + '/add');
 
     }
 
@@ -204,7 +206,7 @@ module.exports = {
                         static/assets/img/${imageName}</h1>`);
             }
 
-            res.redirect('/');
+            res.redirect(hostingDir + '/');
 
         }) // end of image.mv()
 

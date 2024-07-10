@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -11,6 +12,9 @@ const fruit = require('./model/fruit');
 //define port
 let port = process.env.PORT || 3053;
 //
+let nodeEnv = process.env.NODE_ENV.toLowerCase();
+global.hostingDir =  nodeEnv==='development' ? '' : '/michaelpek/node-sql-fruits';
+
 
 
 app.set('view engine', 'ejs');
@@ -24,12 +28,14 @@ app.use(fileUpload());
 
 
 
-app.get('/',home.getHomePage);
-app.get('/add',fruit.getAddPage);
-app.post('/add',fruit.addFruit);
-app.get('/edit/:id',fruit.getEditPage);
-app.post('/edit/:id',fruit.editFruit);
-app.get('/delete/:id',fruit.deleteFruit);
 
+app.get(`${hostingDir}/`,home.getHomePage);
+
+app.get(`${hostingDir}/add`,fruit.getAddPage);
+app.post(`${hostingDir}/add`,fruit.addFruit);
+
+app.get(`${hostingDir}/edit/:id`,fruit.getEditPage);
+app.post(`${hostingDir}/edit/:id`,fruit.editFruit);
+app.get(`${hostingDir}/delete/:id`,fruit.deleteFruit);
 
 app.listen(port, () => { console.log(`Listening on the port ${port}`)})

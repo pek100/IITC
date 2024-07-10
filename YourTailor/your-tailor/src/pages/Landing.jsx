@@ -10,7 +10,7 @@ const LandingPage = () => {
       <label id='emailLabel' htmlFor="email">Email</label>
       <input type="email" id='email' placeholder="" className="email-input" />
       </div>
-      <button className="continue-button">Continue</button>
+      <a href="/signup"><button className="continue-button">Continue</button></a>
       <a href="/login" className="Login">Log In</a>
     </div>
   );

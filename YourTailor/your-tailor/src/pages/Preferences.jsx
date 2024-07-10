@@ -35,9 +35,9 @@ const PreferencesPage = ({ onSubmit }) => {
           onChange={(e) => setTags(e.target.value)}
         />
       </div>
-      <button onClick={() => onSubmit({ gender, clothingPreference, tags })} className="submit-button">
+      <a href="/generate"><button onClick={() => onSubmit({ gender, clothingPreference, tags })} className="submit-button">
         Generate me some clothes!
-      </button>
+      </button></a>
     </div>
   );
 };

@@ -11,7 +11,7 @@ const SignupPage = () => {
     <input type="password" id="password" placeholder="" className="password-input" />
     <label id='passwordLabel' htmlFor="password">Confirm Password</label>
     <input type="password" placeholder="" className="password-input" />
-    <button onClick={onSignup} className="continue-button">Continue</button>
+    <a href="/preferences"><button className="continue-button">Continue</button></a>
   </div>
   );
 };

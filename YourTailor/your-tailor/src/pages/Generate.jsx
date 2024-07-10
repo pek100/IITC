@@ -1,58 +1,44 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Card } from "../components/Card.jsx";
-import icon from "../assets/YourTailor.svg";
 import logo from "../assets/YourTailorLogo.svg";
 
 const GenerationsPage = () => {
 
-  const isSmallScreen = useMediaQuery({
-    query: "(min-width:0px) and (max-width: 600px)",
-  });
-  const isMobile = useMediaQuery({
-    query: "(min-width:600px) and (max-width: 800px)",
-  });
+  const isSmallScreen = useMediaQuery({query: "(min-width:0px) and (max-width: 600px)",});
+  const isMobile = useMediaQuery({query: "(min-width:600px) and (max-width: 800px)",});
   const isBigScreen = useMediaQuery({ query: "(min-width: 800px)" });
 
-  const mockProducts = [
-    { id: 123, type: "tshirt", price: 123, currency: "USD", imgUrl: "" },
-  ]; //? what the server will output
+  // const mockProducts = [
+  //   { id: 123, type: "tshirt", price: 123, currency: "USD", imgUrl: "" },
+  // ]; //? what will the server output
 
   const [newCard, setNewCard] = isBigScreen
-    ? useState([
-        { id: crypto.randomUUID() },
-        { id: crypto.randomUUID() },
-        { id: crypto.randomUUID() },
-      ])
+    ? useState([{ id: crypto.randomUUID() }, { id: crypto.randomUUID() }, { id: crypto.randomUUID() },])
     : useState([{ id: crypto.randomUUID() }]);
   const [scrollButton, setscrollButton] = useState("");
-  const [scrollButtonIcon, setScrollButtonIcon] = useState(
-    "fa-solid fa-chevron-up"
-  );
-  const [scrollButtonVisibility, setScrollButtonVisibility] =
-    useState("invisible");
+  const [scrollButtonIcon, setScrollButtonIcon] = useState("fa-solid fa-chevron-up");
+  const [scrollButtonVisibility, setScrollButtonVisibility] = useState("invisible");
 
   // Refs for pull-to-load-more
   const pullStartY = useRef(0);
   const pullMoveY = useRef(0);
-  const distanceThreshold = -50; // Negative because we're pulling up
+  const distanceThreshold = -150; 
   const isDragging = useRef(false);
   const containerRef = useRef(null);
   const latestIdRef = useRef(0);
 
   function changescroll() {
-    setscrollButton(
-      scrollButton == "#top" ? "#" + latestIdRef.current : "#top"
-    );
+    setscrollButton(scrollButton == "#top" ? "#" + latestIdRef.current : "#top");
     setScrollButtonIcon(
-      scrollButton != "#top"
+        scrollButton != "#top"
         ? "fa-solid fa-chevron-down"
         : "fa-solid fa-chevron-up"
     );
   }
 
   // add cards dynamically to array
-  const addCards = useCallback(() => {
+  const addCards = useCallback(() => { 
     let newCards = [];
     const currentCardCount = newCard.length;
 
@@ -98,7 +84,7 @@ const GenerationsPage = () => {
         dynamicFocus.scrollIntoView({ behavior: "smooth", block: "center" });
       }
     }, 10);
-  }, [isSmallScreen, isMobile, isBigScreen, newCard.length]);
+  }, [isSmallScreen, isMobile, isBigScreen, newCard]);
   //
 
   const marginCards = useCallback(

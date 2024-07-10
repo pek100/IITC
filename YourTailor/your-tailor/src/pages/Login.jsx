@@ -37,7 +37,7 @@ const LoginPage = () => {
         <a href="#" className="forgot-pass-Lbl">Lost Password?</a>
       </div>
 
-      <button onClick={onLogin} className="login-button">Log In</button>
+      <a href="/preferences"><button className="login-button">Log In</button></a>
     </div>
   );
 };

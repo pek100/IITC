@@ -27,6 +27,11 @@ button:active {
   transition: 0.1s;
 }
 
+a {
+  text-decoration: none;
+
+}
+
 
 .landing-page, .login-page, .preferences-page, .signup-page {
     display: flex;

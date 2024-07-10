@@ -21,7 +21,8 @@ db.query(querySQL,(err, result) => {
   // Controller (we've got it here close to the Model)
   res.render('index.ejs', {
     title: 'Yummy',
-    fruit: result
+    fruit: result,
+    hostingDir
   })
 
 })
@@ -51,7 +52,8 @@ getSampleHomePage: (req,res) => {
         calories: 52,
         image:'apple.jpeg'
        }
-     ]
+     ],
+     hostingDir
     })
 
 },
@@ -59,11 +61,9 @@ getSampleHomePage: (req,res) => {
   getSmallHomePage: (req,res) => {
 
     res.render('small-index.ejs',
-      {title: 'Yummy!'})
-
-}
-
-  
-}
+      {title: 'Yummy!',
+      hostingDir})
+      
+}}
 
 
